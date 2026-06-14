@@ -3,11 +3,13 @@ const userNik = document.getElementById("userNik");
 const userNamee = document.getElementById("userNamee");
 const userNikk = document.getElementById("userNikk");
 const userBio = document.getElementById("userBio");
+const userRole = document.getElementById("role");
 
 userName.textContent = localStorage.getItem("name");
 userNik.textContent = "@" + localStorage.getItem("nik");
 userNamee.textContent = localStorage.getItem("name");
 userNikk.textContent = "@" + localStorage.getItem("nik");
+userRole.textContent = localStorage.getItem("select");
 userBio.textContent = localStorage.getItem("bio") || "Hali bio yo'q.";
 
 const profileAvatar = document.getElementById("avatar");
@@ -23,21 +25,13 @@ if (savedAvatar) {
 
 avatarInput.addEventListener("change", (e) => {
   const file = e.target.files[0];
-
   if (!file) return;
-
   const reader = new FileReader();
-
   reader.onload = () => {
     profileAvatar.src = reader.result;
     navbarAvatar.src = reader.result;
 
     localStorage.setItem("avatar", reader.result);
   };
-
   reader.readAsDataURL(file);
 });
-
-const div = document.getElementById("div")
-
-div.textContent = localStorage.getItem("projectCard");

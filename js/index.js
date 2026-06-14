@@ -56,6 +56,58 @@ function modal() {
                 <label>Tavsif</label>
                 <input id="bio" type="text" placeholder="Tavsif kiriting.">
             </div>
+            <div>
+                <label>Kimsiz?</label>
+                <select id="select">
+                <option value="🎨 Frontend Developer">
+        🎨 Frontend Developer
+    </option>
+
+    <option value="⚙️ Backend Developer">
+        ⚙️ Backend Developer
+    </option>
+
+    <option value="🚀 Full Stack Developer">
+        🚀 Full Stack Developer
+    </option>
+
+    <option value="📱 Mobile Developer">
+        📱 Mobile Developer
+    </option>
+
+    <option value="✨ UI/UX Designer">
+        ✨ UI/UX Designer
+    </option>
+
+    <option value="☁️ DevOps Engineer">
+        ☁️ DevOps Engineer
+    </option>
+
+    <option value="🧪 QA Engineer">
+        🧪 QA Engineer
+    </option>
+
+    <option value="🤖 AI Engineer">
+        🤖 AI Engineer
+    </option>
+
+    <option value="🎓 Student">
+        🎓 Student
+    </option>
+
+    <option value="💡Founder">
+        💡 Founder
+    </option>
+
+    <option value="🏢 Recruiter">
+        🏢 Recruiter
+    </option>
+
+    <option value="🌍Other">
+        🌍 Other
+    </option>
+                </select>
+            </div>
             <button id="btn">Ro'yxatdan o'tish</button>
         </div>
     </div>
@@ -138,8 +190,8 @@ if (hasSavedProject && userProjectCard) {
                 src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Default_pfp.svg/500px-Default_pfp.svg.png"
                 alt="user-avatar">
             <div class="user-info">
-                <h3>${isRegistered}</h3>
-                <span class="user-nik">@${nikRegistered}</span>
+                <h3>${isRegistered || 'username'}</h3>
+                <span class="user-nik">@${nikRegistered || 'user'}</span>
             </div>
         </div>
         <div class="post-cover">
@@ -196,6 +248,7 @@ const email = document.getElementById("email");
 const parol = document.getElementById("parol");
 const bio = document.getElementById("bio");
 const btn = document.getElementById("btn");
+const select = document.getElementById("select");
 
 if (btn) {
   btn.addEventListener("click", () => {
@@ -205,7 +258,13 @@ if (btn) {
     let pass = parol.value;
     let bioo = bio.value;
 
-    if (name === "" || nikk === "" || emaill === "" || pass === "") {
+    if (
+      name === "" ||
+      nikk === "" ||
+      emaill === "" ||
+      pass === "" ||
+      select.value === ""
+    ) {
       alert("Iltimos barcha maydoni to'ldiring!");
       return;
     }
@@ -215,6 +274,7 @@ if (btn) {
     localStorage.setItem("email", emaill);
     localStorage.setItem("parol", pass);
     localStorage.setItem("bio", bioo);
+    localStorage.setItem("select", select.value);
 
     if (profileCard) profileCard.style.display = "none";
     if (modal1) modal1.style.display = "none";

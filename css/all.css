@@ -630,6 +630,24 @@ header {
   max-width: 280px !important;
 }
 
+/* select */
+
+#select {
+  width: 100%;
+  padding: 14px 16px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--white);
+  color: var(--text);
+  font-size: 15px;
+  outline: none;
+  transition: 0.2s;
+}
+
+select:focus {
+  border-color: var(--btn);
+}
+
 @media (max-width: 1300px) {
   .aside-right {
     display: none !important;

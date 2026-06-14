@@ -1,6 +1,6 @@
 .profile-html {
   padding: 24px;
-  width: 60%;
+  width: 70%;
   margin: 40px;
   transition: 0.5s;
   margin-bottom: 10px;
@@ -21,9 +21,9 @@
   height: 110px;
   object-fit: cover;
   border-radius: 50%;
-  border: 3px solid #ffe8ca;
+  border: 4px solid #ffe8ca;
   margin-bottom: 10px;
-  padding: 1px;
+  padding: 2px;
   background-color: white;
 }
 
@@ -37,17 +37,24 @@
   color: var(--btn);
   font-size: 13px;
   font-weight: 600;
-  margin-bottom: 12px;
+  margin-bottom: 9px;
   text-transform: lowercase;
 }
 
-#userBio {
+#userBio,
+#role {
   color: var(--gray);
-  font-size: 14px;
+  font-size: 15px;
   line-height: 1.6;
-  margin-bottom: 5px;
-  max-width: 300px;
+  margin-bottom: 0px;
   font-weight: 400;
+}
+
+#role {
+  font-weight: 600;
+  color: var(--text);
+  margin-top: 5px;
+  margin-bottom: 10px;
 }
 
 .profile-header > div {
@@ -73,12 +80,12 @@
 .profile-avatar {
   display: flex;
   align-items: center;
-  margin-bottom: 10px;
+  width: 100%;
 }
 
 .project {
   font-size: 14px;
-  margin-left: 20%;
+  margin-left: 15%;
   color: var(--gray);
   font-weight: 600;
 }
@@ -155,7 +162,7 @@
 .avatar-edit {
   position: absolute;
   right: 0;
-  bottom: 10px;
+  bottom: 15px;
   width: 36px;
   height: 36px;
   display: flex;
@@ -185,14 +192,15 @@
   padding: 10px 20px;
   border-radius: 12px;
   border: none;
-  background-color: var(--border);
-  color: var(--text);
+  background-color: var(--text);
+  color: var(--white);
   transition: 0.4s;
   display: none;
 }
 
 .follow:hover {
   box-shadow: var(--shadow);
+  transform: translateY(-5px);
 }
 
 @media (max-width: 768px) {
@@ -230,6 +238,12 @@
 
   .projects {
     margin-bottom: 150px;
+  }
+
+  #userBio{
+    font-size: 16px;
+    margin-top: 6px;
+    margin-bottom: 6px;
   }
 }
 
