@@ -3,11 +3,14 @@ const modal1 = document.querySelector(".modal");
 const profileCard = document.getElementById("profile-card");
 const asideProfile = document.querySelector(".aside-profile");
 const modalProject = document.getElementById("modal-project");
+const asideRight = document.querySelector(".aside-right");
 const userProjectCard = document.getElementById("userProjectCard");
 const user = document.getElementById("user");
 
 let isRegistered = localStorage.getItem("name");
 let nikRegistered = localStorage.getItem("nik");
+
+// navbar
 
 function navbar() {
   if (!navbar1) return;
@@ -24,16 +27,21 @@ function navbar() {
             <button class="bell">
                 <i class="icon-lucide" data-lucide="bell"></i>
             </button>
+            <button class="menu">
+                <i class="icon-lucide" data-lucide="menu"></i>
+            </button>
         </div>
     </div>
   `;
 }
 
+// modalRegistar
+
 function modal() {
   if (!modal1) return;
   modal1.innerHTML = `
     <div class="modal-registar">
-        <h1>Ro'yxatdan o'tish</h1>
+        <h1 id="h1">Ro'yxatdan o'tish</h1>
         <p>Show what you build.</p>
         <div>
             <div>
@@ -114,6 +122,8 @@ function modal() {
   `;
 }
 
+// ProjectModal
+
 function modalProjects() {
   if (!modalProject) return;
   modalProject.innerHTML = `
@@ -139,14 +149,76 @@ function modalProjects() {
   `;
 }
 
+// asideRight
+
+function asideright() {
+  asideRight.innerHTML = `
+    <div class="aside-right-div1">
+      <h1><i data-lucide="flame" class="icon-lucide"></i> Top Developers</h1>
+      <div>
+          <img src="https://bairesdev.mo.cloudinary.net/blog/2025/03/how-to-become-a-full-stack-developer.jpg?tx=w_1920,q_auto"
+              alt="user-avatar">
+          <div>
+              <h2>Sardor</h2>
+              <p>@sardorkeldiyev</p>
+          </div>
+      </div>
+      <div>
+          <img src="https://dac.digital/wp-content/uploads/2023/07/1ud5eeycUbeH1kp1ln_gkJg-1200x680.jpe"
+              alt="user-avatar">
+          <div>
+              <h2>Madina</h2>
+              <p>@axmedovamadi</p>
+          </div>
+      </div>
+      <div>
+          <img src="https://jeoqreprpwuuldhozvtx.supabase.co/storage/v1/object/public/kollabee-uploads/cmon4e16d000004k10amleep2/31a38cea0e137aa1dd7bc91ba73f242e.jpg"
+              alt="user-avatar">
+          <div>
+              <h2>Ibrohim</h2>
+              <p>@begboyevibrohim</p>
+          </div>
+      </div>
+      <div>
+          <img src="https://www.kollabee.app/_next/image?url=https%3A%2F%2Flh3.googleusercontent.com%2Fa%2FACg8ocLvoxAxFVUguhfbf5zV_G35KsR1u7q8t2bxRw03ki7Wn-jFgw%3Ds96-c&w=96&q=75"
+              alt="user-avatar">
+          <div>
+              <h2>Temurbek</h2>
+              <p>@</p>
+          </div>
+      </div>
+      <div>
+          <img src="https://woz-u.com/wp-content/uploads/2022/06/Evolution-of-Coding-scaled.jpg"
+              alt="user-avatar">
+          <div>
+              <h2>timurovch7</h2>
+              <p>@erkinov</p>
+          </div>
+      </div>
+      <button onclick="window.location.href = 'programist.html'">Barchasini ko'rish →</button>
+    </div>
+    <div class="aside-right-div2">
+        <h1><i class="icon-lucide" data-lucide="lightbulb"></i> Tip of day</h1>
+        <div>
+            <p id="tip"></p>
+        </div>
+    </div>
+  `;
+}
+
 // Interfeyslarni yaratish
+
 navbar();
 modal();
 modalProjects();
+asideright();
+
+// icons
 
 lucide.createIcons();
 
-// Dinamik elementlarni HTML yaratilgandan keyin tanlab olish
+// registar
+
 const namee = document.getElementById("name");
 const nik = document.getElementById("nik");
 const email = document.getElementById("email");
@@ -155,8 +227,12 @@ const bio = document.getElementById("bio");
 const btn = document.getElementById("btn");
 const select = document.getElementById("select");
 
+// modal open
+
 const openProjectModalBtn = document.getElementById("openProjectModalBtn");
 const closeProjectModalBtn = document.getElementById("closeProjectModalBtn");
+
+// project download
 
 const joylash = document.getElementById("joylash");
 const projectName = document.getElementById("projectName");
@@ -166,16 +242,16 @@ const projectDemoUrl = document.getElementById("projectDemoUrl");
 const projectTechStack = document.getElementById("projectTechStack");
 const projectImage = document.getElementById("projectImage");
 
-if (user) {
-  if (!isRegistered) {
-    user.addEventListener("click", function () {
-      if (modal1) modal1.style.display = "flex";
-    });
-  } else {
-    user.addEventListener("click", function () {
-      window.location.href = "profile.html";
-    });
-  }
+// Ro'yxatdan o'tmagan bo'lsa modal chiqishi
+
+if (!isRegistered) {
+  user.addEventListener("click", function () {
+    if (modal1) modal1.style.display = "flex";
+  });
+} else {
+  user.addEventListener("click", function () {
+    window.location.href = "profile.html";
+  });
 }
 
 if (isRegistered) {
@@ -188,9 +264,11 @@ if (isRegistered) {
 }
 
 // LocalStorage'dan loyihalar massivini o'qib olamiz
+
 let projectsArray = JSON.parse(localStorage.getItem("projectsList")) || [];
 
 // Agar xotirada loyihalar bo'lsa, hammasini bittalab chizamiz
+
 if (projectsArray.length > 0 && userProjectCard) {
   userProjectCard.innerHTML = "";
 
@@ -208,22 +286,22 @@ if (projectsArray.length > 0 && userProjectCard) {
           <div class="post-header">
               <img class="user-avatar"
                   src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Default_pfp.svg/500px-Default_pfp.svg.png"
-                  alt="user-avatar">
+                  alt="user-avatar" id="avatars">
               <div class="user-info">
                   <h3>${isRegistered || "username"}</h3>
-                  <span class="user-nik">@${nikRegistered || "user"} · <span id="clock">${project.clock || ""}</span></span>
+                  <span class="user-nik">@${nikRegistered || "user"} · <p id="clock">${project.clock || ""}</p></span>
               </div>
-          </div>
-          <div class="post-cover">
-              <img src="${project.image || ""}" alt="project-cover">
           </div>
           <div class="post-body">
               <h2 class="project-title">${project.name}</h2>
-              <p class="project-desc">${project.bio}</p>
+              <p class="project-desc">${project.bio.slice(0, 300)}...</p>
           </div>
           <div class="tech-stack" style="margin-bottom: 20px;">
               ${techSpans}
           </div>
+              <div class="post-cover">
+                <img src="${project.image || ""}" alt="project-cover">
+              </div> 
           <div class="post-actions">
               <a href="${project.gitUrl || "#"}" target="_blank" class="action-btn github-btn">
                   <i class="icon-lucide" data-lucide="CodeXml"></i>
@@ -234,6 +312,26 @@ if (projectsArray.length > 0 && userProjectCard) {
                   Live Demo
               </a>
           </div>
+           <div class="likes">
+              <div class="divs">
+                  <div class="div">
+                      <i class="icon-lucide like" data-lucide="heart"></i>
+                      <span>0</span>
+                  </div>
+                  <div class="div">
+                      <i class="icon-lucide" data-lucide="message-square"></i>
+                      <span>0</span>
+                  </div>
+              </div>
+              <div class="divs">
+                  <div class="div">
+                      <i class="icon-lucide" data-lucide="forward"></i>
+                  </div>
+                  <div class="div">
+                      <i class="icon-lucide" data-lucide="bookmark"></i>
+                  </div>
+              </div>
+            </div>
       </div>
     `;
   });
@@ -256,6 +354,7 @@ if (openProjectModalBtn && modalProject) {
     modalProject.style.display = "flex";
   });
 }
+
 if (closeProjectModalBtn && modalProject) {
   closeProjectModalBtn.addEventListener("click", () => {
     modalProject.style.display = "none";
@@ -348,7 +447,7 @@ if (joylash) {
               <div class="post-header">
                   <img class="user-avatar"
                       src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Default_pfp.svg/500px-Default_pfp.svg.png"
-                      alt="user-avatar">
+                      alt="user-avatar" id="avatars">
                   <div class="user-info">
                       <h3>${isRegistered || "username"}</h3>
                       <span class="user-nik">@${nikRegistered || "user"} · <span id="clock">${currentClock}</span></span>
@@ -392,3 +491,19 @@ if (joylash) {
     reader.readAsDataURL(file);
   });
 }
+
+// tips
+
+const tips = [
+  "💡 Portfolio'da sifat sonidan muhimroq.",
+  "🚀 GitHub profilingizni to'ldirib boring.",
+  "🎯 Har loyiha uchun screenshot qo'shing.",
+  "⚡ Ish beruvchilar avval loyihaga qaraydi.",
+  "🔥 README yozilgan loyiha ko'proq e'tibor oladi.",
+  "💡 Portfolio'da 5 ta sifatli loyiha 50 ta oddiy loyihadan kuchliroqdir.",
+  "📱 Responsive dizaynni unutmang.",
+  "🧠 Kod yozishdan oldin reja tuzing.",
+];
+
+const randomTip = tips[Math.floor(Math.random() * tips.length)];
+document.getElementById("tip").textContent = randomTip;

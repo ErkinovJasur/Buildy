@@ -11,7 +11,7 @@ userName.textContent = localStorage.getItem("name");
 userNik.textContent = "@" + localStorage.getItem("nik");
 userNamee.textContent = localStorage.getItem("name");
 userNikk.textContent = "@" + localStorage.getItem("nik");
-userRole.textContent = localStorage.getItem("select");
+userRole.textContent = localStorage.getItem("select") || 'Founder of Buildy';
 userBio.textContent = localStorage.getItem("bio") || "Hali bio yo'q.";
 
 // avatar yuklash

@@ -18,39 +18,43 @@
 <body>
 
     <nav class="mobile-bottom-nav">
-        <a class="active" href="index.html">
+        <a href="index.html" class="active">
             <i data-lucide="house"></i>
+            <span>Home</span>
         </a>
         <a>
             <i data-lucide="compass"></i>
+            <span>Explore</span>
         </a>
         <a onclick="modalProject.style.display = 'flex'">
             <i data-lucide="plus"></i>
         </a>
         <a>
             <i data-lucide="MessageCircle"></i>
+            <span>Messages</span>
         </a>
         <a id="user">
             <i data-lucide="circle-user"></i>
+            <span>Profile</span>
         </a>
     </nav>
+
 
     <div class="buildy">
         <aside class="aside-left">
             <h1>Buildly</h1>
-            <p>💡 Tip of day </p>
             <div class="aside-location">
                 <button class="bg-btn">
                     <i class="icon-lucide" data-lucide="home"></i>
                     Asosiy
                 </button>
+                <button onclick="window.location.href = 'programist.html'">
+                    <i class="icon-lucide" data-lucide="CodeXml"></i>
+                    Dasturchilar
+                </button>
                 <button>
                     <i class="icon-lucide" data-lucide="FolderGit2"></i>
                     Loyihalar
-                </button>
-                <button>
-                    <i class="icon-lucide" data-lucide="CodeXml"></i>
-                    Dasturchilar
                 </button>
                 <button>
                     <i class="icon-lucide" data-lucide="users"></i>
@@ -78,12 +82,17 @@
                     <button onclick="modal1.style.display = 'flex'">Ro'yxatdan o'tish</button>
                 </div>
                 <div class="aside-profile" onclick="window.location.href = 'profile.html'">
-                    <img id="user-avatar"
-                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Default_pfp.svg/500px-Default_pfp.svg.png"
-                        alt="user-avatar">
-                    <div>
-                        <h2 id="userNamee"></h2>
-                        <p id="userNikk"></p>
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                        <img id="user-avatar"
+                            src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Default_pfp.svg/500px-Default_pfp.svg.png"
+                            alt="user-avatar">
+                        <div>
+                            <h2 id="userNamee"></h2>
+                            <p id="userNikk"></p>
+                        </div>
+                    </div>
+                    <div class="log">
+                        <i class="icon-lucide" data-lucide="LogOut"></i>
                     </div>
                 </div>
             </div>
@@ -91,97 +100,74 @@
         <div class="container">
             <main>
                 <header></header>
-                <div id="userProjectCard"></div>
-                <div class="project-post">
-                    <div class="post-header">
-                        <img class="user-avatar"
-                            src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Default_pfp.svg/500px-Default_pfp.svg.png"
-                            alt="user-avatar">
-                        <div class="user-info">
-                            <h3>Buildy</h3>
-                            <span class="user-nik">@buildy · <p>13.06.2026 - 06-40</p></span>
+                <div class="posts">
+                    <div id="userProjectCard"></div>
+                    <div class="project-post">
+                        <div class="post-header">
+                            <img class="user-avatar"
+                                src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Default_pfp.svg/500px-Default_pfp.svg.png"
+                                alt="user-avatar">
+                            <div class="user-info">
+                                <h3>Jasur Erkinov</h3>
+                                <span class="user-nik">@timurovch7 · <p>13.06.2026 - 06-40</p></span>
+                            </div>
+                        </div>
+                        <div class="post-body">
+                            <h2 class="project-title">Buildly</h2>
+                            <p class="project-desc">Developer showcase platform where developers can publish projects,
+                                discover builders and connect with teammates.</p>
+                            <div class="tech-stack">
+                                <span>React</span>
+                                <span>Supabase</span>
+                                <span>HTML</span>
+                                <span>CSS</span>
+                                <span>JavaScript</span>
+                            </div>
+                        </div>
+                        <div class="post-cover">
+                            <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=1000&auto=format&fit=crop"
+                                alt="project-cover">
+                        </div>
+                        <div class="post-actions">
+                            <a href="https://github.com/ErkinovJasur" target="_blank" class="action-btn github-btn">
+                                <i class="icon-lucide" data-lucide="CodeXml"></i>
+                                GitHub
+                            </a>
+                            <a href="https://demo.com" target="_blank" class="action-btn demo-btn">
+                                <i class="icon-lucide" data-lucide="external-link"></i>
+                                Live Demo
+                            </a>
+                        </div>
+                        <div class="likes">
+                            <div class="divs">
+                                <div class="div">
+                                    <i class="icon-lucide like" data-lucide="heart"></i>
+                                    <span>179.2k</span>
+                                </div>
+                                <div class="div">
+                                    <i class="icon-lucide" data-lucide="message-square"></i>
+                                    <span>87</span>
+                                </div>
+                            </div>
+                            <div class="divs">
+                                <div class="div">
+                                    <i class="icon-lucide" data-lucide="forward"></i>
+                                </div>
+                                <div class="div">
+                                    <i class="icon-lucide" data-lucide="bookmark"></i>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="post-cover">
-                        <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=1000&auto=format&fit=crop"
-                            alt="project-cover">
-                    </div>
-                    <div class="post-body">
-                        <h2 class="project-title">Buildly</h2>
-                        <p class="project-desc">Developer showcase platform where developers can publish projects,
-                            discover builders and connect with teammates.</p>
-                        <div class="tech-stack">
-                            <span>React</span>
-                            <span>Supabase</span>
-                            <span>HTML</span>
-                            <span>CSS</span>
-                            <span>JavaScript</span>
-                        </div>
-                    </div>
-                    <div class="post-actions">
-                        <a href="https://github.com/ErkinovJasur" target="_blank" class="action-btn github-btn">
-                            <i class="icon-lucide" data-lucide="CodeXml"></i>
-                            GitHub
-                        </a>
-                        <a href="https://demo.com" target="_blank" class="action-btn demo-btn">
-                            <i class="icon-lucide" data-lucide="external-link"></i>
-                            Live Demo
-                        </a>
-                    </div>
+                </div>
+                <div class="loader">
+                    <svg id="svg" viewBox="25 25 50 50">
+                        <circle class="circle" r="20" cy="50" cx="50"></circle>
+                    </svg>
                 </div>
             </main>
         </div>
-        <aside class="aside-right">
-            <h1>Buildly</h1>
-            <p>Show what you build.</p>
-            <div class="aside-location">
-                <button onclick="window.location.href = './index.html'">
-                    <i class="icon-lucide" data-lucide="home"></i>
-                    Asosiy
-                </button>
-                <button>
-                    <i class="icon-lucide" data-lucide="FolderGit2"></i>
-                    Loyihalar
-                </button>
-                <button>
-                    <i class="icon-lucide" data-lucide="CodeXml"></i>
-                    Dasturchilar
-                </button>
-                <button>
-                    <i class="icon-lucide" data-lucide="users"></i>
-                    Jamoalar
-                </button>
-                <button>
-                    <i class="icon-lucide" data-lucide="compass"></i>
-                    Kashf qiling
-                </button>
-                <button>
-                    <i class="icon-lucide" data-lucide="bookmark"></i>
-                    Saqlanganlar
-                </button>
-                <button>
-                    <i class="icon-lucide" data-lucide="MessageCircle"></i>
-                    Xabarlar
-                </button>
-                <button>
-                    <i class="icon-lucide" data-lucide="settings"></i>
-                    Sozlamalar
-                </button>
-                <div class="profile-card" id="profile-card">
-                    <p>Ishlab chiquvchi profilingizni yarating, loyihalaringizni namoyish qiling va quruvchilar bilan
-                        bog'laning.</p>
-                    <button onclick="modal1.style.display = 'flex'">Ro'yxatdan o'tish</button>
-                </div>
-                <div class="aside-profile" onclick="window.location.href = 'profile.html'">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Default_pfp.svg/500px-Default_pfp.svg.png"
-                        alt="user-avatar">
-                    <div>
-                        <h2 id="userNamee"></h2>
-                        <p id="userNikk"></p>
-                    </div>
-                </div>
-            </div>
-        </aside>
+        <aside class="aside-right"></aside>
     </div>
 
     <div class="modal"></div>
@@ -190,15 +176,21 @@
     <script src="js/index.js"></script>
 
     <script>
+        // avatar
+
         const userNamee = document.getElementById("userNamee").textContent = localStorage.getItem("name");
         const userNikk = document.getElementById("userNikk").textContent = '@' + localStorage.getItem("nik");
 
         const avatar = document.getElementById("user-avatar");
+        const avatars = document.getElementById("avatars");
         const savedAvatar = localStorage.getItem("avatar");
 
         if (savedAvatar) {
             avatar.src = savedAvatar;
+            avatars.src = savedAvatar;
         }
+
+        // time
 
         const clock = document.getElementById("clock");
 
@@ -223,6 +215,28 @@
         }
 
         setTime();
+
+        // like
+
+        const likeButtons = document.querySelectorAll('.icon-lucide.like');
+
+        likeButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                button.classList.toggle('active');
+            });
+
+        });
+
+        // loader
+
+        const loader = document.querySelector(".loader");
+        const posts = document.querySelector(".posts");
+
+        setTimeout(() => {
+            posts.style.display = "block";
+            loader.style.display = "none"
+        }, 3000);
+
 
     </script>
 

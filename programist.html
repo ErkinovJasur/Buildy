@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Buildly — Show what you build.</title>
-    <link rel="stylesheet" href="css/profile.css">
+    <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/all.css">
     <script src="https://unpkg.com/lucide@latest"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -33,7 +33,7 @@
             <i data-lucide="MessageCircle"></i>
             <span>Messages</span>
         </a>
-        <a class="active" id="user">
+        <a id="user">
             <i data-lucide="circle-user"></i>
             <span>Profile</span>
         </a>
@@ -43,11 +43,11 @@
         <aside class="aside-left">
             <h1>Buildly</h1>
             <div class="aside-location">
-                <button onclick="window.location.href = './index.html'">
+                <button onclick="window.location.href = 'index.html'">
                     <i class="icon-lucide" data-lucide="home"></i>
                     Asosiy
                 </button>
-                <button onclick="window.location.href = 'programist.html'">
+                <button class="bg-btn" onclick="window.location.href = 'programist.html'">
                     <i class="icon-lucide" data-lucide="CodeXml"></i>
                     Dasturchilar
                 </button>
@@ -82,7 +82,7 @@
                 </div>
                 <div class="aside-profile" onclick="window.location.href = 'profile.html'">
                     <div style="display: flex; align-items: center; gap: 8px;">
-                        <img id="avatarr"
+                        <img id="user-avatar"
                             src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Default_pfp.svg/500px-Default_pfp.svg.png"
                             alt="user-avatar">
                         <div>
@@ -99,74 +99,42 @@
         <div class="container">
             <main>
                 <header></header>
-                <div class="profile-html">
-                    <div class="profile-header">
-                        <div class="banner"></div>
-                        <div class="profile-topbar">
-                            <div class="avatar-wrapper">
-                                <img id="avatar"
-                                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Default_pfp.svg/500px-Default_pfp.svg.png"
-                                    alt="avatar">
-                                <label for="avatarInput" class="avatar-edit">
-                                    <i data-lucide="camera"></i>
-                                </label>
-                                <input type="file" id="avatarInput" accept="image/*" hidden>
-                            </div>
-
-                            <button class="edit-btn"
-                                onclick="modal1.style.display='flex'; document.getElementById('h1').textContent='Profilni tahrirlash'; document.getElementById('btn').textContent='Saqlash';">
-                                <i data-lucide="pencil"></i>
-                                Tahrirlash
-                            </button>
-                        </div>
-                        <div class="profile-info">
-                            <h2 id="userName"></h2>
-                            <p id="userNik"></p>
-                            <p id="userBio"></p>
-                            <p id="role"></p>
-                        </div>
-                        <div class="stats-row">
-                            <div class="stat-item">
-                                <p>0</p>
-                                <h2>Loyihalar</h2>
-                            </div>
-                            <div class="stat-item">
-                                <p>0</p>
-                                <h2>Obunachilar</h2>
-                            </div>
-                            <div class="stat-item">
-                                <p>0</p>
-                                <h2>Obuna bo'lganlar</h2>
-                            </div>
-                        </div>
-                        <div class="follow-row">
-                            <button class="follow">Obuna bo'lish</button>
-                        </div>
-                    </div>
-                </div>
-                <h1 class="project">Loyihalarim</h1>
-                <div class="projects">
-                    <div class="empty-icon"><i data-lucide="briefcase-business"></i></div>
-                    <h2>Hali loyihalaringiz yo'q.</h2>
-                    <p>Loyiha yuklasangiz shu yerda ko'rinadi.</p>
-                    <a href="index.html">
-                        <button class="button">
-                            <i data-lucide="plus"></i>
-                            Birinchisini yuklang
-                        </button>
-                    </a>
+                <div class="loader">
+                    <svg id="svg" viewBox="25 25 50 50">
+                        <circle class="circle" r="20" cy="50" cx="50"></circle>
+                    </svg>
                 </div>
             </main>
         </div>
-        <aside class="aside-right">
-        </aside>
+        <aside class="aside-right"></aside>
     </div>
 
-    <div class="modal-project" id="modal-project"></div>
     <div class="modal"></div>
+    <div class="modal-project" id="modal-project"></div>
 
     <script src="js/index.js"></script>
-    <script src="js/profile.js"></script>
+
+    <script>
+        // avatar
+
+        const userNamee = document.getElementById("userNamee").textContent = localStorage.getItem("name");
+        const userNikk = document.getElementById("userNikk").textContent = '@' + localStorage.getItem("nik");
+
+        const avatar = document.getElementById("user-avatar");
+        const savedAvatar = localStorage.getItem("avatar");
+
+        if (savedAvatar) {
+            avatar.src = savedAvatar;
+        }
+
+        // loader
+
+        const loader = document.querySelector(".loader");
+
+        setTimeout(() => {
+            loader.style.display = "none"
+        }, 3000);
+    </script>
 
 </body>
 
