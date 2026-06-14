@@ -47,6 +47,7 @@
   border: 2.5px solid var(--border);
   display: block;
   transition: opacity 0.2s;
+  background-color: white;
 }
 
 /* camera */
