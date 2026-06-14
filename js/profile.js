@@ -1,3 +1,5 @@
+// kiritgan ma'lumotlarini profile sahifasiga chqarish
+
 const userName = document.getElementById("userName");
 const userNik = document.getElementById("userNik");
 const userNamee = document.getElementById("userNamee");
@@ -11,6 +13,8 @@ userNamee.textContent = localStorage.getItem("name");
 userNikk.textContent = "@" + localStorage.getItem("nik");
 userRole.textContent = localStorage.getItem("select");
 userBio.textContent = localStorage.getItem("bio") || "Hali bio yo'q.";
+
+// avatar yuklash
 
 const profileAvatar = document.getElementById("avatar");
 const navbarAvatar = document.getElementById("avatarr");

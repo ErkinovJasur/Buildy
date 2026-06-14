@@ -174,6 +174,7 @@ if (hasSavedProject && userProjectCard) {
   const savedDemoUrl = localStorage.getItem("projectDemoUrl");
   const savedTech = localStorage.getItem("projectTech");
   const savedImage = localStorage.getItem("projectImage");
+  let savedClock = localStorage.getItem("clocks");
 
   let techSpans = "";
   if (savedTech) {
@@ -190,8 +191,8 @@ if (hasSavedProject && userProjectCard) {
                 src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Default_pfp.svg/500px-Default_pfp.svg.png"
                 alt="user-avatar">
             <div class="user-info">
-                <h3>${isRegistered || 'username'}</h3>
-                <span class="user-nik">@${nikRegistered || 'user'}</span>
+                <h3>${isRegistered || "username"}</h3>
+                <span class="user-nik">@${nikRegistered || "user"} · <p id="clock"> ${savedClock}</p></span>
             </div>
         </div>
         <div class="post-cover">
@@ -290,41 +291,40 @@ const projectDemoUrl = document.getElementById("projectDemoUrl");
 const projectTechStack = document.getElementById("projectTechStack");
 const projectImage = document.getElementById("projectImage");
 
-if (joylash) {
-  joylash.addEventListener("click", () => {
-    if (
-      projectName.value === "" ||
-      projectBio.value === "" ||
-      projectGitUrl.value === "" ||
-      projectDemoUrl.value === "" ||
-      projectTechStack.value === "" ||
-      !projectImage.files ||
-      projectImage.files.length === 0
-    ) {
-      alert("Iltimos barcha maydonlarni to'ldiring va muqova rasm yuklang!");
-      return;
-    }
+joylash.addEventListener("click", () => {
+  if (
+    projectName.value === "" ||
+    projectBio.value === "" ||
+    projectGitUrl.value === "" ||
+    projectDemoUrl.value === "" ||
+    projectTechStack.value === "" ||
+    !projectImage.files ||
+    projectImage.files.length === 0
+  ) {
+    alert("Iltimos barcha maydonlarni to'ldiring va muqova rasm yuklang!");
+    return;
+  }
 
-    const file = projectImage.files[0];
-    const reader = new FileReader();
+  const file = projectImage.files[0];
+  const reader = new FileReader();
 
-    reader.onload = () => {
-      const image = reader.result;
+  reader.onload = () => {
+    const image = reader.result;
 
-      localStorage.setItem("projectName", projectName.value);
-      localStorage.setItem("projectBio", projectBio.value);
-      localStorage.setItem("projectGitUrl", projectGitUrl.value);
-      localStorage.setItem("projectDemoUrl", projectDemoUrl.value);
-      localStorage.setItem("projectTech", projectTechStack.value);
-      localStorage.setItem("projectImage", image);
+    localStorage.setItem("projectName", projectName.value);
+    localStorage.setItem("projectBio", projectBio.value);
+    localStorage.setItem("projectGitUrl", projectGitUrl.value);
+    localStorage.setItem("projectDemoUrl", projectDemoUrl.value);
+    localStorage.setItem("projectTech", projectTechStack.value);
+    localStorage.setItem("projectImage", image);
 
-      let techSpans = projectTechStack.value
-        .split(",")
-        .map((tech) => `<span>${tech.trim()}</span>`)
-        .join("");
+    let techSpans = projectTechStack.value
+      .split(",")
+      .map((tech) => `<span>${tech.trim()}</span>`)
+      .join("");
 
-      if (userProjectCard) {
-        userProjectCard.innerHTML += `
+    if (userProjectCard) {
+      userProjectCard.innerHTML += `
           <div class="project-post">
               <div class="post-header">
                   <img class="user-avatar"
@@ -357,19 +357,18 @@ if (joylash) {
               </div>
           </div>
         `;
-      }
+    }
 
-      if (modalProject) modalProject.style.display = "none";
-      if (typeof lucide !== "undefined") lucide.createIcons();
+    if (modalProject) modalProject.style.display = "none";
+    if (typeof lucide !== "undefined") lucide.createIcons();
 
-      projectName.value = "";
-      projectBio.value = "";
-      projectGitUrl.value = "";
-      projectDemoUrl.value = "";
-      projectTechStack.value = "";
-      projectImage.value = "";
-    };
+    projectName.value = "";
+    projectBio.value = "";
+    projectGitUrl.value = "";
+    projectDemoUrl.value = "";
+    projectTechStack.value = "";
+    projectImage.value = "";
+  };
 
-    reader.readAsDataURL(file);
-  });
-}
+  reader.readAsDataURL(file);
+});

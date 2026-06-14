@@ -99,7 +99,7 @@
                             alt="user-avatar">
                         <div class="user-info">
                             <h3>Buildy</h3>
-                            <span class="user-nik">@buildy</span>
+                            <span class="user-nik">@buildy · <p>13.06.2026 - 06-40</p></span>
                         </div>
                     </div>
                     <div class="post-cover">
@@ -199,6 +199,31 @@
         if (savedAvatar) {
             avatar.src = savedAvatar;
         }
+
+        const clock = document.getElementById("clock");
+
+        function setTime() {
+            let saqlanganVaqt = localStorage.getItem("clocks");
+
+            if (!saqlanganVaqt || saqlanganVaqt.length < 6) {
+                const hozir = new Date();
+
+                const kun = String(hozir.getDate()).padStart(2, "0");
+                const oy = String(hozir.getMonth() + 1).padStart(2, "0");
+                const yil = hozir.getFullYear();
+
+                const soat = String(hozir.getHours()).padStart(2, "0");
+                const minut = String(hozir.getMinutes()).padStart(2, "0");
+
+                saqlanganVaqt = ` ${kun}.${oy}.${yil} ${" - "} ${soat}:${minut}`;
+                localStorage.setItem("clocks", saqlanganVaqt);
+            }
+
+            clock.textContent = saqlanganVaqt;
+        }
+
+        setTime();
+
     </script>
 
 </body>
