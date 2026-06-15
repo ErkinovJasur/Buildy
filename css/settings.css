@@ -282,7 +282,7 @@
     background-color: var(--cardBg);
   }
 
-  button:hover{
+  button:hover {
     transform: translateY(-2px);
     box-shadow: var(--shadow);
   }
@@ -307,7 +307,7 @@
     width: 100%;
   }
 
-  .btns{
+  .btns {
     bottom: -7px;
   }
 }
