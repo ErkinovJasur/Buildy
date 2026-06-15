@@ -39,7 +39,7 @@
 .user-avatar {
   width: 49px;
   height: 49px;
-  border-radius: 50%;
+  border-radius: 999px;
   object-fit: cover;
   border: 2px solid var(--border);
   background-color: var(--bodyBg);

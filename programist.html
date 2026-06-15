@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Buildly — Show what you build.</title>
-    <link rel="stylesheet" href="css/style.css">
+    <title>Buildly — Show what you build. Find developers. And get hired.</title>
+    <link rel="stylesheet" href="css/programist.css">
     <link rel="stylesheet" href="css/all.css">
     <script src="https://unpkg.com/lucide@latest"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -16,6 +16,8 @@
 </head>
 
 <body>
+
+    <div class="aside"></div>
 
     <nav class="mobile-bottom-nav">
         <a href="index.html">
@@ -99,11 +101,7 @@
         <div class="container">
             <main>
                 <header></header>
-                <div class="loader">
-                    <svg id="svg" viewBox="25 25 50 50">
-                        <circle class="circle" r="20" cy="50" cx="50"></circle>
-                    </svg>
-                </div>
+                <div id="developers"></div>
             </main>
         </div>
         <aside class="aside-right"></aside>
@@ -127,13 +125,64 @@
             avatar.src = savedAvatar;
         }
 
-        // loader
+        // users
 
-        const loader = document.querySelector(".loader");
+        const fakeDevelopers = document.getElementById("developers")
 
-        setTimeout(() => {
-            loader.style.display = "none"
-        }, 3000);
+        const developers = [
+            {
+                name: "Jasur Erkinov",
+                nik: "@erkinov",
+                role: "🚀 Full Stack Developer",
+                avatar: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Default_pfp.svg/500px-Default_pfp.svg.png"
+            },
+            {
+                name: "Azizbek Rahimov",
+                nik: "@azizbek",
+                role: "🎨 Frontend Developer",
+                avatar: "https://www.hackreactor.com/wp-content/uploads/2024/08/AdobeStock_352231270-750x422.jpeg"
+            },
+            {
+                name: "Madina Karimova",
+                nik: "@madina",
+                role: "✨ UI/UX Designer",
+                avatar: "https://images.unsplash.com/photo-1485470733090-0aae1788d5af?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8d2FsbHBhcGVyJTIwNGt8ZW58MHx8MHx8fDA%3D"
+            },
+            {
+                name: "Dilnoza Usmonova",
+                nik: "@dilnoza",
+                role: "📱 Mobile Developer",
+                avatar: "https://randomuser.me/api/portraits/women/65.jpg"
+            },
+            {
+                name: "Muhammadali Sobirov",
+                nik: "@muhammadali",
+                role: "🤖 AI Engineer",
+                avatar: "https://randomuser.me/api/portraits/men/73.jpg"
+            },
+            {
+                name: "Jahongir Islomov",
+                nik: "@jahongir",
+                role: "🔥 Next.js Developer",
+                avatar: "https://randomuser.me/api/portraits/men/22.jpg"
+            }
+        ];
+
+        function data(data) {
+            data.map((item) => {
+                fakeDevelopers.innerHTML += `
+                    <div class="users">
+                        <img src="${item.avatar}"></img>
+                        <div>
+                            <h2>${item.name}</h2>
+                            <p>${item.role}</p>
+                        </div>
+                    </div>
+                `;
+            });
+        }
+
+        data(developers)
     </script>
 
 </body>

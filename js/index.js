@@ -6,9 +6,59 @@ const modalProject = document.getElementById("modal-project");
 const asideRight = document.querySelector(".aside-right");
 const userProjectCard = document.getElementById("userProjectCard");
 const user = document.getElementById("user");
+const aside = document.querySelector(".aside");
 
 let isRegistered = localStorage.getItem("name");
 let nikRegistered = localStorage.getItem("nik");
+
+// mobile menu
+
+function mobileMenu() {
+  aside.innerHTML = `
+    <div class="aside-box">
+            <div class="s">
+                <h2>Menu</h2>
+                <i class="icon-lucide" data-lucide="x" id="xs"></i>
+            </div>
+            <button onclick="window.location.href = 'index.html'">
+                <i class="icon-lucide" data-lucide="home"></i>
+                Asosiy
+            </button>
+            <button onclick="window.location.href = 'programist.html'">
+                <i class="icon-lucide" data-lucide="CodeXml"></i>
+                Dasturchilar
+            </button>
+            <button>
+                <i class="icon-lucide" data-lucide="FolderGit2"></i>
+                Loyihalar
+            </button>
+            <button>
+                <i class="icon-lucide" data-lucide="users"></i>
+                Jamoalar
+            </button>
+            <button>
+                <i class="icon-lucide" data-lucide="compass"></i>
+                Kashf qiling
+            </button>
+            <button>
+                <i class="icon-lucide" data-lucide="bookmark"></i>
+                Saqlanganlar
+            </button>
+            <button>
+                <i class="icon-lucide" data-lucide="MessageCircle"></i>
+                Xabarlar
+            </button>
+            <button>
+                <i class="icon-lucide" data-lucide="settings"></i>
+                Sozlamalar
+            </button>
+            <div class="log" id="log">
+                <i class="icon-lucide" data-lucide="log-out"></i>
+                Log Out
+            </div>
+        </div>
+  `;
+}
 
 // navbar
 
@@ -18,8 +68,8 @@ function navbar() {
     <div class="container">
         <div class="header-nav">
             <button class="search-btn">
-                <i class="icon-lucide" data-lucide="search"></i>
-                Dasturchi va loyihalarni qidirish...
+            <i class="icon-lucide" data-lucide="search"></i>
+            Dasturchi va loyihalarni qidirish...
             </button>
             <button class="plus" id="openProjectModalBtn">
                 <i class="icon-lucide" data-lucide="plus"></i>
@@ -27,7 +77,7 @@ function navbar() {
             <button class="bell">
                 <i class="icon-lucide" data-lucide="bell"></i>
             </button>
-            <button class="menu">
+            <button class="menu" id="menu">
                 <i class="icon-lucide" data-lucide="menu"></i>
             </button>
         </div>
@@ -154,7 +204,7 @@ function modalProjects() {
 function asideright() {
   asideRight.innerHTML = `
     <div class="aside-right-div1">
-      <h1><i data-lucide="flame" class="icon-lucide"></i> Top Developers</h1>
+      <h1><i data-lucide="flame" class="icon-lucide"></i> Top Dasturchilar</h1>
       <div>
           <img src="https://bairesdev.mo.cloudinary.net/blog/2025/03/how-to-become-a-full-stack-developer.jpg?tx=w_1920,q_auto"
               alt="user-avatar">
@@ -198,11 +248,12 @@ function asideright() {
       <button onclick="window.location.href = 'programist.html'">Barchasini ko'rish →</button>
     </div>
     <div class="aside-right-div2">
-        <h1><i class="icon-lucide" data-lucide="lightbulb"></i> Tip of day</h1>
+        <h1><i class="icon-lucide" data-lucide="lightbulb"></i> Kunning maslahati</h1>
         <div>
             <p id="tip"></p>
         </div>
     </div>
+    <p style="font-size: 11px; display: flex; gap: 10px;">© 2026 Buildly · <a style="cursor: pointer">Xavfsizlik</a> <a style="cursor: pointer">Qoidalar</a></p>
   `;
 }
 
@@ -212,6 +263,7 @@ navbar();
 modal();
 modalProjects();
 asideright();
+mobileMenu();
 
 // icons
 
@@ -334,6 +386,15 @@ if (projectsArray.length > 0 && userProjectCard) {
             </div>
       </div>
     `;
+
+    const avatar = document.getElementById("user-avatar");
+    const avatars = document.getElementById("avatars");
+    const savedAvatar = localStorage.getItem("avatar");
+
+    if (savedAvatar) {
+      avatar.src = savedAvatar;
+      avatars.src = savedAvatar;
+    }
   });
 
   if (typeof lucide !== "undefined") lucide.createIcons();
@@ -465,7 +526,7 @@ if (joylash) {
               </div>
               <div class="post-actions">
                   <a href="${projectGitUrl.value}" target="_blank" class="action-btn github-btn">
-                      <i class="icon-lucide" data-lucide="github"></i>
+                      <i class="icon-lucide" data-lucide="CodeXml"></i>
                       GitHub
                   </a>
                   <a href="${projectDemoUrl.value}" target="_blank" class="action-btn demo-btn">
@@ -507,3 +568,36 @@ const tips = [
 
 const randomTip = tips[Math.floor(Math.random() * tips.length)];
 document.getElementById("tip").textContent = randomTip;
+
+// mobile menu
+
+const menu = document.getElementById("menu");
+const xs = document.getElementById("xs");
+
+menu.onclick = () => {
+  aside.style.position = "fixed";
+  aside.style.display = "block";
+  aside.style.zIndex = "999999";
+  aside.style.display = "block";
+  aside.style.transition = "1s";
+  xs.style.display = "block";
+};
+
+document.addEventListener("click", (e) => {
+  if (e.target === aside) {
+    aside.style.display = "none";
+  }
+});
+
+xs.addEventListener("click", function () {
+  aside.style.display = "none";
+  xs.style.display = "none";
+  aside.style.transition = "1s";
+});
+
+const log = document.getElementById("log");
+
+log.addEventListener("click", function () {
+  localStorage.clear();
+  location.reload();
+});

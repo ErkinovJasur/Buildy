@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Buildly — Show what you build.</title>
+    <title>Buildly — Show what you build. Find developers. And get hired.</title>
     <link rel="stylesheet" href="css/profile.css">
     <link rel="stylesheet" href="css/all.css">
     <script src="https://unpkg.com/lucide@latest"></script>
@@ -16,6 +16,8 @@
 </head>
 
 <body>
+
+    <div class="aside"></div>
 
     <nav class="mobile-bottom-nav">
         <a href="index.html">
@@ -112,7 +114,6 @@
                                 </label>
                                 <input type="file" id="avatarInput" accept="image/*" hidden>
                             </div>
-
                             <button class="edit-btn"
                                 onclick="modal1.style.display='flex'; document.getElementById('h1').textContent='Profilni tahrirlash'; document.getElementById('btn').textContent='Saqlash';">
                                 <i data-lucide="pencil"></i>
@@ -158,8 +159,7 @@
                 </div>
             </main>
         </div>
-        <aside class="aside-right">
-        </aside>
+        <aside class="aside-right"></aside>
     </div>
 
     <div class="modal-project" id="modal-project"></div>

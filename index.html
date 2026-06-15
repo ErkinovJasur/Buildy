@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Buildly — Show what you build.</title>
+    <title>Buildly — Show what you build. Find developers. And get hired.</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/all.css">
     <script src="https://unpkg.com/lucide@latest"></script>
@@ -16,6 +16,8 @@
 </head>
 
 <body>
+
+    <div class="aside"></div>
 
     <nav class="mobile-bottom-nav">
         <a href="index.html" class="active">
@@ -39,12 +41,11 @@
         </a>
     </nav>
 
-
     <div class="buildy">
         <aside class="aside-left">
             <h1>Buildly</h1>
             <div class="aside-location">
-                <button class="bg-btn">
+                <button class="bg-btn" onclick="window.location.href = 'index.html'">
                     <i class="icon-lucide" data-lucide="home"></i>
                     Asosiy
                 </button>
@@ -133,7 +134,7 @@
                                 <i class="icon-lucide" data-lucide="CodeXml"></i>
                                 GitHub
                             </a>
-                            <a href="https://demo.com" target="_blank" class="action-btn demo-btn">
+                            <a href="https://erkinovjasur.github.io/Buildy/" target="_blank" class="action-btn demo-btn">
                                 <i class="icon-lucide" data-lucide="external-link"></i>
                                 Live Demo
                             </a>
@@ -170,6 +171,13 @@
         <aside class="aside-right"></aside>
     </div>
 
+    <div class="modal-search">
+        <div class="modal-search-card">
+            <input type="search" placeholder="Loyiha yoki dasturchi qidiring.">
+            <div class="users-div"></div>
+        </div>
+    </div>
+
     <div class="modal"></div>
     <div class="modal-project" id="modal-project"></div>
 
@@ -182,12 +190,10 @@
         const userNikk = document.getElementById("userNikk").textContent = '@' + localStorage.getItem("nik");
 
         const avatar = document.getElementById("user-avatar");
-        const avatars = document.getElementById("avatars");
         const savedAvatar = localStorage.getItem("avatar");
 
         if (savedAvatar) {
             avatar.src = savedAvatar;
-            avatars.src = savedAvatar;
         }
 
         // like
@@ -209,8 +215,7 @@
         setTimeout(() => {
             posts.style.display = "block";
             loader.style.display = "none"
-        }, 3000);
-
+        }, 2500);
 
     </script>
 

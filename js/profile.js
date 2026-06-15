@@ -39,3 +39,9 @@ avatarInput.addEventListener("change", (e) => {
   };
   reader.readAsDataURL(file);
 });
+
+// title
+
+const title = document.querySelector("title");
+
+title.textContent = localStorage.getItem("name") + ' (' + localStorage.getItem("nik") + ') · Buildly';
