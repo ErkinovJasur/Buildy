@@ -41,8 +41,7 @@
   height: 49px;
   border-radius: 999px;
   object-fit: cover;
-  border: 2px solid var(--border);
-  background-color: var(--bodyBg);
+  transition: 0.4s;
 }
 
 .user-info {
@@ -85,7 +84,7 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.3s ease;
+  transition: 0.4s;
 }
 
 .project-post img:hover {
@@ -109,10 +108,6 @@
   letter-spacing: -0.3px;
   transition: 0.3s;
   cursor: pointer !important;
-}
-
-.project-title:hover {
-  color: var(--btn);
 }
 
 .tech-stack {

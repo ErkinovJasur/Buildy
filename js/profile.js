@@ -45,3 +45,10 @@ avatarInput.addEventListener("change", (e) => {
 const title = document.querySelector("title");
 
 title.textContent = localStorage.getItem("name") + ' (' + localStorage.getItem("nik") + ') · Buildly';
+
+// links
+
+const github = document.getElementById("github");
+const tg = document.getElementById("tg");
+const website = document.getElementById("website");
+const linkedin = document.getElementById("linkedin");

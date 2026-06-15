@@ -48,7 +48,7 @@ function mobileMenu() {
                 <i class="icon-lucide" data-lucide="MessageCircle"></i>
                 Xabarlar
             </button>
-            <button>
+            <button onclick="window.location.href = 'settings.html'">
                 <i class="icon-lucide" data-lucide="settings"></i>
                 Sozlamalar
             </button>
@@ -187,9 +187,9 @@ function modalProjects() {
             <label>Qisqacha tavsif *</label>
             <textarea id="projectBio"></textarea>
             <label>GitHub URL</label>
-            <input type="url" id="projectGitUrl" placeholder="https://github.com/you/repo">
+            <input type="url" id="projectGitUrl" value="https://github.com/" placeholder="https://github.com/you/profile">
             <label>Live Demo URL</label>
-            <input type="url" id="projectDemoUrl" placeholder="https://yourapp.com">
+            <input type="url" id="projectDemoUrl" value="https://" placeholder="https://yourapp.com">
             <label>Tech Stack *</label>
             <input type="text" id="projectTechStack" placeholder="React, Supabase, Tailwind">
             <label>Cover rasm</label>
@@ -395,6 +395,8 @@ if (projectsArray.length > 0 && userProjectCard) {
       avatar.src = savedAvatar;
       avatars.src = savedAvatar;
     }
+
+
   });
 
   if (typeof lucide !== "undefined") lucide.createIcons();
@@ -480,7 +482,7 @@ if (joylash) {
       const image = reader.result;
 
       const now = new Date();
-      const currentClock = `${String(now.getHours()).padStart(2, "0")}:${String(now.getMinutes()).padStart(2, "0")}`;
+      const currentClock = `${String(now.toLocaleDateString()).padStart(2, "0")} - ${String(now.getHours()).padStart(2, "0")}:${String(now.getMinutes()).padStart(2, "0")}`;
 
       const newProject = {
         name: projectName.value,
@@ -511,7 +513,7 @@ if (joylash) {
                       alt="user-avatar" id="avatars">
                   <div class="user-info">
                       <h3>${isRegistered || "username"}</h3>
-                      <span class="user-nik">@${nikRegistered || "user"} · <span id="clock">${currentClock}</span></span>
+                      <span class="user-nik">@${nikRegistered || "user"} · <p id="clock">${currentClock}</p></span>
                   </div>
               </div>
               <div class="post-cover">

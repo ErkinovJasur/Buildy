@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Buildly — Show what you build. Find developers. And get hired.</title>
-    <link rel="stylesheet" href="css/programist.css">
+    <link rel="stylesheet" href="css/settings.css">
     <link rel="stylesheet" href="css/all.css">
     <script src="https://unpkg.com/lucide@latest"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -49,7 +49,7 @@
                     <i class="icon-lucide" data-lucide="home"></i>
                     Asosiy
                 </button>
-                <button class="bg-btn" onclick="window.location.href = 'programist.html'">
+                <button onclick="window.location.href = 'programist.html'">
                     <i class="icon-lucide" data-lucide="CodeXml"></i>
                     Dasturchilar
                 </button>
@@ -73,7 +73,7 @@
                     <i class="icon-lucide" data-lucide="MessageCircle"></i>
                     Xabarlar
                 </button>
-                <button onclick="window.location.href = 'settings.html'">
+                <button class="bg-btn" onclick="window.location.href = 'settings.html'">
                     <i class="icon-lucide" data-lucide="settings"></i>
                     Sozlamalar
                 </button>
@@ -101,7 +101,81 @@
         <div class="container">
             <main>
                 <header></header>
-                <div id="developers"></div>
+                <div class="settings">
+                    <h2 class="h2">Sozlamalar</h2>
+                    <p class="p">Hisob sozlamalari va mintaqaviy sozlamalarni boshqaring.</p>
+                    <h1>Ekran Rejimi</h1>
+                    <div class="modes">
+                        <div class="actives">
+                            <i style="width: 20px;" data-lucide="sun"></i>
+                            <h2>Light Mode</h2>
+                            <p>Klassik yorqin ko'rinish.</p>
+                        </div>
+                        <div>
+                            <i style="width: 20px;" data-lucide="moon"></i>
+                            <h2>Dark Mode</h2>
+                            <p>Premium obsidian qora.</p>
+                        </div>
+                        <div>
+                            <i style="width: 20px;" data-lucide="monitor"></i>
+                            <h2>System</h2>
+                            <p>Qurilma sozlamalariga rioya qiling.</p>
+                        </div>
+                    </div>
+                    <h1>Havolalar</h1>
+                    <div class="links">
+                        <div>
+                            <p>GitHub</p>
+                            <input id="github" type="text" placeholder="https://github.com/username" value="https://github.com/">
+                        </div>
+                        <div>
+                            <p>Telegram</p>
+                            <input id="tg" type="text" placeholder="https://t.me/username" value="https://t.me/">
+                        </div>
+                        <div>
+                            <p>Website</p>
+                            <input id="website" type="text" placeholder="https://website.com" value="https://">
+                        </div>
+                        <div>
+                            <p>Linkedin</p>
+                            <input id="linkedin" type="text" placeholder="https://www.linkedin.com/in/"
+                                value="https://www.linkedin.com/in/">
+                        </div>
+                    </div>
+                    <h1>Interfeys tilini tanlang</h1>
+                    <div class="lang-container">
+                        <div class="lang-card active">
+                            <span>uz</span>
+                            <h2>O'zbekcha</h2>
+                            <p>Mahalliy interfeys</p>
+                        </div>
+                        <div class="lang-card">
+                            <span>en</span>
+                            <h2>English</h2>
+                            <p>Global standard</p>
+                        </div>
+                        <div class="lang-card">
+                            <span>ru</span>
+                            <h2>Русский</h2>
+                            <p>Локальная версия</p>
+                        </div>
+                    </div>
+                    <h1>Mening ma'lumotlarim</h1>
+                    <div class="profile">
+                        <h2>Ism: <span id="idName"></span></h2>
+                        <h2>Nik: <span id="idNik"></span></h2>
+                        <h2>Email: <span id="idEmail"></span></h2>
+                        <h2>Parol: <span id="idPass"></span></h2>
+                        <button>
+                            <i class="icon" data-lucide="log-out"></i>
+                            Tizimdan chiqish
+                        </button>
+                    </div>
+                    <div class="btns">
+                        <button class="btn">Bekor qilish</button>
+                        <button>Saqlash</button>
+                    </div>
+                </div>
             </main>
         </div>
         <aside class="aside-right"></aside>
@@ -113,10 +187,16 @@
     <script src="js/index.js"></script>
 
     <script>
-        // avatar
+        // profile
 
         const userNamee = document.getElementById("userNamee").textContent = localStorage.getItem("name");
         const userNikk = document.getElementById("userNikk").textContent = '@' + localStorage.getItem("nik");
+        const idNamee = document.getElementById("idName").textContent = localStorage.getItem("name");
+        const idNik = document.getElementById("idNik").textContent = '@' + localStorage.getItem("nik");
+        const idEmail = document.getElementById("idEmail").textContent = localStorage.getItem("email");
+        const idPass = document.getElementById("idPass").textContent = localStorage.getItem("parol");
+
+        // avatar
 
         const avatar = document.getElementById("user-avatar");
         const savedAvatar = localStorage.getItem("avatar");
@@ -125,64 +205,7 @@
             avatar.src = savedAvatar;
         }
 
-        // users
-
-        const fakeDevelopers = document.getElementById("developers")
-
-        const developers = [
-            {
-                name: "Jasur Erkinov",
-                nik: "@erkinov",
-                role: "🚀 Full Stack Developer",
-                avatar: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Default_pfp.svg/500px-Default_pfp.svg.png"
-            },
-            {
-                name: "Azizbek Rahimov",
-                nik: "@azizbek",
-                role: "🎨 Frontend Developer",
-                avatar: "https://www.hackreactor.com/wp-content/uploads/2024/08/AdobeStock_352231270-750x422.jpeg"
-            },
-            {
-                name: "Madina Karimova",
-                nik: "@madina",
-                role: "✨ UI/UX Designer",
-                avatar: "https://images.unsplash.com/photo-1485470733090-0aae1788d5af?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8d2FsbHBhcGVyJTIwNGt8ZW58MHx8MHx8fDA%3D"
-            },
-            {
-                name: "Dilnoza Usmonova",
-                nik: "@dilnoza",
-                role: "📱 Mobile Developer",
-                avatar: "https://randomuser.me/api/portraits/women/65.jpg"
-            },
-            {
-                name: "Muhammadali Sobirov",
-                nik: "@muhammadali",
-                role: "🤖 AI Engineer",
-                avatar: "https://randomuser.me/api/portraits/men/73.jpg"
-            },
-            {
-                name: "Jahongir Islomov",
-                nik: "@jahongir",
-                role: "🔥 Next.js Developer",
-                avatar: "https://randomuser.me/api/portraits/men/22.jpg"
-            }
-        ];
-
-        function data(data) {
-            data.map((item) => {
-                fakeDevelopers.innerHTML += `
-                    <div class="users">
-                        <img src="${item.avatar}"></img>
-                        <div>
-                            <h2>${item.name}</h2>
-                            <p>${item.role}</p>
-                        </div>
-                    </div>
-                `;
-            });
-        }
-
-        data(developers)
+        // account
     </script>
 
 </body>

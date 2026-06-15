@@ -40,11 +40,10 @@
 }
 
 .avatar-wrapper img {
-  width: 120px;
+  width: 115px;
   height: 115px;
   border-radius: 50%;
   object-fit: cover;
-  border: 2.5px solid var(--border);
   display: block;
   transition: opacity 0.2s;
   background-color: white;
@@ -54,13 +53,13 @@
 
 .avatar-edit {
   position: absolute;
-  bottom: -42px;
-  right: -34px;
+  bottom: -41px;
+  right: -35px;
   width: 34px;
   height: 34px;
   background: var(--btn);
   border-radius: 50%;
-  border: 2px solid white;
+  border: 2.3px solid white;
   display: flex;
   align-items: center;
   justify-content: center;
