@@ -308,6 +308,6 @@
   }
 
   .btns {
-    bottom: -7px;
+    position: inherit;
   }
 }
