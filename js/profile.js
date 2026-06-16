@@ -11,8 +11,8 @@ userName.textContent = localStorage.getItem("name");
 userNik.textContent = "@" + localStorage.getItem("nik");
 userNamee.textContent = localStorage.getItem("name");
 userNikk.textContent = "@" + localStorage.getItem("nik");
-userRole.textContent = localStorage.getItem("select") || 'Founder of Buildy';
-userBio.textContent = localStorage.getItem("bio") || "Hali bio yo'q.";
+userRole.textContent = localStorage.getItem("select") || "Founder of Buildy";
+userBio.textContent = localStorage.getItem("bio");
 
 // avatar yuklash
 
@@ -44,11 +44,49 @@ avatarInput.addEventListener("change", (e) => {
 
 const title = document.querySelector("title");
 
-title.textContent = localStorage.getItem("name") + ' (' + localStorage.getItem("nik") + ') · Buildly';
+title.textContent =
+  localStorage.getItem("name") +
+  " (" +
+  localStorage.getItem("nik") +
+  ") · Buildly";
 
-// links
+// social links
 
-const github = document.getElementById("github");
-const tg = document.getElementById("tg");
-const website = document.getElementById("website");
-const linkedin = document.getElementById("linkedin");
+const profileLinks = document.querySelector(".profile-links");
+const telegram = document.getElementById("telegramLink");
+const github = document.getElementById("githubLink");
+const website = document.getElementById("websiteLink");
+const linkedin = document.getElementById("linkedinLink");
+
+let gitHub = localStorage.getItem("github");
+let tg = localStorage.getItem("tg");
+let webSite = localStorage.getItem("website");
+let linkEdin = localStorage.getItem("linkedin");
+
+if (github && gitHub != "https://github.com/") {
+  github.href = gitHub;
+  github.style.display = 'flex'
+} else {
+  github.style.display = "none";
+}
+
+if (telegram && tg != "https://t.me/") {
+  telegram.href = tg;
+  telegram.style.display = 'flex'
+} else {
+  telegram.style.display = "none";
+}
+
+if (website && webSite != "https://") {
+  website.href = webSite;
+  website.style.display = 'flex'
+} else {
+  website.style.display = "none";
+}
+
+if (linkedin && linkEdin != "https://www.linkedin.com/in/") {
+  linkedin.href = linkEdin;
+  linkedin.style.display = 'flex'
+} else {
+  linkedin.style.display = "none";
+}

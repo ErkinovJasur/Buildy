@@ -126,7 +126,8 @@
                     <div class="links">
                         <div>
                             <p>GitHub</p>
-                            <input id="github" type="text" placeholder="https://github.com/username" value="https://github.com/">
+                            <input id="github" type="text" placeholder="https://github.com/username"
+                                value="https://github.com/">
                         </div>
                         <div>
                             <p>Telegram</p>
@@ -166,14 +167,14 @@
                         <h2>Nik: <span id="idNik"></span></h2>
                         <h2>Email: <span id="idEmail"></span></h2>
                         <h2>Parol: <span id="idPass"></span></h2>
-                        <button>
+                        <button id="logout">
                             <i class="icon" data-lucide="log-out"></i>
                             Tizimdan chiqish
                         </button>
                     </div>
                     <div class="btns">
-                        <button class="btn">Bekor qilish</button>
-                        <button>Saqlash</button>
+                        <button class="btn" onclick="location.reload()">Bekor qilish</button>
+                        <button id="save">Saqlash</button>
                     </div>
                 </div>
             </main>
@@ -206,6 +207,21 @@
         }
 
         // account
+
+        const github = document.getElementById("github");
+        const tg = document.getElementById("tg");
+        const website = document.getElementById("website");
+        const linkedin = document.getElementById("linkedin");
+        const save = document.getElementById("save");
+
+        save.addEventListener("click", function () {
+            alert("Saqlandi ✅")
+            localStorage.setItem("github", github.value)
+            localStorage.setItem("tg", tg.value)
+            localStorage.setItem("website", website.value)
+            localStorage.setItem("linkedin", linkedin.value)
+        });
+
     </script>
 
 </body>
