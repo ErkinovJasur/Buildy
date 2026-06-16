@@ -1,4 +1,4 @@
-// kiritgan ma'lumotlarini profile sahifasiga chqarish
+// Kiritgan ma'lumotlarini profile sahifasiga chqarish
 
 const userName = document.getElementById("userName");
 const userNik = document.getElementById("userNik");
@@ -14,7 +14,7 @@ userNikk.textContent = "@" + localStorage.getItem("nik");
 userRole.textContent = localStorage.getItem("select") || "Founder of Buildy";
 userBio.textContent = localStorage.getItem("bio");
 
-// avatar yuklash
+// Avatar yuklash
 
 const profileAvatar = document.getElementById("avatar");
 const navbarAvatar = document.getElementById("avatarr");
@@ -50,7 +50,7 @@ title.textContent =
   localStorage.getItem("nik") +
   ") · Buildly";
 
-// social links
+// Social links
 
 const profileLinks = document.querySelector(".profile-links");
 const telegram = document.getElementById("telegramLink");
@@ -63,30 +63,43 @@ let tg = localStorage.getItem("tg");
 let webSite = localStorage.getItem("website");
 let linkEdin = localStorage.getItem("linkedin");
 
+if (
+  gitHub != "https://github.com/" ||
+  tg != "https://t.me/" ||
+  webSite != "https://" ||
+  linkEdin != "https://www.linkedin.com/in/"
+) {
+  profileLinks.style.display = "none";
+}
+
 if (github && gitHub != "https://github.com/") {
   github.href = gitHub;
-  github.style.display = 'flex'
+  github.style.display = "flex";
+  profileLinks.style.display = 'flex'
 } else {
   github.style.display = "none";
 }
 
 if (telegram && tg != "https://t.me/") {
   telegram.href = tg;
-  telegram.style.display = 'flex'
+  telegram.style.display = "flex";
+  profileLinks.style.display = 'flex'
 } else {
   telegram.style.display = "none";
 }
 
 if (website && webSite != "https://") {
   website.href = webSite;
-  website.style.display = 'flex'
+  website.style.display = "flex";
+  profileLinks.style.display = 'flex'
 } else {
   website.style.display = "none";
 }
 
 if (linkedin && linkEdin != "https://www.linkedin.com/in/") {
   linkedin.href = linkEdin;
-  linkedin.style.display = 'flex'
+  linkedin.style.display = "flex";
+  profileLinks.style.display = 'flex'
 } else {
   linkedin.style.display = "none";
 }
