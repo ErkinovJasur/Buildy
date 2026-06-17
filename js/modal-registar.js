@@ -3,6 +3,14 @@ const profileCard = document.getElementById("profile-card");
 const asideProfile = document.querySelector(".aside-profile");
 const user = document.getElementById("user");
 
+let isRegistered = localStorage.getItem("name");
+let nikRegistered = localStorage.getItem("nik");
+
+const signUp = document
+  .getElementById("signUp")
+  .addEventListener("click", function () {
+    modal1.style.display = "flex";
+  });
 
 // modalRegistar
 
@@ -103,7 +111,7 @@ const bio = document.getElementById("bio");
 const btn = document.getElementById("btn");
 const select = document.getElementById("select");
 
-// modal ochilishi
+// modal yopilishi
 
 if (modal1) {
   window.addEventListener("click", function (e) {
@@ -150,6 +158,9 @@ if (btn) {
       select.value === ""
     ) {
       alert("Iltimos barcha maydoni to'ldiring!");
+      return;
+    } else if (!emaill.includes("@")) {
+      alert("Email xato!");
       return;
     }
 

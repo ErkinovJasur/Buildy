@@ -1,0 +1,124 @@
+{
+  "users": [
+    {
+      "name": "Sardor Erkinov",
+      "username": "sardorcode",
+      "role": "Frontend Developer",
+      "avatar": "https://i.pravatar.cc/150?img=1"
+    },
+    {
+      "name": "Madina Axmedova",
+      "username": "madinadev",
+      "role": "UI/UX Designer",
+      "avatar": "https://i.pravatar.cc/150?img=2"
+    },
+    {
+      "name": "Ibrohim Begboyev",
+      "username": "ibrohimjs",
+      "role": "Frontend Developer",
+      "avatar": "https://i.pravatar.cc/150?img=3"
+    },
+    {
+      "name": "Temurbek Xasanov",
+      "username": "temurdev",
+      "role": "Backend Developer",
+      "avatar": "https://i.pravatar.cc/150?img=4"
+    },
+    {
+      "name": "Jasur Karimov",
+      "username": "jasurcode",
+      "role": "Full Stack Developer",
+      "avatar": "https://i.pravatar.cc/150?img=5"
+    },
+    {
+      "name": "Aziza Rahimova",
+      "username": "azizadev",
+      "role": "Frontend Developer",
+      "avatar": "https://i.pravatar.cc/150?img=6"
+    },
+    {
+      "name": "Oybek Tursunov",
+      "username": "oybekdev",
+      "role": "React Developer",
+      "avatar": "https://i.pravatar.cc/150?img=7"
+    },
+    {
+      "name": "Diyorbek Usmonov",
+      "username": "diyorweb",
+      "role": "Backend Developer",
+      "avatar": "https://i.pravatar.cc/150?img=8"
+    },
+    {
+      "name": "Shahzod Nurmatov",
+      "username": "shahzoddev",
+      "role": "Node.js Developer",
+      "avatar": "https://i.pravatar.cc/150?img=9"
+    },
+    {
+      "name": "Kamola Rustamova",
+      "username": "kamolaui",
+      "role": "UI Designer",
+      "avatar": "https://i.pravatar.cc/150?img=10"
+    },
+    {
+      "name": "Behruz Ismoilov",
+      "username": "behruzdev",
+      "role": "Frontend Developer",
+      "avatar": "https://i.pravatar.cc/150?img=11"
+    },
+    {
+      "name": "Asadbek Yoqubov",
+      "username": "asadbek",
+      "role": "Full Stack Developer",
+      "avatar": "https://i.pravatar.cc/150?img=12"
+    },
+    {
+      "name": "Muhammadali Sobirov",
+      "username": "muhammaddev",
+      "role": "Backend Developer",
+      "avatar": "https://i.pravatar.cc/150?img=13"
+    },
+    {
+      "name": "Nilufar Qodirova",
+      "username": "nilufarui",
+      "role": "UX Designer",
+      "avatar": "https://i.pravatar.cc/150?img=14"
+    },
+    {
+      "name": "Sherzod Abduvaliyev",
+      "username": "sherzodjs",
+      "role": "JavaScript Developer",
+      "avatar": "https://i.pravatar.cc/150?img=15"
+    },
+    {
+      "name": "Bobur Xudoyberdiyev",
+      "username": "boburdev",
+      "role": "React Developer",
+      "avatar": "https://i.pravatar.cc/150?img=16"
+    },
+    {
+      "name": "Zarina Mamatova",
+      "username": "zarinacode",
+      "role": "Frontend Developer",
+      "avatar": "https://i.pravatar.cc/150?img=17"
+    },
+    {
+      "name": "Akmal Jo'rayev",
+      "username": "akmaldev",
+      "role": "Backend Engineer",
+      "avatar": "https://i.pravatar.cc/150?img=18"
+    },
+    {
+      "name": "Abdulloh Rasulov",
+      "username": "abdulloh",
+      "role": "Full Stack Developer",
+      "avatar": "https://i.pravatar.cc/150?img=19"
+    },
+    {
+      "name": "Suxrob Mirzayev",
+      "username": "suxrobdev",
+      "role": "Software Engineer",
+      "avatar": "https://i.pravatar.cc/150?img=20"
+    }
+  ]
+}

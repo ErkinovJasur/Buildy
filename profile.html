@@ -22,22 +22,18 @@
     <nav class="mobile-bottom-nav">
         <a href="index.html">
             <i data-lucide="house"></i>
-            <span>Home</span>
         </a>
         <a>
             <i data-lucide="compass"></i>
-            <span>Explore</span>
         </a>
         <a onclick="modalProject.style.display = 'flex'">
             <i data-lucide="plus"></i>
         </a>
         <a>
             <i data-lucide="MessageCircle"></i>
-            <span>Messages</span>
         </a>
         <a class="active" id="user">
             <i data-lucide="circle-user"></i>
-            <span>Profile</span>
         </a>
     </nav>
 
@@ -80,7 +76,7 @@
                 <div class="profile-card" id="profile-card">
                     <p>Ishlab chiquvchi profilingizni yarating, loyihalaringizni namoyish qiling va quruvchilar bilan
                         bog'laning.</p>
-                    <button onclick="modal1.style.display = 'flex'">Ro'yxatdan o'tish</button>
+                    <button id="signUp">Ro'yxatdan o'tish</button>
                 </div>
                 <div class="aside-profile" onclick="window.location.href = 'profile.html'">
                     <div style="display: flex; align-items: center; gap: 8px;">
@@ -180,8 +176,8 @@
         <aside class="aside-right"></aside>
     </div>
 
-    <div class="modal-project" id="modal-project"></div>
     <div class="modal"></div>
+    <div class="modal-project" id="modal-project"></div>
 
     <script src="js/navbar.js"></script>
     <script src="js/mobile-menu.js"></script>

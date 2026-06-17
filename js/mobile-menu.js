@@ -1,9 +1,10 @@
-const aside = document.querySelector(".aside");
+document.addEventListener("DOMContentLoaded", () => {
+  const aside = document.querySelector(".aside");
 
-// mobile menu
+  // mobile menu
 
-function mobileMenu() {
-  aside.innerHTML = `
+  function mobileMenu() {
+    aside.innerHTML = `
     <div class="aside-box">
             <div class="s">
                 <h2>Menu</h2>
@@ -47,51 +48,52 @@ function mobileMenu() {
             </div>
         </div>
   `;
-}
-
-mobileMenu();
-
-// x icon bosilganda modal yopilishi
-
-const xs = document.getElementById("xs");
-
-xs.addEventListener("click", function () {
-  aside.style.display = "none";
-  xs.style.display = "none";
-});
-
-// menu bosilganda modal ochilishi
-
-window.addEventListener("DOMContentLoaded", () => {
-  const menu = document.querySelector(".menu");
-
-  menu.addEventListener("click", () => {
-    aside.style.position = "fixed";
-    aside.style.display = "block";
-    aside.style.zIndex = "999999";
-    aside.style.display = "block";
-    aside.style.transition = "1s";
-    xs.style.display = "block";
-  });
-});
-
-// modal chetlariga bosilganda yopilishi
-
-window.addEventListener("click", (e) => {
-  if (e.target === aside) {
-    aside.style.display = "none";
   }
+
+  mobileMenu();
+
+  // x icon bosilganda modal yopilishi
+
+  const xs = document.getElementById("xs");
+
+  xs.addEventListener("click", function () {
+    aside.style.display = "none";
+    xs.style.display = "none";
+  });
+
+  // menu bosilganda modal ochilishi
+
+  window.addEventListener("DOMContentLoaded", () => {
+    const menu = document.querySelector(".menu");
+
+    menu.addEventListener("click", () => {
+      aside.style.position = "fixed";
+      aside.style.display = "block";
+      aside.style.zIndex = "999999";
+      aside.style.display = "block";
+      aside.style.transition = "1s";
+      xs.style.display = "block";
+    });
+  });
+
+  // modal chetlariga bosilganda yopilishi
+
+  window.addEventListener("click", (e) => {
+    if (e.target === aside) {
+      aside.style.display = "none";
+    }
+  });
+
+  // log out bosilganda akkaunt o'chirilishi
+
+  const log = document.getElementById("log");
+
+  log.addEventListener("click", function () {
+    localStorage.clear();
+    location.reload();
+  });
+
+  // icons
+
+  lucide.createIcons();
 });
-
-// log out bosilganda akkaunt o'chirilishi
-
-const log = document.getElementById("log");
-
-log.addEventListener("click", function () {
-  localStorage.clear();
-  location.reload();
-});
-
-// icons
-
-lucide.createIcons();

@@ -1,14 +1,15 @@
-const modalProject = document.getElementById("modal-project");
-const userProjectCard = document.getElementById("userProjectCard");
+document.addEventListener("DOMContentLoaded", () => {
+  const modalProject = document.getElementById("modal-project");
+  const userProjectCard = document.getElementById("userProjectCard");
 
-let isRegistered = localStorage.getItem("name");
-let nikRegistered = localStorage.getItem("nik");
+  let isRegistered = localStorage.getItem("name");
+  let nikRegistered = localStorage.getItem("nik");
 
-// ProjectModal
+  // ProjectModal
 
-function modalProjects() {
-  if (!modalProject) return;
-  modalProject.innerHTML = `
+  function modalProjects() {
+    if (!modalProject) return;
+    modalProject.innerHTML = `
         <div class="modal-card">
             <button class="close" id="closeProjectModalBtn">
                 <i class="icon-lucide" data-lucide="x"></i>
@@ -29,60 +30,63 @@ function modalProjects() {
             <button id="joylash">Joylash</button>
         </div>
   `;
-}
+  }
 
-// Interfeyslarni yaratish
+  // Interfeyslarni yaratish
 
-modalProjects();
+  modalProjects();
 
-// icons
+  // icons
 
-lucide.createIcons();
+  lucide.createIcons();
 
-// modal open
+  // modal open
 
-const openProjectModalBtn = document.getElementById("openProjectModalBtn");
-const closeProjectModalBtn = document.getElementById("closeProjectModalBtn");
+  const openProjectModalBtn = document.getElementById("openProjectModalBtn");
+  const closeProjectModalBtn = document.getElementById("closeProjectModalBtn");
 
-// project download
+  // project download
 
-const joylash = document.getElementById("joylash");
-const projectName = document.getElementById("projectName");
-const projectBio = document.getElementById("projectBio");
-const projectGitUrl = document.getElementById("projectGitUrl");
-const projectDemoUrl = document.getElementById("projectDemoUrl");
-const projectTechStack = document.getElementById("projectTechStack");
-const projectImage = document.getElementById("projectImage");
+  const joylash = document.getElementById("joylash");
+  const projectName = document.getElementById("projectName");
+  const projectBio = document.getElementById("projectBio");
+  const projectGitUrl = document.getElementById("projectGitUrl");
+  const projectDemoUrl = document.getElementById("projectDemoUrl");
+  const projectTechStack = document.getElementById("projectTechStack");
+  const projectImage = document.getElementById("projectImage");
 
-// LocalStorage'dan loyihalar massivini o'qib olamiz
+  // LocalStorage'dan loyihalar massivini o'qib olamiz
 
-let projectsArray = JSON.parse(localStorage.getItem("projectsList")) || [];
+  let projectsArray = JSON.parse(localStorage.getItem("projectsList")) || [];
 
-// Agar xotirada loyihalar bo'lsa, hammasini bittalab chizamiz
+  // Agar xotirada loyihalar bo'lsa, hammasini bittalab chizamiz
 
-if (projectsArray.length > 0 && userProjectCard) {
-  userProjectCard.innerHTML = "";
+  if (projectsArray.length > 0 && userProjectCard) {
+    userProjectCard.innerHTML = "";
 
-  projectsArray.forEach((project) => {
-    // 1. Tech stack tayyorlash
-    let techSpans = "";
-    if (project.tech) {
-      techSpans = project.tech
-        .split(",")
-        .map((tech) => `<span>${tech.trim()}</span>`)
-        .join("");
-    }
+    projectsArray.forEach((project) => {
+      // 1. Tech stack tayyorlash
+      let techSpans = "";
+      if (project.tech) {
+        techSpans = project.tech
+          .split(",")
+          .map((tech) => `<span>${tech.trim()}</span>`)
+          .join("");
+      }
 
-    // 2. BIO ni kesish mantiqi (300 ta belgidan oshsa)
-    const limit = 300;
-    let bioDisplay = project.bio; // Boshlang'ich matn
+      // 2. BIO ni kesish mantiqi (300 ta belgidan oshsa)
+      const limit = 300;
+      let bioDisplay = project.bio; // Boshlang'ich matn
 
-    if (project.bio.length > limit) {
-      bioDisplay = project.bio.slice(0, limit) + "...";
-    }
+      if (project.bio.length > limit) {
+        bioDisplay = project.bio.slice(0, limit) + "...";
+      }
 
-    // 3. HTML ga qo'shish
-    userProjectCard.innerHTML += `
+      let demo = localStorage.getItem("demo");
+      let git = localStorage.getItem("git");
+
+      // 3. HTML ga qo'shish
+      userProjectCard.innerHTML += `
       <div class="project-post">
           <div class="post-header">
               <img class="user-avatar" src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Default_pfp.svg/500px-Default_pfp.svg.png" alt="user-avatar" id="avatars">
@@ -102,87 +106,107 @@ if (projectsArray.length > 0 && userProjectCard) {
               ${techSpans}
           </div>
            <div class="post-actions">
-                  <a href="${projectGitUrl.value}" target="_blank" class="action-btn github-btn">
+                  <a href="${git}" target="_blank" class="action-btn github-btn">
                       <i class="icon-lucide" data-lucide="CodeXml"></i>
                       GitHub
                   </a>
-                  <a href="${projectDemoUrl.value}" target="_blank" class="action-btn demo-btn">
+                  <a href="${demo}" target="_blank" class="action-btn demo-btn">
                       <i class="icon-lucide" data-lucide="external-link"></i>
                       Live Demo
                   </a>
             </div>
+            <div class="likes">
+              <div class="divs">
+                  <div class="div">
+                      <i class="icon-lucide like" data-lucide="heart"></i>
+                      <span>0</span>
+                  </div>
+                  <div class="div">
+                      <i class="icon-lucide" data-lucide="message-square"></i>
+                      <span>0</span>
+                  </div>
+              </div>
+              <div class="divs">
+                  <div class="div">
+                      <i class="icon-lucide" data-lucide="forward"></i>
+                  </div>
+                  <div class="div">
+                      <i class="icon-lucide" data-lucide="bookmark"></i>
+                  </div>
+              </div>
+            </div>
         </div>
     `;
-  });
+    });
 
-  // Avatar saqlash qismi
-  const avatars = document.getElementById("avatars");
-  const savedAvatar = localStorage.getItem("avatar");
-  if (savedAvatar && avatars) {
-    avatars.src = savedAvatar;
+    // Avatar saqlash qismi
+    const avatars = document.getElementById("avatars");
+    const savedAvatar = localStorage.getItem("avatar");
+    if (savedAvatar && avatars) {
+      avatars.src = savedAvatar;
+    }
+
+    if (typeof lucide !== "undefined") lucide.createIcons();
   }
 
-  if (typeof lucide !== "undefined") lucide.createIcons();
-}
+  // modal ochilishi
 
-// modal ochilishi
+  if (openProjectModalBtn && modalProject) {
+    openProjectModalBtn.addEventListener("click", () => {
+      modalProject.style.display = "flex";
+    });
+  }
 
-if (openProjectModalBtn && modalProject) {
-  openProjectModalBtn.addEventListener("click", () => {
-    modalProject.style.display = "flex";
-  });
-}
+  if (closeProjectModalBtn && modalProject) {
+    closeProjectModalBtn.addEventListener("click", () => {
+      modalProject.style.display = "none";
+    });
+  }
 
-if (closeProjectModalBtn && modalProject) {
-  closeProjectModalBtn.addEventListener("click", () => {
-    modalProject.style.display = "none";
-  });
-}
+  // loyiha joylash
 
-// loyiha joylash
+  if (joylash) {
+    joylash.addEventListener("click", () => {
+      if (
+        projectName.value === "" ||
+        projectBio.value === "" ||
+        !projectImage.files ||
+        projectImage.files.length === 0
+      ) {
+        alert("Iltimos barcha maydonlarni to'ldiring va rasm yuklang!");
+        return;
+      }
+      const file = projectImage.files[0];
+      const reader = new FileReader();
 
-if (joylash) {
-  joylash.addEventListener("click", () => {
-    if (
-      projectName.value === "" ||
-      projectBio.value === "" ||
-      !projectImage.files ||
-      projectImage.files.length === 0
-    ) {
-      alert("Iltimos barcha maydonlarni to'ldiring va rasm yuklang!");
-      return;
-    }
-    const file = projectImage.files[0];
-    const reader = new FileReader();
+      reader.onload = () => {
+        const image = reader.result;
 
-    reader.onload = () => {
-      const image = reader.result;
+        const now = new Date();
+        const currentClock = `${String(now.toLocaleDateString()).padStart(2, "0")} - ${String(now.getHours()).padStart(2, "0")}:${String(now.getMinutes()).padStart(2, "0")}`;
 
-      const now = new Date();
-      const currentClock = `${String(now.toLocaleDateString()).padStart(2, "0")} - ${String(now.getHours()).padStart(2, "0")}:${String(now.getMinutes()).padStart(2, "0")}`;
+        const newProject = {
+          name: projectName.value,
+          bio: projectBio.value,
+          gitUrl: projectGitUrl.value,
+          demoUrl: projectDemoUrl.value,
+          tech: projectTechStack.value,
+          image: image,
+          clock: currentClock,
+        };
 
-      const newProject = {
-        name: projectName.value,
-        bio: projectBio.value,
-        gitUrl: projectGitUrl.value,
-        demoUrl: projectDemoUrl.value,
-        tech: projectTechStack.value,
-        image: image,
-        clock: currentClock,
-      };
+        let currentProjects =
+          JSON.parse(localStorage.getItem("projectsList")) || [];
+        currentProjects.push(newProject);
+        localStorage.setItem("projectsList", JSON.stringify(currentProjects));
 
-      let currentProjects =
-        JSON.parse(localStorage.getItem("projectsList")) || [];
-      currentProjects.push(newProject);
-      localStorage.setItem("projectsList", JSON.stringify(currentProjects));
+        let techSpans = projectTechStack.value
+          .split(",")
+          .map((tech) => `<span>${tech.trim()}</span>`)
+          .join("");
 
-      let techSpans = projectTechStack.value
-        .split(",")
-        .map((tech) => `<span>${tech.trim()}</span>`)
-        .join("");
-
-      if (userProjectCard) {
-        userProjectCard.innerHTML += `
+        if (userProjectCard) {
+          userProjectCard.innerHTML += `
           <div class="project-post">
               <div class="post-header">
                   <img class="user-avatar"
@@ -204,38 +228,41 @@ if (joylash) {
                   ${techSpans}
               </div>
               <div class="post-actions">
-                  <a href="${projectGitUrl.value}" target="_blank" class="action-btn github-btn">
+                  <a href="${newProject.gitUrl}" target="_blank" class="action-btn github-btn">
                       <i class="icon-lucide" data-lucide="CodeXml"></i>
                       GitHub
                   </a>
-                  <a href="${projectDemoUrl.value}" target="_blank" class="action-btn demo-btn">
+                  <a href="${newProject.demoUrl}" target="_blank" class="action-btn demo-btn">
                       <i class="icon-lucide" data-lucide="external-link"></i>
                       Live Demo
                   </a>
               </div>
           </div>
         `;
+        }
+
+        localStorage.setItem("demo", newProject.demoUrl);
+        localStorage.setItem("git", newProject.gitUrl);
+
+        if (modalProject) modalProject.style.display = "none";
+        if (typeof lucide !== "undefined") lucide.createIcons();
+
+        projectName.value = "";
+        projectBio.value = "";
+        projectGitUrl.value = "";
+        projectDemoUrl.value = "";
+        projectTechStack.value = "";
+        projectImage.value = "";
+      };
+
+      reader.readAsDataURL(file);
+      // agar github url va demo url qo'ymagan bo'lsa buttonlarni o'chiramiz
+
+      const postActions = document.querySelector(".post-actions");
+
+      if (projectDemoUrl.value === "" || projectGitUrl === "") {
+        postActions.style.display = "none";
       }
-
-      if (modalProject) modalProject.style.display = "none";
-      if (typeof lucide !== "undefined") lucide.createIcons();
-
-      projectName.value = "";
-      projectBio.value = "";
-      projectGitUrl.value = "";
-      projectDemoUrl.value = "";
-      projectTechStack.value = "";
-      projectImage.value = "";
-    };
-
-    reader.readAsDataURL(file);
-  });
-}
-
-// agar github url va demo url qo'ymagan bo'lsa buttonlarni o'chiramiz
-
-const postActions = document.querySelector(".post-actions");
-
-if (projectDemoUrl.value === "" || projectGitUrl === "") {
-  postActions.style.display = "none";
-};
+    });
+  }
+});

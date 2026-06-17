@@ -140,7 +140,7 @@ main {
       background-color: var(--btn);
     }
 
-    .bg-btn:hover .icon-lucide{
+    .bg-btn:hover .icon-lucide {
       color: var(--white) !important;
     }
   }
@@ -244,37 +244,45 @@ main {
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
-  display: none;
-  align-items: center;
-  justify-content: center;
-  left: 0 !important;
+  height: 100vh;
   z-index: 99999;
-  padding: 16px;
-  background: rgba(0, 0, 0, 0.278);
-  backdrop-filter: blur(5px);
+  padding: 0px 6px;
+  background: rgba(0, 0, 0, 0.37);
+  display: none;
 
   .modal-search-card {
     background-color: white;
     width: 95%;
-    max-width: 500px;
+    max-width: 870px;
     height: 300px;
-    box-shadow: var(--shadow);
-    border-radius: 22px;
-    padding: 23px 20px;
+    box-shadow: 0 -8px 20px rgba(0, 0, 0, 0.264);
+    padding: 16px 20px;
     overflow-y: auto;
+    margin-left: 16%;
+    border-bottom-left-radius: 22px;
+    border-bottom-right-radius: 22px;
 
     input {
       width: 100%;
-      padding: 10px 14px;
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--bodyBg);
       border: 1px solid var(--border);
-      border-radius: 10px;
-      margin-bottom: 20px;
-      font-size: 11px;
+      border-radius: 142px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+      color: #6b7280;
+      transition: 0.2s;
+      font-size: 12px;
+      overflow-y: auto !important;
+      outline: none;
+      margin-bottom: 25px;
     }
 
-    input:focus {
-      outline: 1px solid var(--btn);
+    #results {
+      width: 100%;
+      height: 50px;
     }
   }
 }
@@ -563,21 +571,20 @@ main {
 
 .mobile-bottom-nav {
   position: fixed;
-  bottom: 14px;
-  left: 2%;
-  width: 95%;
+  bottom: 0;
+  left: 0;
+  width: 100%;
   background-color: var(--white);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   display: none;
   align-items: center;
   justify-content: space-between;
-  padding: 9px 25px;
+  padding: 12px 30px;
   border-top: 1px solid var(--border);
   box-shadow: 0 10px 30px rgba(52, 52, 52, 0.062);
   box-sizing: border-box;
   z-index: 999;
-  border-radius: 999px;
 }
 
 .mobile-bottom-nav a {
@@ -601,14 +608,14 @@ main {
 
 .mobile-bottom-nav a svg,
 .mobile-bottom-nav a i {
-  width: 21px;
-  height: 21px;
+  width: 25px;
   stroke-width: 2;
   transition: transform 0.2s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
 .mobile-bottom-nav a.active {
-  color: var(--btn);
+  background-color: var(--btn);
+  color: var(--white);
 }
 
 .mobile-bottom-nav a:active {
@@ -616,7 +623,7 @@ main {
 }
 
 .mobile-bottom-nav a:nth-child(3) {
-  background-color: var(--btn);
+  background-color: var(--text);
   color: var(--white);
   border-radius: 50%;
   box-shadow: 0 4px 12px rgba(17, 24, 39, 0.15);
@@ -650,6 +657,7 @@ header {
     transition: 0.2s;
     font-size: 13px;
     overflow-y: auto !important;
+    position: relative;
   }
 
   .plus,
@@ -691,6 +699,18 @@ header {
 
   .icon-lucide {
     width: 18px;
+  }
+
+  .slash-hint {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    border: 1px solid #ccc;
+    padding: 2px 6px;
+    border-radius: 4px;
+    color: #888;
+    font-size: 12px;
   }
 }
 
@@ -1007,5 +1027,14 @@ select:focus {
 
   .icon-lucide {
     width: 18px !important;
+  }
+
+  .modal-search {
+    padding: 0px 0px !important;
+
+    .modal-search-card {
+      width: 100% !important;
+      margin-left: 0px !important;
+    }
   }
 }

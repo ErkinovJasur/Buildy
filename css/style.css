@@ -37,8 +37,8 @@
 }
 
 .user-avatar {
-  width: 49px;
-  height: 49px;
+  width: 55px !important;
+  height: 49px !important;
   border-radius: 999px;
   object-fit: cover;
   transition: 0.4s;
@@ -284,5 +284,10 @@
 @media (max-width: 768px) {
   main {
     padding-bottom: 200px;
+  }
+
+  .user-avatar {
+    width: 54px !important;
+    height: 45px !important;
   }
 }
