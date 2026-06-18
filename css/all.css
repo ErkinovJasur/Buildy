@@ -608,7 +608,7 @@ main {
 
 .mobile-bottom-nav a svg,
 .mobile-bottom-nav a i {
-  width: 20px;
+  width: 23px;
   stroke-width: 2;
   transition: transform 0.2s cubic-bezier(0.25, 0.8, 0.25, 1);
 }

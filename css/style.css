@@ -78,6 +78,7 @@
   border-radius: 16px;
   overflow: hidden;
   margin-bottom: 16px;
+  border: 1px solid var(--border);
 }
 
 .post-cover img {
