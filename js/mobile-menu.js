@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 <i class="icon-lucide" data-lucide="MessageCircle"></i>
                 Xabarlar
             </button>
-            <button>
+            <button onclick="window.location.href = 'settings.html'">
                 <i class="icon-lucide" data-lucide="settings"></i>
                 Sozlamalar
             </button>

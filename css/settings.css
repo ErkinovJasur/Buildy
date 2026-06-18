@@ -55,7 +55,7 @@
     width: 100%;
     min-height: 140px;
     backdrop-filter: blur(10px);
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     cursor: pointer;
     background-color: var(--cardBg);
 
@@ -275,11 +275,11 @@
     background-color: transparent;
     border: 2px solid var(--border);
     color: var(--text);
-    transition: 0.4s;
+    transition: 0.2s;
   }
 
   .btn:hover {
-    background-color: var(--cardBg);
+    background-color: var(--bodyBg);
   }
 
   button:hover {

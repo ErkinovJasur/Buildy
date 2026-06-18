@@ -6,15 +6,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const userNikk = (document.getElementById("userNikk").textContent =
     "@" + localStorage.getItem("nik"));
 
-  // avatar
-
-  const avatar = document.getElementById("user-avatar");
-  const savedAvatar = localStorage.getItem("avatar");
-
-  if (savedAvatar) {
-    avatar.src = savedAvatar;
-  }
-
   // like
 
   const likeButtons = document.querySelectorAll(".icon-lucide.like");

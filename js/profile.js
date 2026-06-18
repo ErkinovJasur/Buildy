@@ -6,26 +6,22 @@ document.addEventListener("DOMContentLoaded", () => {
   const userNamee = document.getElementById("userNamee");
   const userNikk = document.getElementById("userNikk");
   const userBio = document.getElementById("userBio");
-  const userRole = document.getElementById("role");
 
   userName.textContent = localStorage.getItem("name");
   userNik.textContent = "@" + localStorage.getItem("nik");
   userNamee.textContent = localStorage.getItem("name");
   userNikk.textContent = "@" + localStorage.getItem("nik");
-  userRole.textContent = localStorage.getItem("select") || "Founder of Buildy";
   userBio.textContent = localStorage.getItem("bio");
 
   // Avatar yuklash
 
   const profileAvatar = document.getElementById("avatar");
-  const navbarAvatar = document.getElementById("avatarr");
   const avatarInput = document.getElementById("avatarInput");
 
   const savedAvatar = localStorage.getItem("avatar");
 
   if (savedAvatar) {
     profileAvatar.src = savedAvatar;
-    navbarAvatar.src = savedAvatar;
   }
 
   avatarInput.addEventListener("change", (e) => {

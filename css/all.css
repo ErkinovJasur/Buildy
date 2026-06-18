@@ -59,8 +59,7 @@ main {
 }
 
 .buildy {
-  display: flex;
-  justify-content: space-between;
+  display: flex !important;
 }
 
 /* aside */
@@ -76,7 +75,8 @@ main {
   overflow-y: auto;
   position: relative;
   background-color: var(--bodyBg);
-
+  flex-shrink: 0;
+  
   h1 {
     font-size: 24px;
     font-weight: 800;
@@ -95,7 +95,7 @@ main {
     margin-top: 42px;
     gap: 3px;
 
-    button {
+    .nav-item {
       padding: 12px 12px;
       font-weight: 500;
       display: flex;
@@ -104,44 +104,37 @@ main {
       background-color: transparent;
       border: 1px solid transparent;
       border-radius: 9px;
-      font-size: 12px;
+      font-size: 12.6px;
       letter-spacing: -0.1px;
       cursor: pointer;
       color: #475569;
       transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
-    button:hover {
+    .nav-item.active {
+      background-color: var(--btn);
+      font-weight: 700;
+      color: var(--white);
+    }
+
+    .nav-item:hover {
       color: var(--text);
       background-color: rgba(217, 119, 6, 0.027);
       transform: translateX(4px);
     }
 
-    button:hover .icon-lucide {
+    .nav-item:hover .icon-lucide {
       color: var(--btn) !important;
       transform: scale(1.02);
     }
 
-    button .icon-lucide,
-    button svg,
-    button i {
+    .nav-item .icon-lucide,
+    .nav-item svg,
+    .nav-item i {
       width: 18px !important;
       height: 18px !important;
       stroke-width: 2;
       transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    .bg-btn {
-      background-color: var(--btn);
-      color: var(--white) !important;
-    }
-
-    .bg-btn:hover {
-      background-color: var(--btn);
-    }
-
-    .bg-btn:hover .icon-lucide {
-      color: var(--white) !important;
     }
   }
 }
@@ -580,7 +573,7 @@ main {
   display: none;
   align-items: center;
   justify-content: space-between;
-  padding: 12px 30px;
+  padding: 10px 30px;
   border-top: 1px solid var(--border);
   box-shadow: 0 10px 30px rgba(52, 52, 52, 0.062);
   box-sizing: border-box;
@@ -608,7 +601,7 @@ main {
 
 .mobile-bottom-nav a svg,
 .mobile-bottom-nav a i {
-  width: 23px;
+  width: 25px;
   stroke-width: 2;
   transition: transform 0.2s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
@@ -719,24 +712,6 @@ header {
   display: flex;
   align-items: center;
   gap: 5px;
-}
-
-/* kimsiz select */
-
-#select {
-  width: 100%;
-  padding: 14px 16px;
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  background: var(--white);
-  color: var(--text);
-  font-size: 15px;
-  outline: none;
-  transition: 0.2s;
-}
-
-select:focus {
-  border-color: var(--btn);
 }
 
 /* aside right */
@@ -982,11 +957,10 @@ select:focus {
 .searchUsers {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 10px;
   padding: 12px 20px;
   background: #ffffff;
   transition: 0.3s;
-  border-radius: 12px;
   position: relative;
 }
 
@@ -995,8 +969,8 @@ select:focus {
 }
 
 .searchUsers img {
-  width: 45px;
-  height: 45px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   object-fit: cover;
 }
@@ -1021,17 +995,6 @@ select:focus {
   color: #86868b;
   font-weight: 400;
   margin: 0;
-}
-
-.searchUsers p {
-  font-size: 12px;
-  margin: 2px 0 0 0;
-  color: var(--text);
-  font-weight: 600;
-  position: absolute;
-  right: 15px;
-  top: 25px;
-  font-weight: 500;
 }
 
 @media (max-width: 1200px) {

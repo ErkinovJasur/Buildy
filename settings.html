@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Buildly — Show what you build. Find developers. And get hired.</title>
+    <title>Buildly — Show what you build.</title>
     <link rel="stylesheet" href="css/settings.css">
     <link rel="stylesheet" href="css/all.css">
     <script src="https://unpkg.com/lucide@latest"></script>
@@ -13,6 +13,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Akt:wght@100..900&family=Caprasimo&family=Cookie&family=Great+Vibes&family=Imperial+Script&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=League+Spartan:wght@100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=TikTok+Sans:opsz,wdth@12..36,138&display=swap"
         rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 
 <body>
@@ -38,62 +39,7 @@
     </nav>
 
     <div class="buildy">
-        <aside class="aside-left">
-            <h1>Buildly</h1>
-            <div class="aside-location">
-                <button onclick="window.location.href = 'index.html'">
-                    <i class="icon-lucide" data-lucide="home"></i>
-                    Asosiy
-                </button>
-                <button onclick="window.location.href = 'programist.html'">
-                    <i class="icon-lucide" data-lucide="CodeXml"></i>
-                    Dasturchilar
-                </button>
-                <button>
-                    <i class="icon-lucide" data-lucide="FolderGit2"></i>
-                    Loyihalar
-                </button>
-                <button>
-                    <i class="icon-lucide" data-lucide="users"></i>
-                    Jamoalar
-                </button>
-                <button>
-                    <i class="icon-lucide" data-lucide="compass"></i>
-                    Kashf qiling
-                </button>
-                <button>
-                    <i class="icon-lucide" data-lucide="bookmark"></i>
-                    Saqlanganlar
-                </button>
-                <button>
-                    <i class="icon-lucide" data-lucide="MessageCircle"></i>
-                    Xabarlar
-                </button>
-                <button class="bg-btn" onclick="window.location.href = 'settings.html'">
-                    <i class="icon-lucide" data-lucide="settings"></i>
-                    Sozlamalar
-                </button>
-                <div class="profile-card" id="profile-card">
-                    <p>Ishlab chiquvchi profilingizni yarating, loyihalaringizni namoyish qiling va quruvchilar bilan
-                        bog'laning.</p>
-                    <button id="signUp">Ro'yxatdan o'tish</button>
-                </div>
-                <div class="aside-profile" onclick="window.location.href = 'profile.html'">
-                    <div style="display: flex; align-items: center; gap: 8px;">
-                        <img id="user-avatar"
-                            src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Default_pfp.svg/500px-Default_pfp.svg.png"
-                            alt="user-avatar">
-                        <div>
-                            <h2 id="userNamee"></h2>
-                            <p id="userNikk"></p>
-                        </div>
-                    </div>
-                    <div class="log">
-                        <i class="icon-lucide" data-lucide="LogOut"></i>
-                    </div>
-                </div>
-            </div>
-        </aside>
+        <aside class="aside-left"></aside>
         <div class="container">
             <main>
                 <header></header>
@@ -105,17 +51,17 @@
                         <div class="actives">
                             <i style="width: 20px;" data-lucide="sun"></i>
                             <h2>Light Mode</h2>
-                            <p>Klassik yorqin ko'rinish.</p>
+                            <p>Kungi rejim.</p>
                         </div>
                         <div>
                             <i style="width: 20px;" data-lucide="moon"></i>
                             <h2>Dark Mode</h2>
-                            <p>Premium obsidian qora.</p>
+                            <p>Tungi rejim.</p>
                         </div>
                         <div>
                             <i style="width: 20px;" data-lucide="monitor"></i>
                             <h2>System</h2>
-                            <p>Qurilma sozlamalariga rioya qiling.</p>
+                            <p>Avtomatik rejim.</p>
                         </div>
                     </div>
                     <h1>Havolalar</h1>
@@ -182,6 +128,7 @@
     <div class="modal-project" id="modal-project"></div>
 
     <script src="js/modal-registar.js"></script>
+    <script src="js/aside-left.js"></script>
     <script src="js/navbar.js"></script>
     <script src="js/mobile-menu.js"></script>
     <script src="js/aside-right.js"></script>
@@ -197,15 +144,6 @@
         const idEmail = document.getElementById("idEmail").textContent = localStorage.getItem("email");
         const idPass = document.getElementById("idPass").textContent = localStorage.getItem("parol");
 
-        // avatar
-
-        const avatar = document.getElementById("user-avatar");
-        const savedAvatar = localStorage.getItem("avatar");
-
-        if (savedAvatar) {
-            avatar.src = savedAvatar;
-        }
-
         // account
 
         const github = document.getElementById("github");
@@ -213,6 +151,11 @@
         const website = document.getElementById("website");
         const linkedin = document.getElementById("linkedin");
         const save = document.getElementById("save");
+
+        github.value = localStorage.getItem("github")
+        tg.value = localStorage.getItem("tg")
+        website.value = localStorage.getItem("website")
+        linkedin.value = localStorage.getItem("linkedin")
 
         save.addEventListener("click", function () {
             alert("Saqlandi ✅")

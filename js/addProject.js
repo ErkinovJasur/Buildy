@@ -256,13 +256,15 @@ document.addEventListener("DOMContentLoaded", () => {
       };
 
       reader.readAsDataURL(file);
+    });
+
       // agar github url va demo url qo'ymagan bo'lsa buttonlarni o'chiramiz
 
-      const postActions = document.querySelector(".post-actions");
+  const postActions = document.querySelector(".post-actions");
 
-      if (projectDemoUrl.value === "" || projectGitUrl === "") {
-        postActions.style.display = "none";
-      }
-    });
+  if (projectDemoUrl.value === "" || projectGitUrl === "") {
+    postActions.style.display = "none";
   }
+  }
+
 });

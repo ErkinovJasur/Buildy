@@ -3,122 +3,117 @@
     {
       "name": "Sardor",
       "username": "@sardorkeldiyev",
-      "role": "🎨 Frontend Developer",
       "avatar": "https://bairesdev.mo.cloudinary.net/blog/2025/03/how-to-become-a-full-stack-developer.jpg?tx=w_1920,q_auto"
     },
     {
       "name": "Madina Axmedova",
       "username": "@madinadev",
-      "role": "✨ UI/UX Designer",
       "avatar": "https://i.pravatar.cc/150?img=2"
     },
     {
       "name": "Ibrohim",
       "username": "@begboyevibrohim",
-      "role": "🎨 Frontend Developer",
       "avatar": "https://jeoqreprpwuuldhozvtx.supabase.co/storage/v1/object/public/kollabee-uploads/cmon4e16d000004k10amleep2/31a38cea0e137aa1dd7bc91ba73f242e.jpg"
     },
     {
       "name": "timurovch7",
       "username": "@erkinov",
-      "role": "⚙️ Backend Developer",
       "avatar": "https://woz-u.com/wp-content/uploads/2022/06/Evolution-of-Coding-scaled.jpg"
     },
     {
       "name": "Jasur Karimov",
       "username": "@jasurcode",
-      "role": "🚀 Full Stack Developer",
       "avatar": "https://i.pravatar.cc/150?img=5"
     },
     {
       "name": "Aziza Rahimova",
       "username": "@azizadev",
-      "role": "🎨 Frontend Developer",
       "avatar": "https://i.pravatar.cc/150?img=6"
     },
     {
       "name": "Oybek Tursunov",
       "username": "@oybekdev",
-      "role": "⭐ React Developer",
       "avatar": "https://i.pravatar.cc/150?img=7"
     },
     {
       "name": "Diyorbek Usmonov",
       "username": "@diyorweb",
-      "role": "⚙️ Backend Developer",
       "avatar": "https://i.pravatar.cc/150?img=8"
     },
     {
       "name": "Shahzod Nurmatov",
       "username": "@shahzoddev",
-      "role": "📗 Node.js Developer",
       "avatar": "https://i.pravatar.cc/150?img=9"
     },
     {
       "name": "Kamola Rustamova",
       "username": "@kamolaui",
-      "role": "✨ UI Designer",
       "avatar": "https://i.pravatar.cc/150?img=10"
     },
     {
       "name": "Behruz Ismoilov",
       "username": "@behruzdev",
-      "role": "🎨 Frontend Developer",
       "avatar": "https://i.pravatar.cc/150?img=11"
     },
     {
       "name": "Asadbek Yoqubov",
       "username": "@asadbek",
-      "role": "🚀 Full Stack Developer",
       "avatar": "https://i.pravatar.cc/150?img=12"
     },
     {
       "name": "Muhammadali Sobirov",
       "username": "@muhammaddev",
-      "role": "⚙️ Backend Developer",
       "avatar": "https://i.pravatar.cc/150?img=13"
     },
     {
       "name": "Nilufar Qodirova",
       "username": "@nilufarui",
-      "role": "✨ UX Designer",
       "avatar": "https://i.pravatar.cc/150?img=14"
     },
     {
       "name": "Sherzod Abduvaliyev",
       "username": "@sherzodjs",
-      "role": "🏺 JavaScript Developer",
       "avatar": "https://i.pravatar.cc/150?img=15"
     },
     {
       "name": "Bobur Xudoyberdiyev",
       "username": "@boburdev",
-      "role": "⭐ React Developer",
       "avatar": "https://i.pravatar.cc/150?img=16"
     },
     {
       "name": "Zarina Mamatova",
       "username": "@zarinacode",
-      "role": "🎨 Frontend Developer",
       "avatar": "https://i.pravatar.cc/150?img=17"
     },
     {
       "name": "Akmal Jo'rayev",
       "username": "@akmaldev",
-      "role": "⚙️ Backend Engineer",
       "avatar": "https://i.pravatar.cc/150?img=18"
     },
     {
       "name": "Abdulloh Rasulov",
       "username": "@abdulloh",
-      "role": "🚀 Full Stack Developer",
       "avatar": "https://i.pravatar.cc/150?img=19"
     },
     {
       "name": "Suxrob Mirzayev",
       "username": "@suxrobdev",
-      "role": "💡 Software Engineer",
       "avatar": "https://i.pravatar.cc/150?img=20"
+    },
+    {
+      "name": "7timurovch",
+      "username": "@erkinov",
+      "avatar": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Default_pfp.svg/500px-Default_pfp.svg.png"
+    },
+    {
+      "name": "CodeTok",
+      "username": "@codetok",
+      "avatar": "https://harmonious-fairy-ccee82.netlify.app/codetok-logo.svg"
+    },
+    {
+      "name": "Kollabee | original",
+      "username": "@kollabee",
+      "avatar": "https://www.kollabee.app/_next/image?url=https%3A%2F%2Fjeoqreprpwuuldhozvtx.supabase.co%2Fstorage%2Fv1%2Fobject%2Fpublic%2Fkollabee-uploads%2Fcmolv4zgr000004l7br2t5pcz%2Faf9c877ea9d95568090c793da5f3bc3e.png&w=256&q=75"
     }
   ]
 }
