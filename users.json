@@ -1,123 +1,123 @@
 {
   "users": [
     {
-      "name": "Sardor Erkinov",
-      "username": "sardorcode",
-      "role": "Frontend Developer",
-      "avatar": "https://i.pravatar.cc/150?img=1"
+      "name": "Sardor",
+      "username": "@sardorkeldiyev",
+      "role": "🎨 Frontend Developer",
+      "avatar": "https://bairesdev.mo.cloudinary.net/blog/2025/03/how-to-become-a-full-stack-developer.jpg?tx=w_1920,q_auto"
     },
     {
       "name": "Madina Axmedova",
-      "username": "madinadev",
-      "role": "UI/UX Designer",
+      "username": "@madinadev",
+      "role": "✨ UI/UX Designer",
       "avatar": "https://i.pravatar.cc/150?img=2"
     },
     {
-      "name": "Ibrohim Begboyev",
-      "username": "ibrohimjs",
-      "role": "Frontend Developer",
-      "avatar": "https://i.pravatar.cc/150?img=3"
+      "name": "Ibrohim",
+      "username": "@begboyevibrohim",
+      "role": "🎨 Frontend Developer",
+      "avatar": "https://jeoqreprpwuuldhozvtx.supabase.co/storage/v1/object/public/kollabee-uploads/cmon4e16d000004k10amleep2/31a38cea0e137aa1dd7bc91ba73f242e.jpg"
     },
     {
-      "name": "Temurbek Xasanov",
-      "username": "temurdev",
-      "role": "Backend Developer",
-      "avatar": "https://i.pravatar.cc/150?img=4"
+      "name": "timurovch7",
+      "username": "@erkinov",
+      "role": "⚙️ Backend Developer",
+      "avatar": "https://woz-u.com/wp-content/uploads/2022/06/Evolution-of-Coding-scaled.jpg"
     },
     {
       "name": "Jasur Karimov",
-      "username": "jasurcode",
-      "role": "Full Stack Developer",
+      "username": "@jasurcode",
+      "role": "🚀 Full Stack Developer",
       "avatar": "https://i.pravatar.cc/150?img=5"
     },
     {
       "name": "Aziza Rahimova",
-      "username": "azizadev",
-      "role": "Frontend Developer",
+      "username": "@azizadev",
+      "role": "🎨 Frontend Developer",
       "avatar": "https://i.pravatar.cc/150?img=6"
     },
     {
       "name": "Oybek Tursunov",
-      "username": "oybekdev",
-      "role": "React Developer",
+      "username": "@oybekdev",
+      "role": "⭐ React Developer",
       "avatar": "https://i.pravatar.cc/150?img=7"
     },
     {
       "name": "Diyorbek Usmonov",
-      "username": "diyorweb",
-      "role": "Backend Developer",
+      "username": "@diyorweb",
+      "role": "⚙️ Backend Developer",
       "avatar": "https://i.pravatar.cc/150?img=8"
     },
     {
       "name": "Shahzod Nurmatov",
-      "username": "shahzoddev",
-      "role": "Node.js Developer",
+      "username": "@shahzoddev",
+      "role": "📗 Node.js Developer",
       "avatar": "https://i.pravatar.cc/150?img=9"
     },
     {
       "name": "Kamola Rustamova",
-      "username": "kamolaui",
-      "role": "UI Designer",
+      "username": "@kamolaui",
+      "role": "✨ UI Designer",
       "avatar": "https://i.pravatar.cc/150?img=10"
     },
     {
       "name": "Behruz Ismoilov",
-      "username": "behruzdev",
-      "role": "Frontend Developer",
+      "username": "@behruzdev",
+      "role": "🎨 Frontend Developer",
       "avatar": "https://i.pravatar.cc/150?img=11"
     },
     {
       "name": "Asadbek Yoqubov",
-      "username": "asadbek",
-      "role": "Full Stack Developer",
+      "username": "@asadbek",
+      "role": "🚀 Full Stack Developer",
       "avatar": "https://i.pravatar.cc/150?img=12"
     },
     {
       "name": "Muhammadali Sobirov",
-      "username": "muhammaddev",
-      "role": "Backend Developer",
+      "username": "@muhammaddev",
+      "role": "⚙️ Backend Developer",
       "avatar": "https://i.pravatar.cc/150?img=13"
     },
     {
       "name": "Nilufar Qodirova",
-      "username": "nilufarui",
-      "role": "UX Designer",
+      "username": "@nilufarui",
+      "role": "✨ UX Designer",
       "avatar": "https://i.pravatar.cc/150?img=14"
     },
     {
       "name": "Sherzod Abduvaliyev",
-      "username": "sherzodjs",
-      "role": "JavaScript Developer",
+      "username": "@sherzodjs",
+      "role": "🏺 JavaScript Developer",
       "avatar": "https://i.pravatar.cc/150?img=15"
     },
     {
       "name": "Bobur Xudoyberdiyev",
-      "username": "boburdev",
-      "role": "React Developer",
+      "username": "@boburdev",
+      "role": "⭐ React Developer",
       "avatar": "https://i.pravatar.cc/150?img=16"
     },
     {
       "name": "Zarina Mamatova",
-      "username": "zarinacode",
-      "role": "Frontend Developer",
+      "username": "@zarinacode",
+      "role": "🎨 Frontend Developer",
       "avatar": "https://i.pravatar.cc/150?img=17"
     },
     {
       "name": "Akmal Jo'rayev",
-      "username": "akmaldev",
-      "role": "Backend Engineer",
+      "username": "@akmaldev",
+      "role": "⚙️ Backend Engineer",
       "avatar": "https://i.pravatar.cc/150?img=18"
     },
     {
       "name": "Abdulloh Rasulov",
-      "username": "abdulloh",
-      "role": "Full Stack Developer",
+      "username": "@abdulloh",
+      "role": "🚀 Full Stack Developer",
       "avatar": "https://i.pravatar.cc/150?img=19"
     },
     {
       "name": "Suxrob Mirzayev",
-      "username": "suxrobdev",
-      "role": "Software Engineer",
+      "username": "@suxrobdev",
+      "role": "💡 Software Engineer",
       "avatar": "https://i.pravatar.cc/150?img=20"
     }
   ]

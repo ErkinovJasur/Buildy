@@ -35,13 +35,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   navbar();
 
-  // icons
-
-  lucide.createIcons();
-
   const searchBtn = document.querySelector(".search-btn");
   const modal_search = document.querySelector(".modal-search");
-  const resultsUsers = document.getElementById("results");
   const searchInput = document.getElementById("searchInput");
 
   searchBtn.addEventListener("click", function () {
@@ -63,14 +58,13 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  const usersApi = "./users.json";
+  const api = "./users.json";
 
   async function user() {
     try {
-      let response = await fetch(usersApi);
+      let response = await fetch(api);
       let data = await response.json();
-      let filter = await data.users.filter((value) => value.name.toLowerCase().includes(searchInput.value.trim("").toLocaleLowerCase()))
-      render(filter);
+      render(data);
     } catch (error) {
       console.log(error);
     }
@@ -79,6 +73,39 @@ document.addEventListener("DOMContentLoaded", () => {
   user();
 });
 
-function render(filter) {
+function render(data) {
+  const resultsUsers = document.getElementById("results");
 
+  searchInput.addEventListener("input", function () {
+    let filter = data.users.filter((value) => {
+      const term = searchInput.value.trim().toLowerCase();
+
+      return (
+        value.name.toLowerCase().includes(term) ||
+        value.role.toLowerCase().includes(term)
+      );
+    });
+    resultsUsers.innerHTML = "";
+
+    if (filter.length === 0) {
+      resultsUsers.innerHTML = `<h2 style="text-align: center; font-size: 15px;">User not found</h2>`;
+    } else {
+      filter.map((item) => {
+        resultsUsers.innerHTML += `
+          <div class="searchUsers">
+            <img src="${item.avatar}"></img>
+            <div>
+              <h1>${item.name}</h1>
+              <h3>${item.username}</h3>
+              <p>${item.role}</p>
+            </div>
+          </div>
+        `;
+      });
+    }
+  });
 }
+
+// icons
+
+lucide.createIcons();

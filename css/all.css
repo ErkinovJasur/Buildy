@@ -93,11 +93,11 @@ main {
     display: flex;
     flex-direction: column;
     margin-top: 42px;
-    gap: 2px;
+    gap: 3px;
 
     button {
       padding: 12px 12px;
-      font-weight: 600;
+      font-weight: 500;
       display: flex;
       align-items: center;
       gap: 10px;
@@ -107,19 +107,19 @@ main {
       font-size: 12px;
       letter-spacing: -0.1px;
       cursor: pointer;
-      color: var(--gray);
+      color: #475569;
       transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     button:hover {
       color: var(--text);
-      background-color: rgba(217, 119, 6, 0.08);
+      background-color: rgba(217, 119, 6, 0.027);
       transform: translateX(4px);
     }
 
     button:hover .icon-lucide {
       color: var(--btn) !important;
-      transform: scale(1.04);
+      transform: scale(1.02);
     }
 
     button .icon-lucide,
@@ -159,7 +159,7 @@ main {
   gap: 10px;
   user-select: none;
   border-radius: 15px;
-  transition: 0.4s;
+  transition: 0.4s !important;
 
   img {
     width: 40px;
@@ -193,7 +193,7 @@ main {
     padding: 3px;
     color: rgba(255, 0, 0, 0.648);
     display: none;
-    transition: 0.4s ease !important;
+    transition: 0.4s !important;
   }
 }
 
@@ -256,33 +256,33 @@ main {
     max-width: 870px;
     height: 300px;
     box-shadow: 0 -8px 20px rgba(0, 0, 0, 0.264);
-    padding: 16px 20px;
+    padding: 1px 0px;
     overflow-y: auto;
     margin-left: 16%;
     border-bottom-left-radius: 22px;
     border-bottom-right-radius: 22px;
+    position: relative !important;
+    z-index: 99999;
 
     input {
       width: 100%;
-      padding: 10px 20px;
+      padding: 18px 20px;
       display: flex;
       align-items: center;
       gap: 12px;
-      background: var(--bodyBg);
-      border: 1px solid var(--border);
-      border-radius: 142px;
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
       color: #6b7280;
       transition: 0.2s;
       font-size: 12px;
-      overflow-y: auto !important;
       outline: none;
-      margin-bottom: 25px;
+      margin: 0 auto;
+      border-bottom: 1px solid var(--border) !important;
+      border: none;
     }
 
     #results {
       width: 100%;
-      height: 50px;
+      margin-top: 15px;
     }
   }
 }
@@ -608,7 +608,7 @@ main {
 
 .mobile-bottom-nav a svg,
 .mobile-bottom-nav a i {
-  width: 25px;
+  width: 20px;
   stroke-width: 2;
   transition: transform 0.2s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
@@ -647,7 +647,7 @@ header {
     padding: 8px 20px;
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 8px;
     background: var(--bodyBg);
     border: 1px solid var(--border);
     border-radius: 142px;
@@ -655,9 +655,10 @@ header {
     color: #6b7280;
     cursor: pointer;
     transition: 0.2s;
-    font-size: 13px;
+    font-size: 13.2px;
     overflow-y: auto !important;
     position: relative;
+    font-weight: 400;
   }
 
   .plus,
@@ -698,7 +699,7 @@ header {
   }
 
   .icon-lucide {
-    width: 18px;
+    width: 17px;
   }
 
   .slash-hint {
@@ -978,7 +979,62 @@ select:focus {
   }
 }
 
-@media (max-width: 1300px) {
+.searchUsers {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 12px 20px;
+  background: #ffffff;
+  transition: 0.3s;
+  border-radius: 12px;
+  position: relative;
+}
+
+.searchUsers:hover {
+  background-color: var(--bodyBg);
+}
+
+.searchUsers img {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.searchUsers .user-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-grow: 1;
+}
+
+.searchUsers h1 {
+  font-size: 14px;
+  font-weight: 700;
+  margin: 0;
+  color: #1d1d1f;
+  letter-spacing: -0.2px;
+}
+
+.searchUsers h3 {
+  font-size: 10px;
+  color: #86868b;
+  font-weight: 400;
+  margin: 0;
+}
+
+.searchUsers p {
+  font-size: 12px;
+  margin: 2px 0 0 0;
+  color: var(--text);
+  font-weight: 600;
+  position: absolute;
+  right: 15px;
+  top: 25px;
+  font-weight: 500;
+}
+
+@media (max-width: 1200px) {
   .aside-right {
     display: none !important;
   }
@@ -988,6 +1044,15 @@ select:focus {
     position: inherit;
     margin-top: 20px;
     width: 100%;
+  }
+
+  .modal-search {
+    padding: 0px 0px !important;
+
+    .modal-search-card {
+      width: 80% !important;
+      margin: 0 auto;
+    }
   }
 }
 
