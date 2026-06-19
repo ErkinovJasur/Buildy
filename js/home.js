@@ -1,10 +1,4 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // userning nikini chaqirib olamiz
-
-  const userNamee = (document.getElementById("userNamee").textContent =
-    localStorage.getItem("name"));
-  const userNikk = (document.getElementById("userNikk").textContent =
-    "@" + localStorage.getItem("nik"));
 
   // like
 

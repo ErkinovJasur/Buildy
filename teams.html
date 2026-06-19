@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buildly — Show what you build.</title>
+    <link rel="stylesheet" href="css/teams.css">
+    <link rel="stylesheet" href="css/all.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Akt:wght@100..900&family=Caprasimo&family=Cookie&family=Great+Vibes&family=Imperial+Script&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=League+Spartan:wght@100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=TikTok+Sans:opsz,wdth@12..36,138&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+
+    <div class="aside"></div>
+
+    <nav class="mobile-bottom-nav">
+        <a href="index.html">
+            <i data-lucide="house"></i>
+        </a>
+        <a>
+            <i data-lucide="compass"></i>
+        </a>
+        <a onclick="modalProject.style.display = 'flex'">
+            <i data-lucide="plus"></i>
+        </a>
+        <a>
+            <i data-lucide="MessageCircle"></i>
+        </a>
+        <a id="user">
+            <i data-lucide="circle-user"></i>
+        </a>
+    </nav>
+
+    <div class="buildy">
+        <aside class="aside-left"></aside>
+        <div class="container">
+            <main>
+                <header></header>
+                <div class="teams-header">
+                    <h1>Jamoalar</h1>
+                    <button class="create-team-btn"><i style="width: 14px;" data-lucide="plus"></i> Yaratish</button>
+                </div>
+                <div class="teams-wrapper">
+                    <div class="team-list"></div>
+                </div>
+            </main>
+        </div>
+        <aside class="aside-right"></aside>
+    </div>
+
+    <div class="modal"></div>
+    <div class="modal-project" id="modal-project"></div>
+
+    <script src="js/navbar.js"></script>
+    <script src="js/aside-left.js"></script>
+    <script src="js/mobile-menu.js"></script>
+    <script src="js/addProject.js"></script>
+    <script src="js/aside-right.js"></script>
+    <script src="js/modal-registar.js"></script>
+
+
+    <script>
+        const avatarTeam = document.querySelector(".team-avatar");
+        const teamList = document.querySelector(".team-list");
+        const teamName = document.getElementById("teamName");
+        const teamBio = document.getElementById("teamBio");
+
+        const teams = [
+            { id: 1, name: "Buildly Devs", members: 35, location: "Uzbekistan", category: "Fullstack" },
+            { id: 2, name: "UzTech Community", members: 120, location: "Global", category: "Backend" },
+            { id: 3, name: "UI/UX Wizards", members: 24, location: "Tashkent", category: "Design" },
+            { id: 4, name: "Next.js Masters", members: 15, location: "Remote", category: "Frontend" },
+            { id: 5, name: "Mobile Squad", members: 42, location: "Samarkand", category: "Mobile" },
+            { id: 6, name: "Python Ninjas", members: 89, location: "Global", category: "Backend" },
+            { id: 7, name: "Designers Hub", members: 56, location: "Tashkent", category: "Design" },
+            { id: 8, name: "AI Explorers", members: 28, location: "Remote", category: "AI/ML" },
+            { id: 9, name: "React Pioneers", members: 67, location: "Tashkent", category: "Frontend" },
+            { id: 10, name: "Security Gurus", members: 12, location: "Remote", category: "Security" },
+            { id: 11, name: "Data Scientists", members: 45, location: "Global", category: "AI/ML" },
+            { id: 12, name: "Startup Launchpad", members: 102, location: "Tashkent", category: "Fullstack" },
+            { id: 13, name: "Open Source Club", members: 210, location: "Global", category: "General" },
+            { id: 14, name: "Swift Coders", members: 33, location: "Remote", category: "Mobile" },
+            { id: 15, name: "Web Architects", members: 19, location: "Tashkent", category: "Frontend" },
+            { id: 16, name: "Web Architects", members: 19, location: "Tashkent", category: "Frontend" }
+        ];
+
+        function data(data) {
+            data.forEach((item) => {
+                teamList.innerHTML += `
+                    <div class="team-row">
+                        <div class="team-avatar">${item.name.charAt(0)}</div>
+                        <div class="team-info">
+                            <h3 id="teamName">${item.name}</h3>
+                            <p id="teamBio">${item.members} a'zo • ${item.location}</p>
+                        </div>
+                        <button class="view-btn">Kirish</button>
+                    </div>
+                `;
+            })
+        }
+
+        data(teams)
+    </script>
+
+</body>
+
+</html>

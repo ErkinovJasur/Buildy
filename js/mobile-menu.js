@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 <i class="icon-lucide" data-lucide="FolderGit2"></i>
                 Loyihalar
             </button>
-            <button>
+            <button onclick="window.location.href = 'teams.html'">
                 <i class="icon-lucide" data-lucide="users"></i>
                 Jamoalar
             </button>

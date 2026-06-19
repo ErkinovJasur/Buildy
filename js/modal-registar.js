@@ -102,8 +102,7 @@ document.addEventListener("DOMContentLoaded", () => {
         name === "" ||
         nikk === "" ||
         emaill === "" ||
-        pass === "" ||
-        select.value === ""
+        pass === "" 
       ) {
         alert("Iltimos barcha maydoni to'ldiring!");
         return;
@@ -117,7 +116,6 @@ document.addEventListener("DOMContentLoaded", () => {
       localStorage.setItem("email", emaill);
       localStorage.setItem("parol", pass);
       localStorage.setItem("bio", bioo);
-      localStorage.setItem("select", select.value);
 
       if (profileCard) profileCard.style.display = "none";
       if (modal1) modal1.style.display = "none";

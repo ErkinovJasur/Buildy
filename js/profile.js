@@ -3,14 +3,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const userName = document.getElementById("userName");
   const userNik = document.getElementById("userNik");
-  const userNamee = document.getElementById("userNamee");
-  const userNikk = document.getElementById("userNikk");
   const userBio = document.getElementById("userBio");
 
   userName.textContent = localStorage.getItem("name");
   userNik.textContent = "@" + localStorage.getItem("nik");
-  userNamee.textContent = localStorage.getItem("name");
-  userNikk.textContent = "@" + localStorage.getItem("nik");
   userBio.textContent = localStorage.getItem("bio");
 
   // Avatar yuklash
@@ -30,7 +26,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const reader = new FileReader();
     reader.onload = () => {
       profileAvatar.src = reader.result;
-      navbarAvatar.src = reader.result;
 
       localStorage.setItem("avatar", reader.result);
     };
@@ -69,7 +64,7 @@ document.addEventListener("DOMContentLoaded", () => {
     profileLinks.style.display = "none";
   }
 
-  if (github && gitHub != "https://github.com/") {
+  if (github && gitHub != "https://github.com/" && gitHub != "") {
     github.href = gitHub;
     github.style.display = "flex";
     profileLinks.style.display = "flex";
@@ -77,7 +72,7 @@ document.addEventListener("DOMContentLoaded", () => {
     github.style.display = "none";
   }
 
-  if (telegram && tg != "https://t.me/") {
+  if (telegram && tg != "https://t.me/" && tg != "") {
     telegram.href = tg;
     telegram.style.display = "flex";
     profileLinks.style.display = "flex";
@@ -85,7 +80,7 @@ document.addEventListener("DOMContentLoaded", () => {
     telegram.style.display = "none";
   }
 
-  if (website && webSite != "https://") {
+  if (website && webSite != "https://" && webSite != "") {
     website.href = webSite;
     website.style.display = "flex";
     profileLinks.style.display = "flex";
@@ -93,11 +88,24 @@ document.addEventListener("DOMContentLoaded", () => {
     website.style.display = "none";
   }
 
-  if (linkedin && linkEdin != "https://www.linkedin.com/in/") {
+  if (
+    linkedin &&
+    linkEdin != "https://www.linkedin.com/in/" &&
+    linkEdin != ""
+  ) {
     linkedin.href = linkEdin;
     linkedin.style.display = "flex";
     profileLinks.style.display = "flex";
   } else {
     linkedin.style.display = "none";
   }
+
+  const editBtn = document.querySelector(".edit-btn");
+  const modal1 = document.querySelector(".modal");
+
+  editBtn.addEventListener("click", function () {
+    modal1.style.display = "flex";
+    document.getElementById("h1").textContent = "Profilni tahrirlash";
+    document.getElementById("btn").textContent = "Saqlash";
+  });
 });

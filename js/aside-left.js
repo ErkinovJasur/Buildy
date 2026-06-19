@@ -16,7 +16,7 @@ function asideleft() {
                     <i class="icon-lucide" data-lucide="FolderGit2"></i>
                     Loyihalar
                 </button>
-                <button class="nav-item">
+                <button onclick="window.location.href = 'teams.html'" class="nav-item" data-page="teams.html">
                     <i class="icon-lucide" data-lucide="users"></i>
                     Jamoalar
                 </button>
@@ -75,14 +75,22 @@ function setActiveLink() {
     }
   });
 
-  const navbarAvatar = document.getElementById("avatarr");
-
   // avatar
-
+  
+  const navbarAvatar = document.getElementById("avatarr");
+  
   const avatar = document.getElementById("user-avatar");
   const savedAvatar = localStorage.getItem("avatar");
 
   if (savedAvatar) {
     avatar.src = savedAvatar;
   }
+
+  // ma'lumotlari
+
+  const userNamee = document.getElementById("userNamee");
+  const userNikk = document.getElementById("userNikk");
+
+  userNamee.textContent = localStorage.getItem("name");
+  userNikk.textContent = "@" + localStorage.getItem("nik");
 }

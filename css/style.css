@@ -37,7 +37,7 @@
 }
 
 .user-avatar {
-  width: 55px !important;
+  width: 50px !important;
   height: 49px !important;
   border-radius: 999px;
   object-fit: cover;
@@ -287,8 +287,4 @@
     padding-bottom: 200px;
   }
 
-  .user-avatar {
-    width: 54px !important;
-    height: 45px !important;
-  }
 }
