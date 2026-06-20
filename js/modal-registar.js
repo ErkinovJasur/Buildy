@@ -59,6 +59,12 @@ document.addEventListener("DOMContentLoaded", () => {
   const bio = document.getElementById("bio");
   const btn = document.getElementById("btn");
 
+  namee.value = localStorage.getItem("name");
+  nik.value = localStorage.getItem("nik")
+  email.value = localStorage.getItem("email")
+  bio.value = localStorage.getItem("bio")
+  parol.value = localStorage.getItem("parol")
+
   // modal yopilishi
 
   if (modal1) {
@@ -98,12 +104,7 @@ document.addEventListener("DOMContentLoaded", () => {
       let pass = parol.value;
       let bioo = bio.value;
 
-      if (
-        name === "" ||
-        nikk === "" ||
-        emaill === "" ||
-        pass === "" 
-      ) {
+      if (name === "" || nikk === "" || emaill === "" || pass === "") {
         alert("Iltimos barcha maydoni to'ldiring!");
         return;
       } else if (!emaill.includes("@")) {

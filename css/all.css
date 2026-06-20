@@ -730,7 +730,6 @@ header {
   max-width: 320px !important;
 
   p a {
-    transition: 0.3s;
   }
 
   p a:hover {
@@ -963,6 +962,8 @@ header {
     transform: translate3d(100%);
   }
 }
+
+/* input search */
 
 .searchUsers {
   display: flex;

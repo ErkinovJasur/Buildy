@@ -1,9 +1,13 @@
 document.addEventListener("DOMContentLoaded", () => {
   const modalProject = document.getElementById("modal-project");
   const userProjectCard = document.getElementById("userProjectCard");
-
   let isRegistered = localStorage.getItem("name");
   let nikRegistered = localStorage.getItem("nik");
+  const plus = document.getElementById("plus");
+
+  plus.addEventListener("click", function () {
+    modalProject.style.display = "flex";
+  });
 
   // ProjectModal
 
@@ -136,7 +140,15 @@ document.addEventListener("DOMContentLoaded", () => {
               </div>
             </div>
         </div>
-    `;
+      `;
+
+      // agar github url va demo url qo'ymagan bo'lsa buttonlarni o'chiramiz
+
+      const postActions = document.querySelector(".post-actions");
+
+      if (demo === "" || git === "" || techSpans === "") {
+        postActions.style.display = "none";
+      }
     });
 
     // Avatar saqlash qismi
@@ -257,10 +269,5 @@ document.addEventListener("DOMContentLoaded", () => {
 
       reader.readAsDataURL(file);
     });
-
-      // agar github url va demo url qo'ymagan bo'lsa buttonlarni o'chiramiz
-
-
   }
-
 });

@@ -27,7 +27,7 @@
         <a>
             <i data-lucide="compass"></i>
         </a>
-        <a onclick="modalProject.style.display = 'flex'">
+        <a id="plus">
             <i data-lucide="plus"></i>
         </a>
         <a>
@@ -45,14 +45,29 @@
                 <header></header>
                 <div class="teams-header">
                     <h1>Jamoalar</h1>
-                    <button class="create-team-btn"><i style="width: 14px;" data-lucide="plus"></i> Yaratish</button>
+                    <button class="create-team-btn"><i style="width: 14px;" data-lucide="plus"></i> Jamoa yaratish</button>
                 </div>
                 <div class="teams-wrapper">
                     <div class="team-list"></div>
+                    <div class="team-lists"></div>
                 </div>
             </main>
         </div>
         <aside class="aside-right"></aside>
+    </div>
+
+    <div class="modal-team">
+        <div class="modal-team-card">
+            <h2>Jamoa yaratish</h2>
+            <p>Jamoangizni tuzing va loyihalaringizni rivojlantiring.</p>
+            <p>Team name</p>
+            <input id="teamNameInp" type="text" placeholder="Jamoa nomini kiriting.">
+            <p>Team avatar URL</p>
+            <input id="teamUrlInp" type="url" placeholder="Jamoa avatar URL kiriting.">
+            <p>Team bio</p>
+            <input id="teamBioInp" type="text" placeholder="Jamoaga tavsif kiriting.">
+            <button id="button">Yaratish</button>
+        </div>
     </div>
 
     <div class="modal"></div>
@@ -65,12 +80,16 @@
     <script src="js/aside-right.js"></script>
     <script src="js/modal-registar.js"></script>
 
-
     <script>
+        // jamoaning fakesi
+
         const avatarTeam = document.querySelector(".team-avatar");
         const teamList = document.querySelector(".team-list");
+        const teamLists = document.querySelector(".team-lists");
         const teamName = document.getElementById("teamName");
         const teamBio = document.getElementById("teamBio");
+
+        // jamoa array
 
         const teams = [
             { id: 1, name: "Buildly Devs", members: 35, location: "Uzbekistan", category: "Fullstack" },
@@ -98,7 +117,7 @@
                         <div class="team-avatar">${item.name.charAt(0)}</div>
                         <div class="team-info">
                             <h3 id="teamName">${item.name}</h3>
-                            <p id="teamBio">${item.members} a'zo • ${item.location}</p>
+                            <p id="teamBio">${item.members} a'zo · ${item.location}</p>
                         </div>
                         <button class="view-btn">Kirish</button>
                     </div>
@@ -107,6 +126,102 @@
         }
 
         data(teams)
+
+        // jamoa yaratish
+
+        const yaratish = document.querySelector(".create-team-btn");
+        const modalTeam = document.querySelector(".modal-team");
+        const teamNameInput = document.getElementById('teamNameInp');
+        const teamUrlInput = document.getElementById('teamUrlInp');
+        const teamBioInput = document.getElementById('teamBioInp');
+        const createButton = document.getElementById('button');
+
+        // yaratish button bosilganda modal ochilishi
+
+        yaratish.addEventListener("click", function () {
+            modalTeam.style.display = "flex";
+        });
+
+        // modalning chetlari bosilganda modal yopilishi
+
+        document.addEventListener("click", function (e) {
+            if (e.target === modalTeam) {
+                modalTeam.style.display = "none"
+            }
+        })
+
+        // saqlagan ma'lumotlarni chaqirib olamiz
+
+        let teamN = localStorage.getItem("teamN")
+        let teamB = localStorage.getItem("teamB")
+        let teamM = localStorage.getItem("teamM")
+        let teamU = localStorage.getItem("teamU")
+        let teamL = localStorage.getItem("teamL")
+        let teamListss = localStorage.getItem("teamLists")
+
+        // saqlash (localStorage)
+
+        if (teamListss) {
+            teamLists.innerHTML = `
+                <div class="team-rows">
+                    <div class="team-avatar">${teamN.charAt(0)}</div>
+                    <div class="team-info">
+                        <h3 id="teamName">${teamN}</h3>
+                        <p id="teamBio">${teamM} a'zo · ${teamL}</p>
+                    </div>
+                    <button class="view-btn">Kirish</button>
+                </div>            
+            `;
+        }
+
+        // button bosilganda jamoa yaratilishi
+
+        createButton.onclick = () => {
+
+            // jamoani objectga aylantiramiz
+
+            const newTeam = {
+                name: teamNameInput.value,
+                bio: teamBioInput.value,
+                avatar: teamUrlInput.value,
+                members: 1,
+                location: "Uzbekistan, Tashkent"
+            }
+
+            // inputlar bo'sh bo'lsa alert ⚠️
+
+            if (teamNameInput.value === "" || teamBioInput.value === "" || teamUrlInput.value === "") {
+                alert('Barcha maydonlarni shart!')
+                return;
+            }
+
+            // jamoa HTML 
+
+            teamLists.innerHTML = `
+                <div class="team-row">
+                    <div class="team-avatar">${newTeam.name.charAt(0)}</div>
+                    <div class="team-info">
+                        <h3 id="teamName">${newTeam.name}</h3>
+                        <p id="teamBio">${newTeam.members} a'zo · ${newTeam.location}</p>
+                    </div>
+                    <button class="view-btn">Kirish</button>
+                </div>            
+            `;
+
+            // ma'lumotlarni saqlash
+
+            localStorage.setItem("teamLists", teamLists)
+            localStorage.setItem("teamN", newTeam.name)
+            localStorage.setItem("teamB", newTeam.bio)
+            localStorage.setItem("teamM", newTeam.members)
+            localStorage.setItem("teamU", newTeam.avatar)
+            localStorage.setItem("teamL", newTeam.location)
+
+            // oxirida modalni yopish
+
+            modalTeam.style.display = "none";
+
+        }
     </script>
 
 </body>

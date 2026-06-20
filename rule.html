@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="uz">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buildly - Qoidalar</title>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root {
+            --bodyBg: #fef7ef;
+            --cardBg: #ffffff;
+            --text: #111827;
+            --btn: #ff610b;
+            --border: #fed7aa;
+            --gray: #6b7280;
+        }
+
+        body {
+            background-color: var(--bodyBg);
+            color: var(--text);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 80px 20px;
+        }
+
+        .wrapper {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-size: 32px;
+            font-weight: 800;
+            margin-bottom: 50px;
+            letter-spacing: -0.5px;
+            border-bottom: 2px solid var(--border);
+            padding-bottom: 20px;
+        }
+
+        .rules-list {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 20px;
+        }
+
+        .rule-item {
+            display: grid;
+            grid-template-columns: 40px 1fr;
+            gap: 20px;
+        }
+
+        .rule-number {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--btn);
+            padding-top: 4px;
+        }
+
+        .rule-content h3 {
+            margin: 0 0 8px 0;
+            font-size: 18px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .rule-content p {
+            margin: 0;
+            color: var(--gray);
+            font-size: 15px;
+        }
+
+        a {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 13px;
+            margin-top: 20px;
+            cursor: pointer;
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 600;
+            color: var(--gray);
+
+            svg {
+                width: 17px;
+            }
+
+        }
+
+        a:hover {
+            color: var(--text);
+        }
+
+        /* Responsive */
+        @media (max-width: 480px) {
+            body {
+                padding: 40px 15px;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+
+            .rule-item {
+                grid-template-columns: 1fr;
+                gap: 5px;
+            }
+
+            .rule-number {
+                margin-bottom: 5px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="wrapper">
+        <h1>Buildly Compliance Rules</h1>
+
+        <div class="rules-list">
+            <div class="rule-item">
+                <div class="rule-number">01</div>
+                <div class="rule-content">
+                    <h3>Content Restriction</h3>
+                    <p>Taqiqlangan yoki axloqiy me’yorlarga zid bo‘lgan har qanday kontentni yuklash qat’iyan man
+                        etiladi. Bunday holat aniqlanganda, biz loyihangizni ogohlantirishsiz o‘chirish huquqiga egamiz.
+                    </p>
+                </div>
+            </div>
+
+            <div class="rule-item">
+                <div class="rule-number">02</div>
+                <div class="rule-content">
+                    <h3>Data Integrity</h3>
+                    <p>Buildly platformasiga yuklangan barcha ma’lumotlar tizim xavfsizligini ta’minlash maqsadida
+                        nazorat qilinadi. Qoidalarni buzgan hisoblar doimiy bloklanadi.</p>
+                </div>
+            </div>
+
+            <div class="rule-item">
+                <div class="rule-number">03</div>
+                <div class="rule-content">
+                    <h3>Usage Policy</h3>
+                    <p>Platforma resurslaridan suiiste’mol qilish, spam tarqatish yoki avtomatlashtirilgan hujumlar
+                        aniqlansa, xizmat ko‘rsatish bir tomonlama to‘xtatiladi.</p>
+                </div>
+            </div>
+
+            <div class="rule-item">
+                <div class="rule-number">04</div>
+                <div class="rule-content">
+                    <h3>Liability Clause</h3>
+                    <p>Buildly platformada joylashtirilgan kontentning mazmuni uchun javobgar emas. Barcha huquqiy va
+                        axloqiy javobgarlik bevosita loyiha egasi zimmasida.</p>
+                </div>
+            </div>
+
+            <div class="rule-item">
+                <div class="rule-number">05</div>
+                <div class="rule-content">
+                    <h3>Account Compliance</h3>
+                    <p>Taqdim etilgan ma’lumotlar soxta bo‘lsa yoki shartnoma shartlari buzilsa, ma’muriyat barcha
+                        ma’lumotlarni butunlay o‘chirish vakolatiga ega.</p>
+                </div>
+            </div>
+
+            <div class="rule-item">
+                <div class="rule-number">06</div>
+                <div class="rule-content">
+                    <h3>System Modification</h3>
+                    <p>Biz tizim barqarorligini saqlash maqsadida istalgan vaqtda platforma funksionalini o‘zgartirish
+                        yoki cheklash huquqini saqlab qolamiz.</p>
+                </div>
+            </div>
+        </div>
+        <a href="index.html"><i data-lucide="chevron-left"></i> Bosh sahifaga qaytish</a>
+    </div>
+
+
+    <script>
+        lucide.createIcons()
+    </script>
+
+</body>
+
+</html>

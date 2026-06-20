@@ -18,7 +18,7 @@
   border-bottom: 1px solid var(--border) !important;
   position: -webkit-sticky;
   position: sticky;
-  top: 56px;
+  top: 58px;
   left: 0;
   z-index: 9999;
   background-color: var(--bodyBg);
@@ -54,16 +54,18 @@
   }
 }
 
-.team-list {
+.team-list,
+.team-lists {
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
   flex-wrap: wrap;
+  gap: 10px;
 }
 
-.team-row {
+.team-row,
+.team-rows {
   background: var(--cardBg);
   padding: 16px 20px;
   border-radius: 20px;
@@ -76,10 +78,11 @@
     transform 0.2s,
     box-shadow 0.2s;
   width: 100%;
-  max-width: 400px;
+  max-width: 400px !important;
 }
 
-.team-row:hover {
+.team-row:hover,
+.team-rows:hover {
   transform: translateY(-2px);
   box-shadow: var(--shadow);
 }
@@ -133,7 +136,8 @@
   transform: scale(0.96);
 }
 
-.team-row {
+.team-row,
+.team-rows {
   background: var(--cardBg);
   padding: 16px 20px;
   border-radius: 20px;
@@ -148,6 +152,86 @@
 .team-row:hover {
   border-color: var(--btn);
   box-shadow: var(--shadow);
+}
+
+.modal-team {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(90, 90, 90, 0.166);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 99999;
+}
+
+.modal-team-card {
+  background: var(--cardBg);
+  width: 90%;
+  max-width: 400px;
+  padding: 28px;
+  border-radius: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.modal-team-card h2 {
+  margin: 0;
+  color: var(--text);
+  font-size: 20px;
+}
+
+.modal-team-card p:first-of-type {
+  margin: -8px 0 8px 0;
+  color: var(--gray);
+  font-size: 14px;
+}
+
+.modal-team-card p:not(:first-of-type) {
+  margin: 8px 2px -12px 0;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.modal-team-card input {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: transparent;
+  font-size: 14px;
+  box-sizing: border-box;
+  transition: 0.3s;
+}
+
+.modal-team-card input:focus {
+  outline: none;
+  border-color: var(--btn);
+  box-shadow: 0 0 0 3px rgba(255, 97, 11, 0.1);
+}
+
+/* Yaratish tugmasi */
+.modal-team-card button {
+  margin-top: 10px;
+  background: var(--btn);
+  color: white;
+  border: none;
+  padding: 14px;
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.modal-team-card button:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
 }
 
 @media (max-width: 768px) {

@@ -1,5 +1,12 @@
 document.addEventListener("DOMContentLoaded", () => {
 
+  const avatar = document.getElementById("user-avatar");
+  const savedAvatar = localStorage.getItem("avatar");
+
+  if (savedAvatar) {
+    avatar.src = savedAvatar;
+  }
+
   // like
 
   const likeButtons = document.querySelectorAll(".icon-lucide.like");

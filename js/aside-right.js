@@ -54,7 +54,7 @@ function asideright() {
             <p id="tip"></p>
         </div>
     </div>
-    <p style="font-size: 11px; display: flex; gap: 10px;">© 2026 Buildly · <a style="cursor: pointer">Xavfsizlik</a> <a style="cursor: pointer">Qoidalar</a></p>
+    <p style="font-size: 11px; display: flex; gap: 10px;">© 2026 Buildly · <a style="cursor: pointer">Xavfsizlik</a> <a style="cursor: pointer" href="rule.html">Qoidalar</a></p>
   `;
 }
 
