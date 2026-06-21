@@ -5,9 +5,13 @@ document.addEventListener("DOMContentLoaded", () => {
   const userNik = document.getElementById("userNik");
   const userBio = document.getElementById("userBio");
 
-  userName.textContent = localStorage.getItem("name");
+  let user = (userName.textContent = localStorage.getItem("name"));
   userNik.textContent = "@" + localStorage.getItem("nik");
   userBio.textContent = localStorage.getItem("bio");
+
+  if (user === "Buildly official") {
+    document.getElementById("pp").textContent = "5";
+  }
 
   // Avatar yuklash
 
@@ -55,49 +59,40 @@ document.addEventListener("DOMContentLoaded", () => {
   let webSite = localStorage.getItem("website");
   let linkEdin = localStorage.getItem("linkedin");
 
-  if (
-    gitHub != "https://github.com/" ||
-    tg != "https://t.me/" ||
-    webSite != "https://" ||
-    linkEdin != "https://www.linkedin.com/in/"
-  ) {
+  if (gitHub === null || tg === null || webSite === null || linkEdin === null) {
     profileLinks.style.display = "none";
   }
 
-  if (github && gitHub != "https://github.com/" && gitHub != "") {
+  if (gitHub === "" || gitHub === null) {
+    github.style.display = "none";
+  } else {
     github.href = gitHub;
     github.style.display = "flex";
     profileLinks.style.display = "flex";
-  } else {
-    github.style.display = "none";
   }
 
-  if (telegram && tg != "https://t.me/" && tg != "") {
+  if (tg === "" || tg === null) {
+    telegram.style.display = "none";
+  } else {
     telegram.href = tg;
     telegram.style.display = "flex";
     profileLinks.style.display = "flex";
-  } else {
-    telegram.style.display = "none";
   }
 
-  if (website && webSite != "https://" && webSite != "") {
+  if (webSite === "" || webSite === null) {
+    website.style.display = "none";
+  } else {
     website.href = webSite;
     website.style.display = "flex";
     profileLinks.style.display = "flex";
-  } else {
-    website.style.display = "none";
   }
 
-  if (
-    linkedin &&
-    linkEdin != "https://www.linkedin.com/in/" &&
-    linkEdin != ""
-  ) {
+  if (linkEdin === "" || linkEdin === null) {
+    linkedin.style.display = "none";
+  } else {
     linkedin.href = linkEdin;
     linkedin.style.display = "flex";
     profileLinks.style.display = "flex";
-  } else {
-    linkedin.style.display = "none";
   }
 
   const editBtn = document.querySelector(".edit-btn");
@@ -109,3 +104,18 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("btn").textContent = "Saqlash";
   });
 });
+
+// loyihalarni profilga chqarish
+
+let projectsArray = JSON.parse(localStorage.getItem("projectsList")) || [];
+
+if (projectsArray.length === 0) {
+  document.querySelector(".projects").style.display = "flex";
+} else {
+  document.querySelector(".projects").style.display = "none";
+  document.getElementById("s").innerHTML = `${projectsArray}`;
+}
+
+// qo'ygan projectlarini soni
+
+document.getElementById("projectsLength").textContent = projectsArray.length;

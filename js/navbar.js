@@ -59,6 +59,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   const api = "./users.json";
+  const resultsUsers = document.getElementById("results");
 
   async function user() {
     try {
@@ -66,15 +67,13 @@ document.addEventListener("DOMContentLoaded", () => {
       let data = await response.json();
       render(data);
     } catch (error) {
-      console.log(error);
+      resultsUsers.innerHTML = `<h3 style="color: red; font-weight: 400; text-align: center; font-size: 12px; margin-top: 100px;">Ma'lumotlarni yuklashda xatolik yuz berdi.</h3>`;
     }
   }
 
   user();
 
   function render(data) {
-    const resultsUsers = document.getElementById("results");
-
     searchInput.addEventListener("input", function () {
       let filter = data.users.filter((value) => {
         const term = searchInput.value.trim().toLowerCase();
@@ -84,23 +83,27 @@ document.addEventListener("DOMContentLoaded", () => {
       resultsUsers.innerHTML = "";
 
       if (filter.length === 0) {
-        resultsUsers.innerHTML = `<h2 style="text-align: center; font-size: 12px; margin-top: 100px; color: red; font-weight: 500;">Foydalanuvchi topilmadi</h2>`;
+        resultsUsers.innerHTML = `
+          <h2 style="text-align: center; font-size: 12px; margin-top: 100px; color: red; font-weight: 500;">Foydalanuvchi topilmadi</h2>
+        `;
       } else {
-        resultsUsers.innerHTML = `<h2 style="text-align: center; font-size: 13px; margin-top: 100px;">Foydalanuvchi qidirilmoqda...</h2>`;
+        resultsUsers.innerHTML = `
+          <h2 style="text-align: center; font-size: 13px; margin-top: 100px;">Foydalanuvchi qidirilmoqda...</h2>
+        `;
 
         setTimeout(() => {
           resultsUsers.innerHTML = "";
 
           filter.map((item) => {
             resultsUsers.innerHTML += `
-          <div class="searchUsers">
-            <img src="${item.avatar}"></img>
-            <div>
-              <h1>${item.name}</h1>
-              <h3>${item.username}</h3>
-            </div>
-          </div>
-        `;
+              <div class="searchUsers">
+                <img src="${item.avatar}"></img>
+                <div>
+                  <h1>${item.name}</h1>
+                  <h3>${item.username}</h3>
+                </div>
+              </div>
+            `;
           });
         }, 2500);
       }

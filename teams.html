@@ -45,7 +45,11 @@
                 <header></header>
                 <div class="teams-header">
                     <h1>Jamoalar</h1>
-                    <button class="create-team-btn"><i style="width: 14px;" data-lucide="plus"></i> Jamoa yaratish</button>
+                    <button class="create-team-btn"><i style="width: 14px;" data-lucide="plus"></i> Jamoa
+                        yaratish</button>
+                </div>
+                <div class="srch">
+                    <input id="seachInput" type="search" placeholder="Jamoa nomi bo'yicha qidirish.">
                 </div>
                 <div class="teams-wrapper">
                     <div class="team-list"></div>
@@ -85,7 +89,6 @@
 
         const avatarTeam = document.querySelector(".team-avatar");
         const teamList = document.querySelector(".team-list");
-        const teamLists = document.querySelector(".team-lists");
         const teamName = document.getElementById("teamName");
         const teamBio = document.getElementById("teamBio");
 
@@ -106,7 +109,7 @@
             { id: 12, name: "Startup Launchpad", members: 102, location: "Tashkent", category: "Fullstack" },
             { id: 13, name: "Open Source Club", members: 210, location: "Global", category: "General" },
             { id: 14, name: "Swift Coders", members: 33, location: "Remote", category: "Mobile" },
-            { id: 15, name: "Web Architects", members: 19, location: "Tashkent", category: "Frontend" },
+            { id: 15, name: "Facebook devs", members: 2, location: "Amerika", category: "Frontend" },
             { id: 16, name: "Web Architects", members: 19, location: "Tashkent", category: "Frontend" }
         ];
 
@@ -119,7 +122,7 @@
                             <h3 id="teamName">${item.name}</h3>
                             <p id="teamBio">${item.members} a'zo · ${item.location}</p>
                         </div>
-                        <button class="view-btn">Kirish</button>
+                        <button class="view-btn">Qo'shilish</button>
                     </div>
                 `;
             })
@@ -131,97 +134,109 @@
 
         const yaratish = document.querySelector(".create-team-btn");
         const modalTeam = document.querySelector(".modal-team");
-        const teamNameInput = document.getElementById('teamNameInp');
-        const teamUrlInput = document.getElementById('teamUrlInp');
-        const teamBioInput = document.getElementById('teamBioInp');
-        const createButton = document.getElementById('button');
 
-        // yaratish button bosilganda modal ochilishi
+        const teamNameInput = document.getElementById("teamNameInp");
+        const teamUrlInput = document.getElementById("teamUrlInp");
+        const teamBioInput = document.getElementById("teamBioInp");
 
-        yaratish.addEventListener("click", function () {
+        const createButton = document.getElementById("button");
+        const teamLists = document.querySelector(".team-lists");
+
+
+        // modal ochish
+
+        yaratish.addEventListener("click", () => {
             modalTeam.style.display = "flex";
         });
 
-        // modalning chetlari bosilganda modal yopilishi
+        // modal yopish
 
-        document.addEventListener("click", function (e) {
+        document.addEventListener("click", (e) => {
             if (e.target === modalTeam) {
-                modalTeam.style.display = "none"
+                modalTeam.style.display = "none";
             }
-        })
+        });
 
-        // saqlagan ma'lumotlarni chaqirib olamiz
+        // localStorage dan olish
 
-        let teamN = localStorage.getItem("teamN")
-        let teamB = localStorage.getItem("teamB")
-        let teamM = localStorage.getItem("teamM")
-        let teamU = localStorage.getItem("teamU")
-        let teamL = localStorage.getItem("teamL")
-        let teamListss = localStorage.getItem("teamLists")
+        let teamArray = JSON.parse(localStorage.getItem("teamList")) || [];
 
-        // saqlash (localStorage)
+        // jamoalarni chiqarish funksiyasi
 
-        if (teamListss) {
-            teamLists.innerHTML = `
-                <div class="team-rows">
-                    <div class="team-avatar">${teamN.charAt(0)}</div>
-                    <div class="team-info">
-                        <h3 id="teamName">${teamN}</h3>
-                        <p id="teamBio">${teamM} a'zo · ${teamL}</p>
+        function renderTeams() {
+            teamLists.innerHTML = "";
+
+            teamArray.forEach((team) => {
+                teamLists.innerHTML += `
+                    <div class="team-row">
+                        <div class="team-avatar">${team.name.charAt(0)}</div>
+                        <div class="team-info">
+                            <h3>${team.name}</h3>
+                            <p>${team.members} a'zo · ${team.location}</p>
+                        </div>
+                        <button class="view-btn">Kirish</button>
                     </div>
-                    <button class="view-btn">Kirish</button>
-                </div>            
-            `;
+
+                `;
+            });
         }
 
-        // button bosilganda jamoa yaratilishi
+        // sayt ochilganda chiqaradi
+
+        renderTeams();
+
+        // yaratish
 
         createButton.onclick = () => {
 
-            // jamoani objectga aylantiramiz
+            if (teamNameInput.value === "" || teamBioInput.value === "" || teamUrlInput.value === "") {
+                alert("Barcha maydonlarni to'ldiring");
+                return;
+            }
 
             const newTeam = {
+                id: Date.now(),
                 name: teamNameInput.value,
                 bio: teamBioInput.value,
                 avatar: teamUrlInput.value,
                 members: 1,
-                location: "Uzbekistan, Tashkent"
-            }
+                location: "Uzbekistan"
+            };
 
-            // inputlar bo'sh bo'lsa alert ⚠️
+            // arrayga qo'shish
 
-            if (teamNameInput.value === "" || teamBioInput.value === "" || teamUrlInput.value === "") {
-                alert('Barcha maydonlarni shart!')
-                return;
-            }
+            teamArray.push(newTeam);
 
-            // jamoa HTML 
+            // saqlash
 
-            teamLists.innerHTML = `
-                <div class="team-row">
-                    <div class="team-avatar">${newTeam.name.charAt(0)}</div>
-                    <div class="team-info">
-                        <h3 id="teamName">${newTeam.name}</h3>
-                        <p id="teamBio">${newTeam.members} a'zo · ${newTeam.location}</p>
-                    </div>
-                    <button class="view-btn">Kirish</button>
-                </div>            
-            `;
+            localStorage.setItem("teamList", JSON.stringify(teamArray));
 
-            // ma'lumotlarni saqlash
+            // qayta chiqarish
 
-            localStorage.setItem("teamLists", teamLists)
-            localStorage.setItem("teamN", newTeam.name)
-            localStorage.setItem("teamB", newTeam.bio)
-            localStorage.setItem("teamM", newTeam.members)
-            localStorage.setItem("teamU", newTeam.avatar)
-            localStorage.setItem("teamL", newTeam.location)
+            renderTeams();
 
-            // oxirida modalni yopish
+            // input tozalash
+
+            teamNameInput.value = "";
+            teamBioInput.value = "";
+            teamUrlInput.value = "";
+
+            // modal yopish
 
             modalTeam.style.display = "none";
-
         }
+
+        const seachInput = document.getElementById("seachInput");
+
+        seachInput.addEventListener("input", function () {
+            let filter = teams.filter((value) => value.name.toLowerCase().includes(seachInput.value.trim("").toLowerCase()))
+            teamList.innerHTML = ""
+            data(filter)
+
+            if (filter.length === 0) {
+                teamList.innerHTML = `<h2 style="font-size: 13px; display: flex; align-items: center; justify-content: center; margin: 15px 0px;">Jamoa topilmadi </h2>`;
+            }
+        })
     </script>
 
 </body>

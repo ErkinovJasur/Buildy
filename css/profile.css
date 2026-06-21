@@ -149,28 +149,6 @@
   font-weight: 300;
 }
 
-/* Role pill */
-#role {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  font-size: 0.7rem;
-  font-weight: 600;
-  color: var(--btn);
-  background: #fff3e8;
-  border: 1px solid var(--border);
-  border-radius: 999px;
-  padding: 3px 10px;
-  margin-top: 10px;
-}
-#role::before {
-  content: "";
-  width: 5px;
-  height: 5px;
-  background: var(--btn);
-  border-radius: 50%;
-}
-
 /* Stats */
 
 .stats-row {
@@ -189,7 +167,7 @@
 
 .stat-item p {
   font-size: 1.1rem;
-  font-weight: 700;
+  font-weight: 800;
   color: var(--text);
 }
 .stat-item h2 {
@@ -281,8 +259,8 @@
 
 .projects h2 {
   font-size: 0.9rem;
-  font-weight: 600;
 }
+
 .projects > p {
   font-size: 0.8rem;
   color: var(--gray);
@@ -328,6 +306,7 @@ a {
   width: 14px;
   height: 14px;
 }
+
 .button.r {
   display: none;
 }

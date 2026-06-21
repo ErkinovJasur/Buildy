@@ -62,10 +62,10 @@
   justify-content: center;
   flex-wrap: wrap;
   gap: 10px;
+  width: 100%;
 }
 
-.team-row,
-.team-rows {
+.team-row {
   background: var(--cardBg);
   padding: 16px 20px;
   border-radius: 20px;
@@ -77,13 +77,12 @@
   transition:
     transform 0.2s,
     box-shadow 0.2s;
-  width: 100%;
+  width: 100% !important;
   max-width: 400px !important;
 }
 
 .team-row:hover,
 .team-rows:hover {
-  transform: translateY(-2px);
   box-shadow: var(--shadow);
 }
 
@@ -232,6 +231,28 @@
 .modal-team-card button:hover {
   opacity: 0.9;
   transform: translateY(-1px);
+}
+
+#seachInput {
+  width: 92%;
+  padding: 14px;
+  border: 1px solid var(--border);
+  border-radius: 13px;
+  background-color: var(--cardBg);
+  outline: none;
+  transition: 0.4s;
+}
+
+#seachInput:focus {
+  border: 1px solid var(--btn);
+  box-shadow: var(--shadow);
+}
+
+.srch {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
 }
 
 @media (max-width: 768px) {
