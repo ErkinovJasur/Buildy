@@ -288,6 +288,57 @@
   }
 }
 
+.logOut {
+  background-color: #fff1f2;
+  border: 1px solid #fda4af;
+  border-radius: 16px;
+  padding: 24px;
+  width: 100%;
+}
+
+.logOut h2 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 16px;
+  color: var(--text);
+  margin: 0 0 12px 0;
+
+  svg {
+    color: #e11d48;
+  }
+}
+
+.logOut p {
+  font-size: 13px;
+  color: var(--gray);
+  margin: 0 0 20px 0;
+  line-height: 1.5;
+}
+
+.logOut button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #e11d48;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 13px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.logOut button:hover {
+  background-color: #be123c;
+}
+
+.logOut svg {
+  width: 18px;
+}
+
 @media (max-width: 970px) {
   .modes {
     flex-wrap: wrap;
@@ -305,9 +356,5 @@
 
   .lang-card {
     width: 100%;
-  }
-
-  .btns {
-    position: inherit;
   }
 }

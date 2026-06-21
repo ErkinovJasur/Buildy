@@ -89,7 +89,16 @@ document.addEventListener("DOMContentLoaded", () => {
   const log = document.getElementById("log");
 
   log.addEventListener("click", function () {
-    localStorage.clear();
+    localStorage.removeItem("name");
+    localStorage.removeItem("nik");
+    localStorage.removeItem("bio");
+    localStorage.removeItem("email");
+    localStorage.removeItem("parol");
+    localStorage.removeItem("userProfileCard");
+    localStorage.removeItem("github");
+    localStorage.removeItem("tg");
+    localStorage.removeItem("website");
+    localStorage.removeItem("linkedin");
     location.reload();
   });
 

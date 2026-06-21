@@ -16,14 +16,13 @@ document.addEventListener("DOMContentLoaded", () => {
   // Avatar yuklash
 
   const profileAvatar = document.getElementById("avatar");
-  const profileAvatars = document.getElementById("avatars");
+  const profileAvatarss = document.getElementById("avatarss");
   const avatarInput = document.getElementById("avatarInput");
 
   const savedAvatar = localStorage.getItem("avatar");
 
   if (savedAvatar) {
     profileAvatar.src = savedAvatar;
-    profileAvatars.src = savedAvatar;
   }
 
   avatarInput.addEventListener("change", (e) => {
@@ -128,7 +127,7 @@ if (projectUser.length === 0) {
     document.getElementById("s").innerHTML += `
      <div class="project-post">
           <div class="post-header">
-              <img class="user-avatar" src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Default_pfp.svg/500px-Default_pfp.svg.png" alt="user-avatar" id="avatars">
+              <img class="user-avatar" src="${localStorage.getItem("avatar")}" alt="user-avatar">
               <div class="user-info">
                   <h3>${localStorage.getItem("name") || "username"}</h3>
                   <span class="user-nik">@${ localStorage.getItem("nik") || "user"} · <p id="clock">${element.clock || ""}</p></span>

@@ -5,6 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (savedAvatar) {
     avatar.src = savedAvatar;
+    localStorage.setItem("avatar")
   }
 
   // like

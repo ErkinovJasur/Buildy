@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
             <button class="plus" id="openProjectModalBtn">
                 <i class="icon-lucide" data-lucide="plus"></i>
             </button>
-            <button class="bell">
+            <button class="bell" onclick="window.location.href = 'notification.html'">
                 <i class="icon-lucide" data-lucide="bell"></i>
             </button>
             <button class="menu" id="menu">

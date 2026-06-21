@@ -114,6 +114,13 @@
                             Tizimdan chiqish
                         </button>
                     </div>
+                    <h1>Barcha ma'lumotlarni o'chirish</h1>
+                    <div class="logOut">
+                        <h2><i data-lucide="triangle-alert"></i> Barcha ma'lumotlarni o'chirish</h2>
+                        <p>Akkaunt va loyihalaringiz, chat yozishmalaringiz, izohlaringiz barchasi o'chiriladi. Bu
+                            amalni qaytarib bo'lmaydiю</p>
+                        <button id="delete"><i data-lucide="trash-2"></i> Akkauntni o'chirish</button>
+                    </div>
                     <div class="btns">
                         <button class="btn" onclick="location.reload()">Bekor qilish</button>
                         <button id="save">Saqlash</button>
@@ -137,10 +144,10 @@
     <script>
         // profile
 
-        const idNamee = document.getElementById("idName").textContent = localStorage.getItem("name");
-        const idNik = document.getElementById("idNik").textContent = '@' + localStorage.getItem("nik");
-        const idEmail = document.getElementById("idEmail").textContent = localStorage.getItem("email");
-        const idPass = document.getElementById("idPass").textContent = localStorage.getItem("parol");
+        const idNamee = document.getElementById("idName").textContent = localStorage.getItem("name") || 'username';
+        const idNik = document.getElementById("idNik").textContent = '@' + localStorage.getItem("nik") || 'user';
+        const idEmail = document.getElementById("idEmail").textContent = localStorage.getItem("email") || 'user@gmail.com';
+        const idPass = document.getElementById("idPass").textContent = localStorage.getItem("parol") || '*******';
 
         // account
 
@@ -163,6 +170,40 @@
             localStorage.setItem("linkedin", linkedin.value)
         });
 
+        const logout = document.getElementById("logout");
+
+        logout.addEventListener("click", function () {
+            let false_or_true = confirm("Akkauntingizdan chiqmoqchimisiz?")
+
+            if (false_or_true === true) {
+                localStorage.removeItem("name");
+                localStorage.removeItem("nik");
+                localStorage.removeItem("bio");
+                localStorage.removeItem("email");
+                localStorage.removeItem("parol");
+                localStorage.removeItem("userProfileCard");
+                localStorage.removeItem("github");
+                localStorage.removeItem("tg");
+                localStorage.removeItem("website");
+                localStorage.removeItem("linkedin");
+                location.reload();
+            } else {
+                console.log("Tizimdan chiqish bekor qilindi!");
+            }
+        })
+
+        const delet = document.getElementById("delete");
+
+        delet.addEventListener("click", function () {
+            let true_or_false = confirm("Akkauntingizni rostan ochirmoqchimisiz?")
+
+            if (true_or_false === true) {
+                localStorage.clear()
+                location.reload();
+            } else {
+                console.log("Akkauntni o'chirish bekor qilindi!");
+            }
+        })
     </script>
 
 </body>
