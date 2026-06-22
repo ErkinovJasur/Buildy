@@ -1159,8 +1159,11 @@
 
         @media (max-width: 640px) {
 
-            .nav-links,
-            .nav-actions {
+            .nav {
+                justify-content: space-between;
+            }
+
+            .nav-links {
                 display: none;
             }
 
@@ -1240,12 +1243,14 @@
                 <li><a href="#projects">Loyihalar</a></li>
                 <li><a href="#features">Kashf qilish</a></li>
             </ul>
-            <div class="nav-actions">
-                <button class="btn-primary" onclick="login()">Kirish</button>
+            <div style="display: flex; align-items: center; gap: 10px;">
+                <div class="nav-actions">
+                    <button class="btn-primary" onclick="login()">Kirish</button>
+                </div>
+                <button class="burger" id="burger" aria-label="Menu">
+                    <i data-lucide="menu" style="width:22px;height:22px;"></i>
+                </button>
             </div>
-            <button class="burger" id="burger" aria-label="Menu">
-                <i data-lucide="menu" style="width:22px;height:22px;"></i>
-            </button>
         </nav>
     </header>
 
@@ -1257,8 +1262,6 @@
         <a href="#projects">Loyihalar</a>
         <a href="#features">Kashf qilish</a>
         <div class="mobile-divider"></div>
-        <a href="#">Kirish</a>
-        <a href="#" style="color:var(--btn);">Ro'yxatdan o'tish →</a>
     </div>
 
     <!-- HERO -->

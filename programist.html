@@ -43,6 +43,19 @@
         <div class="container">
             <main>
                 <header></header>
+                <div class="skill">
+                    <h1>Dasturchilar</h1>
+                    <p>Yangi hamkorlar toping va kuchli jamoalar yarating</p>
+                    <div class="btn-group">
+                        <button class="filter-btn">Barchasi</button>
+                        <button class="filter-btn">Frontend</button>
+                        <button class="filter-btn">Backend</button>
+                        <button class="filter-btn">Full-stack</button>
+                        <button class="filter-btn">Mobile</button>
+                        <button class="filter-btn">AI</button>
+                        <button class="filter-btn">Designer</button>
+                    </div>
+                </div>
                 <div id="developers"></div>
             </main>
         </div>
@@ -100,6 +113,18 @@
                 nik: "@jahongir",
                 role: "🔥 Next.js Developer",
                 avatar: "https://randomuser.me/api/portraits/men/22.jpg"
+            },
+            {
+                name: "Erkinov Jasur",
+                nik: "@erkinov",
+                role: "🌿 Frontend Developer",
+                avatar: "https://wallpaperaccess.com/full/30097.jpg"
+            },
+            {
+                name: "Karim",
+                nik: "@rashid o'g'li",
+                role: "⚙️ Backend Developer",
+                avatar: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSsJyjPCWIpJ5XieQLxeykSl6JxNL05ZGUfble9MMRqbA&s=10"
             }
         ];
 
@@ -112,12 +137,62 @@
                             <h2>${item.name}</h2>
                             <p>${item.role}</p>
                         </div>
+                        <button title="Obuna bo'lish">
+                            <i data-lucide="user-plus"></i>
+                        </button>
                     </div>
                 `;
             });
         }
 
         data(developers)
+
+        // button bosilishi
+
+        const buttons = document.querySelectorAll('.skill button');
+
+        buttons.forEach(button => {
+            button.addEventListener('click', function () {
+                buttons.forEach(btn => btn.classList.remove('selected'));
+
+                this.classList.add('selected');
+            });
+        });
+
+        const filterBtn = document.querySelectorAll(".filter-btn");
+
+        filterBtn.forEach((btn) => {
+            btn.addEventListener("click", function () {
+                const selectedRole = this.innerText;
+
+                const filterData = (selectedRole === "Barchasi")
+                    ? developers
+                    : developers.filter((dev) => dev.role.includes(selectedRole));
+
+                data(filterData);
+            });
+        });
+
+        function dataArr(arr) {
+            fakeDevelopers.innerHTML = ""
+
+            arr.forEach(devs => {
+                fakeDevelopers.innerHTML += `
+                    <div class="users">
+                        <img src="${devs.avatar}"></img>
+                        <div>
+                            <h2>${devs.name}</h2>
+                            <p>${devs.role}</p>
+                        </div>
+                        <button title="Obuna bo'lish">
+                            <i data-lucide="user-plus"></i>
+                        </button>
+                    </div>
+                `
+            });
+
+        }
+
     </script>
 
 </body>

@@ -94,10 +94,6 @@ document.addEventListener("DOMContentLoaded", () => {
     if (asideProfile) asideProfile.style.display = "none";
   }
 
-  // if (isRegistered && nikRegistered) {
-  //   window.location.href = "home.html";
-  // }
-
   // modal registar
 
   if (btn) {

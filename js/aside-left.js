@@ -4,7 +4,7 @@ function asideleft() {
   asideLeft.innerHTML = `
         <h1>Buildly</h1>
             <div class="aside-location">
-                <button onclick="window.location.href = 'home.html'" class="nav-item" data-page="index.html">
+                <button onclick="window.location.href = 'home.html'" class="nav-item" data-page="home.html">
                     <i class="icon-lucide" data-lucide="home"></i>
                     Asosiy
                 </button>

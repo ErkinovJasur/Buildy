@@ -10,6 +10,7 @@
   transition: all 0.25s ease;
   margin-bottom: 12px;
   width: 45%;
+  position: relative;
 }
 
 .users:hover {
@@ -51,6 +52,31 @@
     sans-serif;
 }
 
+.users button {
+  position: absolute;
+  right: 16px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background-color: transparent;
+  border: 1px solid var(--border);
+  padding: 5px 10px;
+  color: var(--text);
+  font-weight: 500;
+  border-radius: 10px;
+  transition: 0.4s;
+
+  svg {
+    width: 16px;
+  }
+}
+
+.users button:hover {
+  background-color: var(--btn);
+  color: var(--white);
+  border-color: var(--btn);
+}
+
 #developers {
   display: flex;
   align-items: center;
@@ -59,7 +85,59 @@
   row-gap: 1px;
   padding: 15px;
   justify-content: center;
-  margin-top: 50px;
+  margin-top: 10px;
+}
+
+.skill {
+  padding: 20px;
+  width: 100%;
+}
+
+.skill h1 {
+  font-size: 22px;
+  color: var(--text);
+  margin-bottom: 8px;
+}
+
+.skill p {
+  color: #64748b;
+  margin-bottom: 20px;
+  font-size: 14px;
+}
+
+.btn-group {
+  display: flex;
+  overflow-x: auto;
+  justify-content: inherit;
+  padding: 0 !important;
+  gap: 10px;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.btn-group button {
+  padding: 8px 16px;
+  border: 1px solid var(--border);
+  background-color: var(--white);
+  border-radius: 12px;
+  cursor: pointer;
+  transition: 0.2s;
+  color: var(--text);
+  font-size: 13px;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+.skill button:hover {
+  background-color: var(--btn);
+  color: var(--white);
+  border-color: var(--btn);
+}
+
+.skill button.selected {
+  background-color: var(--btn);
+  color: var(--white);
+  border-color: var(--btn);
 }
 
 @media (max-width: 768px) {
@@ -75,7 +153,7 @@
     }
   }
 
-  #developers{
+  #developers {
     margin-bottom: 120px;
   }
 }

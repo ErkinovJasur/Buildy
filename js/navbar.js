@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
             </button>
             <button class="bell" id="bellBtn">
                 <i class="icon-lucide" data-lucide="bell"></i>
-                <span id="badge"></span>
+                <span id="badge">1</span>
             </button>
             <button class="menu" id="menu">
                 <i class="icon-lucide" data-lucide="menu"></i>

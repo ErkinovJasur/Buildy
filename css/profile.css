@@ -316,8 +316,9 @@ a {
 .profile-html,
 .project,
 .projects {
-  animation: fadeUp 0.4s ease both;
+  animation: fadeUp 0.5s ease both;
 }
+
 .projects {
   animation-delay: 0.08s;
 }
