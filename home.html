@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buildly — Show what you build.</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/all.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Akt:wght@100..900&family=Caprasimo&family=Cookie&family=Great+Vibes&family=Imperial+Script&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=League+Spartan:wght@100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=TikTok+Sans:opsz,wdth@12..36,138&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+
+<body>
+
+    <div class="aside"></div>
+
+    <nav class="mobile-bottom-nav">
+        <a href="home.html" class="active">
+            <i data-lucide="house"></i>
+        </a>
+        <a>
+            <i data-lucide="compass"></i>
+        </a>
+        <a id="plus">
+            <i data-lucide="plus"></i>
+        </a>
+        <a>
+            <i data-lucide="MessageCircle"></i>
+        </a>
+        <a id="user">
+            <i data-lucide="circle-user"></i>
+        </a>
+    </nav>
+
+    <div class="buildy">
+        <aside class="aside-left"></aside>
+        <div class="container">
+            <main>
+                <header></header>
+                <div class="posts">
+                    <div id="userProjectCard"></div>
+                    <div class="project-post">
+                        <div class="post-header">
+                            <img class="user-avatar"
+                                src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Default_pfp.svg/500px-Default_pfp.svg.png"
+                                alt="user-avatar">
+                            <div class="user-info">
+                                <h3>Jasur Erkinov</h3>
+                                <span class="user-nik">@timurovch7 · <p>13.06.2026 - 06-40</p></span>
+                            </div>
+                        </div>
+                        <div class="post-body">
+                            <h2 class="project-title">Buildly</h2>
+                            <p class="project-desc">Developer showcase platform where developers can publish projects,
+                                discover builders and connect with teammates.</p>
+                            <div class="tech-stack">
+                                <span>React</span>
+                                <span>Supabase</span>
+                                <span>HTML</span>
+                                <span>CSS</span>
+                                <span>JavaScript</span>
+                            </div>
+                        </div>
+                        <div class="post-cover">
+                            <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=1000&auto=format&fit=crop"
+                                alt="project-cover">
+                        </div>
+                        <div class="post-actions">
+                            <a href="https://github.com/ErkinovJasur" target="_blank" class="action-btn github-btn">
+                                <i class="icon-lucide" data-lucide="CodeXml"></i>
+                                GitHub
+                            </a>
+                            <a href="https://erkinovjasur.github.io/Buildy/" target="_blank"
+                                class="action-btn demo-btn">
+                                <i class="icon-lucide" data-lucide="external-link"></i>
+                                Live Demo
+                            </a>
+                        </div>
+                        <div class="likes">
+                            <div class="divs">
+                                <div class="div">
+                                    <i class="icon-lucide like" data-lucide="heart"></i>
+                                    <span>179.2k</span>
+                                </div>
+                                <div class="div">
+                                    <i class="icon-lucide" data-lucide="message-square"></i>
+                                    <span>87</span>
+                                </div>
+                            </div>
+                            <div class="divs">
+                                <div class="div">
+                                    <i class="icon-lucide" data-lucide="forward"></i>
+                                </div>
+                                <div class="div">
+                                    <i class="icon-lucide" data-lucide="bookmark"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="loader">
+                    <svg id="svg" viewBox="25 25 50 50">
+                        <circle class="circle" r="20" cy="50" cx="50"></circle>
+                    </svg>
+                </div>
+            </main>
+        </div>
+        <aside class="aside-right"></aside>
+    </div>
+
+    <div class="modal"></div>
+    <div class="modal-project" id="modal-project"></div>
+
+    <script src="js/navbar.js"></script>
+    <script src="js/modal-registar.js"></script>
+    <script src="js/aside-left.js"></script>
+    <script src="js/addProject.js"></script>
+    <script src="js/mobile-menu.js"></script>
+    <script src="js/aside-right.js"></script>
+    <script src="js/home.js"></script>
+
+</body>
+
+</html>

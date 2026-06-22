@@ -1,130 +1,1764 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="uz">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Buildly — Show what you build.</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/all.css">
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Akt:wght@100..900&family=Caprasimo&family=Cookie&family=Great+Vibes&family=Imperial+Script&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=League+Spartan:wght@100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=TikTok+Sans:opsz,wdth@12..36,138&display=swap"
-        rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Buildly — Dasturchilar platformasi</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet" />
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <style>
+        :root {
+            --bodyBg: #fef7ef;
+            --cardBg: #ffffff;
+            --text: #111827;
+            --shadow: 0 10px 30px rgba(255, 127, 67, 0.177);
+            --white: #ffffff;
+            --btn: #ff610b;
+            --border: #fed7aa;
+            --gray: #9f9f9f;
+            --btnHover: #e5510a;
+            --orangeLight: #fff4ec;
+            --textMuted: #6b7280;
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bodyBg);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* ── HEADER ── */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(254, 247, 239, 0.92);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            height: 64px;
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 20px;
+            font-weight: 800;
+            color: var(--text);
+            text-decoration: none;
+            flex-shrink: 0;
+        }
+
+        .logo-icon {
+            width: 32px;
+            height: 32px;
+            background: var(--btn);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            list-style: none;
+            flex: 1;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--textMuted);
+            font-size: 14px;
+            font-weight: 500;
+            padding: 6px 12px;
+            border-radius: 8px;
+            transition: color .2s, background .2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--text);
+            background: var(--orangeLight);
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-shrink: 0;
+        }
+
+        .btn-ghost {
+            background: none;
+            border: none;
+            font-family: inherit;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text);
+            cursor: pointer;
+            padding: 8px 16px;
+            border-radius: 10px;
+            transition: background .2s;
+        }
+
+        .btn-ghost:hover {
+            background: var(--orangeLight);
+        }
+
+        .btn-primary {
+            background: var(--btn);
+            color: white;
+            border: none;
+            font-family: inherit;
+            font-size: 14px;
+            font-weight: 600;
+            padding: 8px 18px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background .2s, transform .15s;
+        }
+
+        .btn-primary:hover {
+            background: var(--btnHover);
+            transform: translateY(-1px);
+        }
+
+        .burger {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--text);
+            margin-left: auto;
+        }
+
+        /* ── HERO ── */
+        .hero {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px 24px 60px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: var(--orangeLight);
+            border: 1px solid var(--border);
+            color: var(--btn);
+            font-size: 12px;
+            font-weight: 600;
+            padding: 5px 12px;
+            border-radius: 20px;
+            margin-bottom: 20px;
+            letter-spacing: .03em;
+        }
+
+        .hero-title {
+            font-size: clamp(32px, 4.5vw, 52px);
+            font-weight: 900;
+            line-height: 1.12;
+            letter-spacing: -.02em;
+            margin-bottom: 20px;
+            color: var(--text);
+        }
+
+        .hero-title span {
+            color: var(--btn);
+        }
+
+        .hero-subtitle {
+            font-size: 17px;
+            color: var(--textMuted);
+            margin-bottom: 36px;
+            max-width: 440px;
+            line-height: 1.65;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .btn-outline {
+            background: white;
+            border: 1.5px solid var(--border);
+            font-family: inherit;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text);
+            padding: 10px 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: border-color .2s, background .2s;
+            display: flex;
+            align-items: center;
+            gap: 7px;
+        }
+
+        .btn-outline:hover {
+            border-color: var(--btn);
+            background: var(--orangeLight);
+        }
+
+        .btn-hero {
+            font-size: 15px;
+            padding: 11px 24px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* Dashboard preview */
+        .hero-visual {
+            position: relative;
+        }
+
+        .dashboard {
+            background: white;
+            border-radius: 20px;
+            box-shadow: var(--shadow), 0 2px 8px rgba(0, 0, 0, .06);
+            border: 1px solid var(--border);
+            padding: 20px;
+            position: relative;
+        }
+
+        .dash-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 16px;
+        }
+
+        .dash-dots {
+            display: flex;
+            gap: 5px;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+        }
+
+        .dot-r {
+            background: #ff5f57;
+        }
+
+        .dot-y {
+            background: #ffbd2e;
+        }
+
+        .dot-g {
+            background: #28ca42;
+        }
+
+        .dash-title {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--textMuted);
+        }
+
+        .dev-cards-row {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 14px;
+        }
+
+        .mini-dev-card {
+            flex: 1;
+            background: var(--orangeLight);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 12px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .mini-avatar {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: 700;
+            color: white;
+            flex-shrink: 0;
+        }
+
+        .mini-name {
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--text);
+        }
+
+        .mini-role {
+            font-size: 10px;
+            color: var(--textMuted);
+        }
+
+        .mini-skills {
+            display: flex;
+            gap: 3px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .skill-pill {
+            font-size: 9px;
+            font-weight: 600;
+            background: white;
+            color: var(--btn);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            padding: 2px 5px;
+        }
+
+        .project-preview {
+            background: var(--bodyBg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 12px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .proj-icon {
+            width: 38px;
+            height: 38px;
+            border-radius: 10px;
+            background: var(--btn);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            flex-shrink: 0;
+        }
+
+        .proj-info {
+            flex: 1;
+        }
+
+        .proj-name {
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .proj-desc {
+            font-size: 10px;
+            color: var(--textMuted);
+        }
+
+        .proj-badge {
+            font-size: 9px;
+            font-weight: 700;
+            background: #dcfce7;
+            color: #16a34a;
+            padding: 3px 7px;
+            border-radius: 6px;
+        }
+
+        .float-badge {
+            position: absolute;
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 10px 14px;
+            box-shadow: var(--shadow);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            white-space: nowrap;
+        }
+
+        .float-badge-top {
+            top: -18px;
+            right: -18px;
+        }
+
+        .float-badge-bottom {
+            bottom: -18px;
+            left: -18px;
+        }
+
+        .float-icon {
+            width: 28px;
+            height: 28px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .float-text {
+            font-size: 11px;
+            font-weight: 600;
+        }
+
+        .float-sub {
+            font-size: 10px;
+            color: var(--textMuted);
+        }
+
+        /* ── STATS ── */
+        .stats {
+            max-width: 1200px;
+            margin: 0 auto 80px;
+            padding: 0 24px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+        }
+
+        .stat-card {
+            background: var(--cardBg);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 28px 24px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: transform .2s;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-3px);
+        }
+
+        .stat-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            background: var(--orangeLight);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 14px;
+            color: var(--btn);
+        }
+
+        .stat-value {
+            font-size: 32px;
+            font-weight: 900;
+            color: var(--text);
+            letter-spacing: -.02em;
+            line-height: 1;
+            margin-bottom: 6px;
+        }
+
+        .stat-label {
+            font-size: 13px;
+            color: var(--textMuted);
+            font-weight: 500;
+        }
+
+        /* ── SECTION COMMONS ── */
+        section {
+            padding: 80px 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .section-eyebrow {
+            display: inline-block;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+            color: var(--btn);
+            background: var(--orangeLight);
+            border: 1px solid var(--border);
+            padding: 4px 12px;
+            border-radius: 20px;
+            margin-bottom: 14px;
+        }
+
+        .section-title {
+            font-size: clamp(26px, 3vw, 38px);
+            font-weight: 800;
+            letter-spacing: -.02em;
+            margin-bottom: 14px;
+            line-height: 1.2;
+        }
+
+        .section-sub {
+            font-size: 16px;
+            color: var(--textMuted);
+            max-width: 520px;
+            line-height: 1.65;
+        }
+
+        .section-head {
+            margin-bottom: 48px;
+        }
+
+        /* ── FEATURES ── */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .feature-card {
+            background: var(--cardBg);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            padding: 32px 28px;
+            box-shadow: var(--shadow);
+            transition: transform .2s, box-shadow .2s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 16px 40px rgba(255, 127, 67, 0.22);
+        }
+
+        .feature-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 14px;
+            background: var(--orangeLight);
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--btn);
+            margin-bottom: 20px;
+        }
+
+        .feature-title {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .feature-desc {
+            font-size: 14px;
+            color: var(--textMuted);
+            line-height: 1.65;
+        }
+
+        /* ── HOW IT WORKS ── */
+        .how-bg {
+            background: white;
+        }
+
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            position: relative;
+        }
+
+        .steps::before {
+            content: '';
+            position: absolute;
+            top: 28px;
+            left: calc(50% / 3 + 6px);
+            right: calc(50% / 3 + 6px);
+            height: 2px;
+            background: linear-gradient(to right, var(--border), var(--btn), var(--border));
+            z-index: 0;
+        }
+
+        .step {
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .step-num {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: var(--btn);
+            color: white;
+            font-size: 20px;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            box-shadow: 0 6px 20px rgba(255, 97, 11, .35);
+        }
+
+        .step-title {
+            font-size: 17px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .step-desc {
+            font-size: 14px;
+            color: var(--textMuted);
+            line-height: 1.65;
+        }
+
+        /* ── DEVELOPERS ── */
+        .devs-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+        }
+
+        .dev-card {
+            background: var(--cardBg);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            padding: 24px 20px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: transform .2s;
+        }
+
+        .dev-card:hover {
+            transform: translateY(-4px);
+        }
+
+        .dev-avatar {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            margin: 0 auto 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: 800;
+            color: white;
+            border: 3px solid var(--border);
+        }
+
+        .dev-name {
+            font-size: 15px;
+            font-weight: 700;
+            margin-bottom: 3px;
+        }
+
+        .dev-role {
+            font-size: 12px;
+            color: var(--textMuted);
+            margin-bottom: 12px;
+        }
+
+        .dev-skills {
+            display: flex;
+            gap: 5px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-bottom: 14px;
+        }
+
+        .tag {
+            font-size: 11px;
+            font-weight: 600;
+            background: var(--orangeLight);
+            color: var(--btn);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 3px 8px;
+        }
+
+        .dev-stat {
+            font-size: 12px;
+            color: var(--textMuted);
+            margin-bottom: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+        }
+
+        .btn-sm {
+            width: 100%;
+            background: var(--orangeLight);
+            border: 1.5px solid var(--border);
+            color: var(--btn);
+            font-family: inherit;
+            font-size: 13px;
+            font-weight: 700;
+            padding: 8px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background .2s, border-color .2s;
+        }
+
+        .btn-sm:hover {
+            background: var(--btn);
+            color: white;
+            border-color: var(--btn);
+        }
+
+        /* ── PROJECTS ── */
+        .projects-bg {
+            background: white;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .project-card {
+            background: var(--cardBg);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform .2s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-4px);
+        }
+
+        .project-img {
+            height: 140px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            color: white;
+            position: relative;
+        }
+
+        .project-img-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, .15);
+        }
+
+        .project-body {
+            padding: 20px;
+        }
+
+        .project-title {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+
+        .project-desc {
+            font-size: 13px;
+            color: var(--textMuted);
+            margin-bottom: 14px;
+            line-height: 1.6;
+        }
+
+        .project-stack {
+            display: flex;
+            gap: 5px;
+            flex-wrap: wrap;
+            margin-bottom: 16px;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 8px;
+        }
+
+        .link-btn {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+            font-family: inherit;
+            font-size: 12px;
+            font-weight: 600;
+            padding: 7px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: .2s;
+            text-decoration: none;
+        }
+
+        .link-github {
+            background: var(--bodyBg);
+            border: 1.5px solid var(--border);
+            color: var(--text);
+        }
+
+        .link-github:hover {
+            border-color: var(--text);
+        }
+
+        .link-live {
+            background: var(--btn);
+            border: 1.5px solid var(--btn);
+            color: white;
+        }
+
+        .link-live:hover {
+            background: var(--btnHover);
+        }
+
+        /* ── TEAMS ── */
+        .teams-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .team-card {
+            background: var(--cardBg);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            padding: 28px 24px;
+            box-shadow: var(--shadow);
+            transition: transform .2s;
+        }
+
+        .team-card:hover {
+            transform: translateY(-4px);
+        }
+
+        .team-top {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 16px;
+        }
+
+        .team-logo {
+            width: 52px;
+            height: 52px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            flex-shrink: 0;
+        }
+
+        .team-name {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 2px;
+        }
+
+        .team-members {
+            font-size: 12px;
+            color: var(--textMuted);
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .team-stack {
+            display: flex;
+            gap: 5px;
+            flex-wrap: wrap;
+            margin-bottom: 18px;
+        }
+
+        .btn-join {
+            width: 100%;
+            background: var(--btn);
+            color: white;
+            border: none;
+            font-family: inherit;
+            font-size: 14px;
+            font-weight: 700;
+            padding: 10px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background .2s;
+        }
+
+        .btn-join:hover {
+            background: var(--btnHover);
+        }
+
+        /* ── CTA ── */
+        .cta-section {
+            padding: 80px 0;
+            background: var(--bodyBg);
+        }
+
+        .cta-banner {
+            background: linear-gradient(135deg, #ff610b 0%, #ff8c42 100%);
+            border-radius: 24px;
+            padding: 64px 48px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-bg-circle {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, .07);
+        }
+
+        .cta-bg-circle-1 {
+            width: 300px;
+            height: 300px;
+            top: -80px;
+            right: -60px;
+        }
+
+        .cta-bg-circle-2 {
+            width: 200px;
+            height: 200px;
+            bottom: -60px;
+            left: -40px;
+        }
+
+        .cta-title {
+            font-size: clamp(28px, 4vw, 46px);
+            font-weight: 900;
+            color: white;
+            margin-bottom: 16px;
+            letter-spacing: -.02em;
+            position: relative;
+        }
+
+        .cta-sub {
+            font-size: 17px;
+            color: rgba(255, 255, 255, .8);
+            margin-bottom: 36px;
+            position: relative;
+        }
+
+        .btn-white {
+            background: white;
+            color: var(--btn);
+            border: none;
+            font-family: inherit;
+            font-size: 16px;
+            font-weight: 700;
+            padding: 14px 32px;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: transform .2s, box-shadow .2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            position: relative;
+        }
+
+        .btn-white:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, .15);
+        }
+
+        /* ── FOOTER ── */
+        footer {
+            background: white;
+            border-top: 1px solid var(--border);
+            padding: 48px 0 32px;
+        }
+
+        .footer-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .footer-top {
+            display: grid;
+            grid-template-columns: 1.4fr 1fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-brand-desc {
+            font-size: 13px;
+            color: var(--textMuted);
+            margin-top: 12px;
+            line-height: 1.65;
+        }
+
+        .footer-col-title {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 14px;
+        }
+
+        .footer-links {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 9px;
+        }
+
+        .footer-links a {
+            text-decoration: none;
+            font-size: 13px;
+            color: var(--textMuted);
+            transition: color .2s;
+        }
+
+        .footer-links a:hover {
+            color: var(--btn);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid var(--border);
+            padding-top: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .footer-copy {
+            font-size: 12px;
+            color: var(--textMuted);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 10px;
+        }
+
+        .social-link {
+            width: 34px;
+            height: 34px;
+            border-radius: 8px;
+            background: var(--orangeLight);
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--btn);
+            text-decoration: none;
+            transition: background .2s, transform .2s;
+        }
+
+        .social-link:hover {
+            background: var(--btn);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* ── MOBILE NAV ── */
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            inset: 64px 0 0;
+            background: rgba(254, 247, 239, .97);
+            backdrop-filter: blur(12px);
+            z-index: 99;
+            padding: 32px 24px;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .mobile-menu.open {
+            display: flex;
+        }
+
+        .mobile-menu a {
+            font-size: 17px;
+            font-weight: 600;
+            color: var(--text);
+            text-decoration: none;
+            padding: 12px 16px;
+            border-radius: 12px;
+            transition: background .2s;
+        }
+
+        .mobile-menu a:hover {
+            background: var(--orangeLight);
+        }
+
+        .mobile-divider {
+            height: 1px;
+            background: var(--border);
+            margin: 8px 0;
+        }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 1024px) {
+            .devs-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 900px) {
+            .hero {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .hero-visual {
+                order: -1;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .teams-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .footer-top {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .steps::before {
+                display: none;
+            }
+        }
+
+        @media (max-width: 640px) {
+
+            .nav-links,
+            .nav-actions {
+                display: none;
+            }
+
+            .burger {
+                display: flex;
+            }
+
+            .hero {
+                padding: 40px 24px;
+            }
+
+            .features-grid,
+            .stats-grid,
+            .projects-grid,
+            .teams-grid,
+            .devs-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .steps {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-banner {
+                padding: 40px 24px;
+            }
+
+            .footer-top {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: 16px;
+                text-align: center;
+            }
+        }
+
+        /* Animations */
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-8px);
+            }
+        }
+
+        .float-badge {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .float-badge-bottom {
+            animation-delay: 1.5s;
+        }
+    </style>
 </head>
 
 <body>
 
-    <div class="aside"></div>
+    <!-- HEADER -->
+    <header>
+        <nav class="nav">
+            <a href="#" class="logo">
+                <div class="logo-icon">
+                    <i data-lucide="layers" style="width:16px;height:16px;"></i>
+                </div>
+                Buildly
+            </a>
+            <ul class="nav-links">
+                <li><a href="#">Asosiy</a></li>
+                <li><a href="#developers">Dasturchilar</a></li>
+                <li><a href="#teams">Jamoalar</a></li>
+                <li><a href="#projects">Loyihalar</a></li>
+                <li><a href="#features">Kashf qilish</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="btn-primary" onclick="window.location.href = 'home.html'">Ro'yxatdan o'tish</button>
+            </div>
+            <button class="burger" id="burger" aria-label="Menu">
+                <i data-lucide="menu" style="width:22px;height:22px;"></i>
+            </button>
+        </nav>
+    </header>
 
-    <nav class="mobile-bottom-nav">
-        <a href="index.html" class="active">
-            <i data-lucide="house"></i>
-        </a>
-        <a>
-            <i data-lucide="compass"></i>
-        </a>
-        <a id="plus">
-            <i data-lucide="plus"></i>
-        </a>
-        <a>
-            <i data-lucide="MessageCircle"></i>
-        </a>
-        <a id="user">
-            <i data-lucide="circle-user"></i>
-        </a>
-    </nav>
+    <!-- MOBILE MENU -->
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="#">Asosiy</a>
+        <a href="#developers">Dasturchilar</a>
+        <a href="#teams">Jamoalar</a>
+        <a href="#projects">Loyihalar</a>
+        <a href="#features">Kashf qilish</a>
+        <div class="mobile-divider"></div>
+        <a href="#">Kirish</a>
+        <a href="#" style="color:var(--btn);">Ro'yxatdan o'tish →</a>
+    </div>
 
-    <div class="buildy">
-        <aside class="aside-left"></aside>
-        <div class="container">
-            <main>
-                <header></header>
-                <div class="posts">
-                    <div id="userProjectCard"></div>
-                    <div class="project-post">
-                        <div class="post-header">
-                            <img class="user-avatar"
-                                src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Default_pfp.svg/500px-Default_pfp.svg.png"
-                                alt="user-avatar">
-                            <div class="user-info">
-                                <h3>Jasur Erkinov</h3>
-                                <span class="user-nik">@timurovch7 · <p>13.06.2026 - 06-40</p></span>
+    <!-- HERO -->
+    <section style="padding:0;">
+        <div class="hero">
+            <div class="hero-left">
+                <div class="hero-badge">
+                    <i data-lucide="zap" style="width:11px;height:11px;"></i>
+                    10,000+ dasturchiga qo'shiling
+                </div>
+                <h1 class="hero-title">
+                    Nima <span>qurayotganingizni</span> ko'rsating.
+                </h1>
+                <p class="hero-subtitle">
+                    Jamoa tuzing, dasturchilar toping va loyihalaringizni dunyoga ko'rsating. Buildly bilan istalgan
+                    loyihangizni hayotga tadbiq eting.
+                </p>
+                <div class="hero-actions">
+                    <button class="btn-primary btn-hero">
+                        <i data-lucide="users" style="width:15px;height:15px;"></i>
+                        Jamoa yaratish
+                    </button>
+                    <button class="btn-outline">
+                        <i data-lucide="folder-open" style="width:14px;height:14px;"></i>
+                        Loyihalarni ko'rish
+                    </button>
+                </div>
+            </div>
+
+            <div class="hero-visual">
+                <div class="float-badge float-badge-top">
+                    <div class="float-icon" style="background:#dcfce7;color:#16a34a;">
+                        <i data-lucide="trending-up" style="width:14px;height:14px;"></i>
+                    </div>
+                    <div>
+                        <div class="float-text">+240 bu hafta</div>
+                        <div class="float-sub">Yangi dasturchilar</div>
+                    </div>
+                </div>
+
+                <div class="dashboard">
+                    <div class="dash-header">
+                        <div class="dash-dots">
+                            <div class="dot dot-r"></div>
+                            <div class="dot dot-y"></div>
+                            <div class="dot dot-g"></div>
+                        </div>
+                        <div class="dash-title">buildly.dev / dashboard</div>
+                    </div>
+
+                    <div class="dev-cards-row">
+                        <div class="mini-dev-card">
+                            <div class="mini-avatar" style="background:#6366f1;">AK</div>
+                            <div class="mini-name">Aziz K.</div>
+                            <div class="mini-role">Full-stack</div>
+                            <div class="mini-skills">
+                                <span class="skill-pill">React</span>
+                                <span class="skill-pill">Node</span>
                             </div>
                         </div>
-                        <div class="post-body">
-                            <h2 class="project-title">Buildly</h2>
-                            <p class="project-desc">Developer showcase platform where developers can publish projects,
-                                discover builders and connect with teammates.</p>
-                            <div class="tech-stack">
-                                <span>React</span>
-                                <span>Supabase</span>
-                                <span>HTML</span>
-                                <span>CSS</span>
-                                <span>JavaScript</span>
+                        <div class="mini-dev-card">
+                            <div class="mini-avatar" style="background:#f59e0b;">SM</div>
+                            <div class="mini-name">Sarvar M.</div>
+                            <div class="mini-role">UI/UX Dev</div>
+                            <div class="mini-skills">
+                                <span class="skill-pill">Vue</span>
+                                <span class="skill-pill">Figma</span>
                             </div>
                         </div>
-                        <div class="post-cover">
-                            <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=1000&auto=format&fit=crop"
-                                alt="project-cover">
-                        </div>
-                        <div class="post-actions">
-                            <a href="https://github.com/ErkinovJasur" target="_blank" class="action-btn github-btn">
-                                <i class="icon-lucide" data-lucide="CodeXml"></i>
-                                GitHub
-                            </a>
-                            <a href="https://erkinovjasur.github.io/Buildy/" target="_blank"
-                                class="action-btn demo-btn">
-                                <i class="icon-lucide" data-lucide="external-link"></i>
-                                Live Demo
-                            </a>
-                        </div>
-                        <div class="likes">
-                            <div class="divs">
-                                <div class="div">
-                                    <i class="icon-lucide like" data-lucide="heart"></i>
-                                    <span>179.2k</span>
-                                </div>
-                                <div class="div">
-                                    <i class="icon-lucide" data-lucide="message-square"></i>
-                                    <span>87</span>
-                                </div>
-                            </div>
-                            <div class="divs">
-                                <div class="div">
-                                    <i class="icon-lucide" data-lucide="forward"></i>
-                                </div>
-                                <div class="div">
-                                    <i class="icon-lucide" data-lucide="bookmark"></i>
-                                </div>
+                        <div class="mini-dev-card">
+                            <div class="mini-avatar" style="background:#10b981;">LR</div>
+                            <div class="mini-name">Laylo R.</div>
+                            <div class="mini-role">Backend</div>
+                            <div class="mini-skills">
+                                <span class="skill-pill">Go</span>
+                                <span class="skill-pill">PG</span>
                             </div>
                         </div>
                     </div>
+
+                    <div class="project-preview">
+                        <div class="proj-icon">
+                            <i data-lucide="rocket" style="width:18px;height:18px;"></i>
+                        </div>
+                        <div class="proj-info">
+                            <div class="proj-name">EduPlatform UZ</div>
+                            <div class="proj-desc">O'quv platformasi · 4 a'zo · React + Django</div>
+                        </div>
+                        <span class="proj-badge">Faol</span>
+                    </div>
                 </div>
-                <div class="loader">
-                    <svg id="svg" viewBox="25 25 50 50">
-                        <circle class="circle" r="20" cy="50" cx="50"></circle>
-                    </svg>
+
+                <div class="float-badge float-badge-bottom">
+                    <div class="float-icon" style="background:var(--orangeLight);color:var(--btn);">
+                        <i data-lucide="star" style="width:14px;height:14px;"></i>
+                    </div>
+                    <div>
+                        <div class="float-text">4.9 / 5.0</div>
+                        <div class="float-sub">Platforma reytingi</div>
+                    </div>
                 </div>
-            </main>
+            </div>
         </div>
-        <aside class="aside-right"></aside>
+    </section>
+
+    <!-- STATS -->
+    <div class="stats">
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-icon"><i data-lucide="users" style="width:22px;height:22px;"></i></div>
+                <div class="stat-value">10,000+</div>
+                <div class="stat-label">Dasturchilar</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon"><i data-lucide="folder" style="width:22px;height:22px;"></i></div>
+                <div class="stat-value">5,000+</div>
+                <div class="stat-label">Loyihalar</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon"><i data-lucide="shield" style="width:22px;height:22px;"></i></div>
+                <div class="stat-value">1,200+</div>
+                <div class="stat-label">Jamoalar</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon"><i data-lucide="cpu" style="width:22px;height:22px;"></i></div>
+                <div class="stat-value">50+</div>
+                <div class="stat-label">Texnologiyalar</div>
+            </div>
+        </div>
     </div>
 
-    <div class="modal"></div>
-    <div class="modal-project" id="modal-project"></div>
+    <!-- FEATURES -->
+    <section id="features">
+        <div class="container">
+            <div class="section-head">
+                <div class="section-eyebrow">Imkoniyatlar</div>
+                <h2 class="section-title">Hamma kerakli narsa bir joyda</h2>
+                <p class="section-sub">Buildly sizga jamoa qurish, loyihalarni namoyish qilish va hamkorlar topish uchun
+                    barcha vositalarni beradi.</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon"><i data-lucide="users" style="width:24px;height:24px;"></i></div>
+                    <div class="feature-title">Jamoa tuzish</div>
+                    <p class="feature-desc">Bir necha daqiqada o'z jamoangizni yarating. Dasturchilarni rol va
+                        ko'nikmalar bo'yicha filtrlang va ideal jamoangizni toping.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i data-lucide="monitor" style="width:24px;height:24px;"></i></div>
+                    <div class="feature-title">Loyihalarni namoyish qilish</div>
+                    <p class="feature-desc">Loyihalaringizni chiroyli tarzda ko'rsating. Tech stack, screenshots va demo
+                        link bilan professional portfolio yarating.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i data-lucide="search" style="width:24px;height:24px;"></i></div>
+                    <div class="feature-title">Dasturchilar topish</div>
+                    <p class="feature-desc">10,000+ dasturchidan o'zingizga keraklilarini toping. Ko'nikmalar, tajriba
+                        va joylashuv bo'yicha qidiring.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <script src="js/navbar.js"></script>
-    <script src="js/modal-registar.js"></script>
-    <script src="js/aside-left.js"></script>
-    <script src="js/addProject.js"></script>
-    <script src="js/mobile-menu.js"></script>
-    <script src="js/aside-right.js"></script>
-    <script src="js/home.js"></script>
+    <!-- HOW IT WORKS -->
+    <section class="how-bg">
+        <div class="container">
+            <div class="section-head" style="text-align:center;">
+                <div class="section-eyebrow" style="display:inline-block;">Qanday ishlaydi</div>
+                <h2 class="section-title">3 qadamda boshlang</h2>
+                <p class="section-sub" style="margin:0 auto;">Buildlyga qo'shilish va birinchi jamoangizni yaratish juda
+                    oson.</p>
+            </div>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-num">1</div>
+                    <div class="step-title">Profil yarating</div>
+                    <p class="step-desc">GitHub yoki email bilan ro'yxatdan o'ting. Ko'nikmalar, tajriba va
+                        portfolioingizni qo'shing.</p>
+                </div>
+                <div class="step">
+                    <div class="step-num">2</div>
+                    <div class="step-title">Jamoa yoki loyiha qo'shing</div>
+                    <p class="step-desc">Yangi loyiha yarating yoki mavjud jamoaga qo'shiling. O'z g'oyangizni platforma
+                        bilan ulashing.</p>
+                </div>
+                <div class="step">
+                    <div class="step-num">3</div>
+                    <div class="step-title">Hamkorlar toping</div>
+                    <p class="step-desc">Platforma sizga mos dasturchilar va jamoalarni tavsiya qiladi. Birgalikda
+                        qurilsin!</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
+    <!-- TOP DEVELOPERS -->
+    <section id="developers">
+        <div class="container">
+            <div class="section-head">
+                <div class="section-eyebrow">Dasturchilar</div>
+                <h2 class="section-title">Top dasturchilar</h2>
+                <p class="section-sub">Platformamizdagi eng faol va tajribali dasturchilar bilan tanishing.</p>
+            </div>
+            <div class="devs-grid">
+                <div class="dev-card">
+                    <div class="dev-avatar" style="background:#6366f1;">AK</div>
+                    <div class="dev-name">Aziz Karimov</div>
+                    <div class="dev-role">Full-stack Developer</div>
+                    <div class="dev-skills">
+                        <span class="tag">React</span><span class="tag">Node.js</span><span
+                            class="tag">PostgreSQL</span>
+                    </div>
+                    <div class="dev-stat"><i data-lucide="folder" style="width:12px;height:12px;"></i> 24 ta loyiha
+                    </div>
+                    <button class="btn-sm">Profilni ko'rish</button>
+                </div>
+                <div class="dev-card">
+                    <div class="dev-avatar" style="background:#f59e0b;">SM</div>
+                    <div class="dev-name">Sarvar Mirzayev</div>
+                    <div class="dev-role">Frontend / UI Dev</div>
+                    <div class="dev-skills">
+                        <span class="tag">Vue.js</span><span class="tag">Figma</span><span class="tag">CSS</span>
+                    </div>
+                    <div class="dev-stat"><i data-lucide="folder" style="width:12px;height:12px;"></i> 18 ta loyiha
+                    </div>
+                    <button class="btn-sm">Profilni ko'rish</button>
+                </div>
+                <div class="dev-card">
+                    <div class="dev-avatar" style="background:#10b981;">LR</div>
+                    <div class="dev-name">Laylo Rahimova</div>
+                    <div class="dev-role">Backend Developer</div>
+                    <div class="dev-skills">
+                        <span class="tag">Go</span><span class="tag">Docker</span><span class="tag">Redis</span>
+                    </div>
+                    <div class="dev-stat"><i data-lucide="folder" style="width:12px;height:12px;"></i> 31 ta loyiha
+                    </div>
+                    <button class="btn-sm">Profilni ko'rish</button>
+                </div>
+                <div class="dev-card">
+                    <div class="dev-avatar" style="background:#ef4444;">JT</div>
+                    <div class="dev-name">Jasur Toshmatov</div>
+                    <div class="dev-role">Mobile Developer</div>
+                    <div class="dev-skills">
+                        <span class="tag">Flutter</span><span class="tag">Dart</span><span class="tag">Firebase</span>
+                    </div>
+                    <div class="dev-stat"><i data-lucide="folder" style="width:12px;height:12px;"></i> 15 ta loyiha
+                    </div>
+                    <button class="btn-sm">Profilni ko'rish</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- POPULAR PROJECTS -->
+    <section class="projects-bg" id="projects">
+        <div class="container">
+            <div class="section-head">
+                <div class="section-eyebrow">Loyihalar</div>
+                <h2 class="section-title">Mashhur loyihalar</h2>
+                <p class="section-sub">Platformadagi eng ko'p yulduz va izoh olgan loyihalar.</p>
+            </div>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-img" style="background:linear-gradient(135deg,#6366f1,#8b5cf6);">
+                        <div class="project-img-overlay"></div>
+                        🎓
+                    </div>
+                    <div class="project-body">
+                        <div class="project-title">EduPlatform UZ</div>
+                        <p class="project-desc">O'zbek tilida onlayn ta'lim platformasi. Video darslar, testlar va
+                            sertifikatlar.</p>
+                        <div class="project-stack">
+                            <span class="tag">React</span><span class="tag">Django</span><span
+                                class="tag">PostgreSQL</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="link-btn link-github">
+                                <i data-lucide="CodeXml" style="width:12px;height:12px;"></i> GitHub
+                            </a>
+                            <a href="#" class="link-btn link-live">
+                                <i data-lucide="external-link" style="width:12px;height:12px;"></i> Demo
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-img" style="background:linear-gradient(135deg,#f59e0b,#ef4444);">
+                        <div class="project-img-overlay"></div>
+                        🛒
+                    </div>
+                    <div class="project-body">
+                        <div class="project-title">MarketHub</div>
+                        <p class="project-desc">Mahalliy bizneslar uchun raqamli bozor. Real vaqt inventar va to'lov
+                            tizimi.</p>
+                        <div class="project-stack">
+                            <span class="tag">Next.js</span><span class="tag">Node.js</span><span
+                                class="tag">MongoDB</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="link-btn link-github">
+                                <i data-lucide="CodeXml" style="width:12px;height:12px;"></i> GitHub
+                            </a>
+                            <a href="#" class="link-btn link-live">
+                                <i data-lucide="external-link" style="width:12px;height:12px;"></i> Demo
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-img" style="background:linear-gradient(135deg,#10b981,#14b8a6);">
+                        <div class="project-img-overlay"></div>
+                        🏥
+                    </div>
+                    <div class="project-body">
+                        <div class="project-title">MedConnect</div>
+                        <p class="project-desc">Shifokorlar va bemorlarni ulash uchun raqamli sog'liqni saqlash
+                            platformasi.</p>
+                        <div class="project-stack">
+                            <span class="tag">Flutter</span><span class="tag">FastAPI</span><span
+                                class="tag">Redis</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="link-btn link-github">
+                                <i data-lucide="CodeXml" style="width:12px;height:12px;"></i> GitHub
+                            </a>
+                            <a href="#" class="link-btn link-live">
+                                <i data-lucide="external-link" style="width:12px;height:12px;"></i> Demo
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TEAMS -->
+    <section id="teams">
+        <div class="container">
+            <div class="section-head">
+                <div class="section-eyebrow">Jamoalar</div>
+                <h2 class="section-title">Faol jamoalar</h2>
+                <p class="section-sub">Yangi a'zolarni qidirayotgan jamoalarga qo'shiling.</p>
+            </div>
+            <div class="teams-grid">
+                <div class="team-card">
+                    <div class="team-top">
+                        <div class="team-logo" style="background:#ede9fe;">🚀</div>
+                        <div>
+                            <div class="team-name">LaunchPad Team</div>
+                            <div class="team-members">
+                                <i data-lucide="users" style="width:12px;height:12px;"></i> 6 a'zo
+                            </div>
+                        </div>
+                    </div>
+                    <div class="team-stack">
+                        <span class="tag">React</span><span class="tag">Node.js</span><span class="tag">AWS</span>
+                    </div>
+                    <button class="btn-join">Qo'shilish</button>
+                </div>
+                <div class="team-card">
+                    <div class="team-top">
+                        <div class="team-logo" style="background:#dcfce7;">🌿</div>
+                        <div>
+                            <div class="team-name">GreenTech UZ</div>
+                            <div class="team-members">
+                                <i data-lucide="users" style="width:12px;height:12px;"></i> 4 a'zo
+                            </div>
+                        </div>
+                    </div>
+                    <div class="team-stack">
+                        <span class="tag">Python</span><span class="tag">Django</span><span class="tag">ML</span>
+                    </div>
+                    <button class="btn-join">Qo'shilish</button>
+                </div>
+                <div class="team-card">
+                    <div class="team-top">
+                        <div class="team-logo" style="background:#fef3c7;">⚡</div>
+                        <div>
+                            <div class="team-name">SpeedBuilders</div>
+                            <div class="team-members">
+                                <i data-lucide="users" style="width:12px;height:12px;"></i> 8 a'zo
+                            </div>
+                        </div>
+                    </div>
+                    <div class="team-stack">
+                        <span class="tag">Go</span><span class="tag">Vue</span><span class="tag">Docker</span>
+                    </div>
+                    <button class="btn-join">Qo'shilish</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-banner">
+                <div class="cta-bg-circle cta-bg-circle-1"></div>
+                <div class="cta-bg-circle cta-bg-circle-2"></div>
+                <h2 class="cta-title">Bugun o'z jamoangizni yarating</h2>
+                <p class="cta-sub">10,000+ dasturchiga qo'shiling. Bepul boshlang, har qachon o'sing.</p>
+                <button class="btn-white">
+                    Hoziroq boshlash
+                    <i data-lucide="arrow-right" style="width:16px;height:16px;"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-top">
+                <div>
+                    <a href="#" class="logo">
+                        <div class="logo-icon">
+                            <i data-lucide="layers" style="width:16px;height:16px;"></i>
+                        </div>
+                        Buildly
+                    </a>
+                    <p class="footer-brand-desc">Dasturchilar, jamoalar va loyihalarni birlashtiradigan platforma.
+                        Birgalikda quring, birgalikda o'sing.</p>
+                </div>
+                <div>
+                    <div class="footer-col-title">Platforma</div>
+                    <ul class="footer-links">
+                        <li><a href="#">Dasturchilar</a></li>
+                        <li><a href="#">Jamoalar</a></li>
+                        <li><a href="#">Loyihalar</a></li>
+                        <li><a href="#">Kashf qilish</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <div class="footer-col-title">Kompaniya</div>
+                    <ul class="footer-links">
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">Careers</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <div class="footer-col-title">Huquqiy</div>
+                    <ul class="footer-links">
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Cookie Policy</a></li>
+                        <li><a href="#">GitHub</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="footer-copy">© 2026 Buildly. Barcha huquqlar himoyalangan.</div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Init icons
+        lucide.createIcons();
+
+        // Mobile menu
+        const burger = document.getElementById('burger');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        burger.addEventListener('click', () => {
+            mobileMenu.classList.toggle('open');
+            const isOpen = mobileMenu.classList.contains('open');
+            burger.innerHTML = isOpen
+                ? '<i data-lucide="x" style="width:22px;height:22px;"></i>'
+                : '<i data-lucide="menu" style="width:22px;height:22px;"></i>';
+            lucide.createIcons();
+        });
+
+        mobileMenu.querySelectorAll('a').forEach(a => {
+            a.addEventListener('click', () => {
+                mobileMenu.classList.remove('open');
+                burger.innerHTML = '<i data-lucide="menu" style="width:22px;height:22px;"></i>';
+                lucide.createIcons();
+            });
+        });
+
+        // Scroll reveal
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.feature-card, .stat-card, .dev-card, .project-card, .team-card, .step').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(24px)';
+            el.style.transition = 'opacity .5s ease, transform .5s ease';
+            observer.observe(el);
+        });
+    </script>
+    
 </body>
 
 </html>

@@ -249,7 +249,7 @@ main {
   z-index: 99999;
   padding: 0px 6px;
   background: rgba(0, 0, 0, 0.2);
-  display: none;  
+  display: none;
 
   .modal-search-card {
     background-color: white;
@@ -696,6 +696,20 @@ header {
 
   .menu {
     display: none;
+  }
+
+  .bell {
+    position: relative;
+  }
+
+  #badge {
+    position: absolute;
+    top: 7px;
+    right: 9px;
+    width: 8px;
+    height: 8px;
+    background: red;
+    border-radius: 50%;
   }
 
   .search-btn:hover {

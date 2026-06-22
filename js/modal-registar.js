@@ -60,10 +60,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const btn = document.getElementById("btn");
 
   namee.value = localStorage.getItem("name");
-  nik.value = localStorage.getItem("nik")
-  email.value = localStorage.getItem("email")
-  bio.value = localStorage.getItem("bio")
-  parol.value = localStorage.getItem("parol")
+  nik.value = localStorage.getItem("nik");
+  email.value = localStorage.getItem("email");
+  bio.value = localStorage.getItem("bio");
+  parol.value = localStorage.getItem("parol");
 
   // modal yopilishi
 
@@ -93,6 +93,10 @@ document.addEventListener("DOMContentLoaded", () => {
     if (profileCard) profileCard.style.display = "block";
     if (asideProfile) asideProfile.style.display = "none";
   }
+
+  // if (isRegistered && nikRegistered) {
+  //   window.location.href = "home.html";
+  // }
 
   // modal registar
 

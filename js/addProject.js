@@ -93,7 +93,9 @@ document.addEventListener("DOMContentLoaded", () => {
       userProjectCard.innerHTML += `
       <div class="project-post">
           <div class="post-header">
-              <img class="user-avatar" src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Default_pfp.svg/500px-Default_pfp.svg.png" alt="user-avatar" id="avatars">
+              <img class="user-avatar" 
+                src="${localStorage.getItem("avatar")}"
+               alt="user-avatar">
               <div class="user-info">
                   <h3>${isRegistered || "username"}</h3>
                   <span class="user-nik">@${nikRegistered || "user"} · <p id="clock">${project.clock || ""}</p></span>
@@ -222,8 +224,8 @@ document.addEventListener("DOMContentLoaded", () => {
           <div class="project-post">
               <div class="post-header">
                   <img class="user-avatar"
-                      src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Default_pfp.svg/500px-Default_pfp.svg.png"
-                      alt="user-avatar" id="avatars">
+                      src="${localStorage.getItem("avatar")}"
+                      alt="user-avatar">
                   <div class="user-info">
                       <h3>${isRegistered || "username"}</h3>
                       <span class="user-nik">@${nikRegistered || "user"} · <p id="clock">${currentClock}</p></span>

@@ -22,8 +22,9 @@ document.addEventListener("DOMContentLoaded", () => {
             <button class="plus" id="openProjectModalBtn">
                 <i class="icon-lucide" data-lucide="plus"></i>
             </button>
-            <button class="bell" onclick="window.location.href = 'notification.html'">
+            <button class="bell" id="bellBtn">
                 <i class="icon-lucide" data-lucide="bell"></i>
+                <span id="badge"></span>
             </button>
             <button class="menu" id="menu">
                 <i class="icon-lucide" data-lucide="menu"></i>
@@ -34,6 +35,22 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   navbar();
+
+  const bellBtn = document.getElementById("bellBtn");
+  const badge = document.getElementById("badge");
+
+  if (localStorage.getItem("readNotif")) {
+    badge.style.display = "none";
+  }
+
+  bellBtn.onclick = () => {
+    badge.style.display = "none";
+
+    localStorage.setItem("readNotif", "true");
+    window.location.href = "notification.html";
+  };
+
+  // modal search
 
   const searchBtn = document.querySelector(".search-btn");
   const modal_search = document.querySelector(".modal-search");

@@ -1,12 +1,13 @@
 document.addEventListener("DOMContentLoaded", () => {
 
+  const savedAvatars = localStorage.getItem("avatars");
   const avatar = document.getElementById("user-avatar");
-  const savedAvatar = localStorage.getItem("avatar");
 
-  if (savedAvatar) {
+  if (savedAvatars) {
     avatar.src = savedAvatar;
-    localStorage.setItem("avatar")
+    localStorage.setItem("avatars")
   }
+  
 
   // like
 

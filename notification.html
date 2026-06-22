@@ -3,95 +3,11 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Buildly | Professional Platform</title>
-    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="css/notification.css">
     <link rel="stylesheet" href="css/all.css">
-    <style>
-        :root {
-            --bodyBg: #fef7ef;
-            --cardBg: #ffffff;
-            --text: #111827;
-            --shadow: 0 10px 30px rgba(255, 127, 67, 0.177);
-            --white: #ffffff;
-            --btn: #ff610b;
-            --border: #fed7aa;
-            --gray: #9f9f9f;
-        }
-
-        .notifications-page {
-            max-width: 700px;
-            margin: 40px auto;
-            padding: 20px;
-        }
-
-        .notifications-header h1 {
-            font-size: 28px;
-            margin: 0;
-            color: var(--text);
-        }
-
-        .notifications-header p {
-            margin-top: 8px;
-            color: #64748b;
-            font-size: 14px;
-        }
-
-        .notification-list {
-            display: flex;
-            flex-direction: column;
-            margin-top: 30px;
-        }
-
-        .notification-card {
-            background: #fff;
-            border: 1px solid #fed7aa;
-            border-radius: 18px;
-            padding: 16px 18px;
-            display: flex;
-            align-items: center;
-            gap: 16px;
-            transition: .2s;
-        }
-
-        .notification-card:hover {
-            transform: translateY(-3px);
-            box-shadow:
-                0 10px 30px rgba(255, 127, 67, .12);
-        }
-
-        .notification-icon {
-            width: 45px;
-            height: 45px;
-            border-radius: 14px;
-            background: #fff1e8;
-            color: var(--btn);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .notification-icon svg {
-            width: 22px;
-        }
-
-        .notification-content h3 {
-            margin: 0;
-            font-size: 15px;
-            font-weight: 500;
-            color: #111827;
-        }
-
-        .notification-content h3 span {
-            color: var(--btn);
-            font-weight: 700;
-        }
-
-        .notification-content p {
-            margin: 3px 0 0;
-            font-size: 13px;
-            color: #9ca3af;
-        }
-    </style>
+    <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 
 <body>
@@ -99,7 +15,7 @@
     <div class="aside"></div>
 
     <nav class="mobile-bottom-nav">
-        <a href="index.html">
+        <a href="home.html">
             <i data-lucide="house"></i>
         </a>
         <a>
@@ -133,7 +49,7 @@
                             </div>
                             <div class="notification-content">
                                 <h3>
-                                    <span>Buildly</span> sizga obuna bo‘ldi
+                                    <span>Buildly</span> sizga obuna bo'ldi
                                 </h3>
                                 <p id="soat"></p>
                             </div>
@@ -167,6 +83,11 @@
         }
 
         soatElement.textContent = savedTime;
+
+        if (localStorage.getItem("profileCard")) {
+            document.querySelector(".notifications-page").style.display = "block"
+        } else {
+        }
 
         lucide.createIcons();
     </script>
