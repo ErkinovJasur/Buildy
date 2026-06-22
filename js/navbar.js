@@ -84,7 +84,7 @@ document.addEventListener("DOMContentLoaded", () => {
       let data = await response.json();
       render(data);
     } catch (error) {
-      resultsUsers.innerHTML = `<h3 style="color: red; font-weight: 400; text-align: center; font-size: 12px; margin-top: 100px;">Ma'lumotlarni yuklashda xatolik yuz berdi.</h3>`;
+      resultsUsers.innerHTML = `<h3 style="color: red; font-weight: 600; text-align: center; font-size: 12px; margin-top: 100px;">Ma'lumotlarni yuklashda xatolik yuz berdi.</h3>`;
     }
   }
 
@@ -97,6 +97,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         return value.name.toLowerCase().includes(term);
       });
+      
       resultsUsers.innerHTML = "";
 
       if (filter.length === 0) {

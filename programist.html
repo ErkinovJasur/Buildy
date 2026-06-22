@@ -78,56 +78,30 @@
         const fakeDevelopers = document.getElementById("developers")
 
         const developers = [
-            {
-                name: "Jasur Erkinov",
-                nik: "@erkinov",
-                role: "🚀 Full Stack Developer",
-                avatar: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Default_pfp.svg/500px-Default_pfp.svg.png"
-            },
-            {
-                name: "Azizbek Rahimov",
-                nik: "@azizbek",
-                role: "🎨 Frontend Developer",
-                avatar: "https://www.hackreactor.com/wp-content/uploads/2024/08/AdobeStock_352231270-750x422.jpeg"
-            },
-            {
-                name: "Madina Karimova",
-                nik: "@madina",
-                role: "✨ UI/UX Designer",
-                avatar: "https://images.unsplash.com/photo-1485470733090-0aae1788d5af?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8d2FsbHBhcGVyJTIwNGt8ZW58MHx8MHx8fDA%3D"
-            },
-            {
-                name: "Dilnoza Usmonova",
-                nik: "@dilnoza",
-                role: "📱 Mobile Developer",
-                avatar: "https://randomuser.me/api/portraits/women/65.jpg"
-            },
-            {
-                name: "Muhammadali Sobirov",
-                nik: "@muhammadali",
-                role: "🤖 AI Engineer",
-                avatar: "https://randomuser.me/api/portraits/men/73.jpg"
-            },
-            {
-                name: "Jahongir Islomov",
-                nik: "@jahongir",
-                role: "🔥 Next.js Developer",
-                avatar: "https://randomuser.me/api/portraits/men/22.jpg"
-            },
-            {
-                name: "Erkinov Jasur",
-                nik: "@erkinov",
-                role: "🌿 Frontend Developer",
-                avatar: "https://wallpaperaccess.com/full/30097.jpg"
-            },
-            {
-                name: "Karim",
-                nik: "@rashid o'g'li",
-                role: "⚙️ Backend Developer",
-                avatar: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSsJyjPCWIpJ5XieQLxeykSl6JxNL05ZGUfble9MMRqbA&s=10"
-            }
+            { name: "Jasur Erkinov", nik: "@erkinov", role: "🚀 Full-stack Developer", avatar: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Default_pfp.svg/500px-Default_pfp.svg.png" },
+            { name: "Azizbek Rahimov", nik: "@azizbek", role: "🎨 Frontend Developer", avatar: "https://www.hackreactor.com/wp-content/uploads/2024/08/AdobeStock_352231270-750x422.jpeg" },
+            { name: "Madina Karimova", nik: "@madina", role: "✨ UI/UX Designer", avatar: "https://images.unsplash.com/photo-1485470733090-0aae1788d5af?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8d2FsbHBhcGVyJTIwNGt8ZW58MHx8MHx8fDA%3D" },
+            { name: "Dilnoza Usmonova", nik: "@dilnoza", role: "📱 Mobile Developer", avatar: "https://randomuser.me/api/portraits/women/65.jpg" },
+            { name: "Muhammadali Sobirov", nik: "@muhammadali", role: "🤖 AI Engineer", avatar: "https://randomuser.me/api/portraits/men/73.jpg" },
+            { name: "Jahongir Islomov", nik: "@jahongir", role: "🔥 Next.js Developer", avatar: "https://randomuser.me/api/portraits/men/22.jpg" },
+            { name: "Erkinov Jasur", nik: "@erkinov", role: "🎨 Frontend Developer", avatar: "https://wallpaperaccess.com/full/30097.jpg" },
+            { name: "Rashid Karim", nik: "@rashid", role: "⚙️ Backend Developer", avatar: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSsJyjPCWIpJ5XieQLxeykSl6JxNL05ZGUfble9MMRqbA&s=10" },
+            { name: "Sardor Ahmedov", nik: "@sardor", role: "🚀 Full-stack Developer", avatar: "https://randomuser.me/api/portraits/men/1.jpg" },
+            { name: "Gulnora Saidova", nik: "@gulnora", role: "🎨 Frontend Developer", avatar: "https://randomuser.me/api/portraits/women/2.jpg" },
+            { name: "Bekzod Umarov", nik: "@bekzod", role: "⚙️ Backend Developer", avatar: "https://randomuser.me/api/portraits/men/3.jpg" },
+            { name: "Zuhra Tursunova", nik: "@zuhra", role: "✨ UI/UX Designer", avatar: "https://randomuser.me/api/portraits/women/4.jpg" },
+            { name: "Alisher Navoiy", nik: "@alisher", role: "🤖 AI Engineer", avatar: "https://randomuser.me/api/portraits/men/5.jpg" },
+            { name: "Dostonbek Ergash", nik: "@doston", role: "📱 Mobile Developer", avatar: "https://randomuser.me/api/portraits/men/6.jpg" },
+            { name: "Malika Xoliqova", nik: "@malika", role: "🚀 Full-stack Developer", avatar: "https://randomuser.me/api/portraits/women/7.jpg" },
+            { name: "Abror Qodirov", nik: "@abror", role: "⚙️ Backend Developer", avatar: "https://randomuser.me/api/portraits/men/8.jpg" },
+            { name: "Nigora Fayziyeva", nik: "@nigora", role: "🎨 Frontend Developer", avatar: "https://randomuser.me/api/portraits/women/9.jpg" },
+            { name: "Olimjon Yoqubov", nik: "@olimjon", role: "🤖 AI Engineer", avatar: "https://randomuser.me/api/portraits/men/10.jpg" },
+            { name: "Sevara Yo'ldosheva", nik: "@sevara", role: "✨ UI/UX Designer", avatar: "https://randomuser.me/api/portraits/women/11.jpg" },
+            { name: "Farrux Zokirov", nik: "@farrux", role: "🔥 Next.js Developer", avatar: "https://randomuser.me/api/portraits/men/12.jpg" },
+            { name: "Kamola Ibragimova", nik: "@kamola", role: "📱 Mobile Developer", avatar: "https://randomuser.me/api/portraits/women/13.jpg" },
+            { name: "Sherzod Otajonov", nik: "@sherzod", role: "⚙️ Backend Developer", avatar: "https://randomuser.me/api/portraits/men/14.jpg" }
         ];
-
+        
         function data(data) {
             data.map((item) => {
                 fakeDevelopers.innerHTML += `
@@ -163,6 +137,7 @@
 
         filterBtn.forEach((btn) => {
             btn.addEventListener("click", function () {
+                fakeDevelopers.innerHTML = null
                 const selectedRole = this.innerText;
 
                 const filterData = (selectedRole === "Barchasi")
@@ -170,13 +145,14 @@
                     : developers.filter((dev) => dev.role.includes(selectedRole));
 
                 data(filterData);
+                lucide.createIcons()
             });
         });
 
         function dataArr(arr) {
-            fakeDevelopers.innerHTML = ""
 
             arr.forEach(devs => {
+
                 fakeDevelopers.innerHTML += `
                     <div class="users">
                         <img src="${devs.avatar}"></img>

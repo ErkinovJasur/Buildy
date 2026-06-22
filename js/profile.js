@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
   userNik.textContent = "@" + localStorage.getItem("nik");
   userBio.textContent = localStorage.getItem("bio");
 
-  if (user === "Buildly official") {
+  if (user === "Buildly") {
     document.getElementById("pp").textContent = "5";
   }
 
