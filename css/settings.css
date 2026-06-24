@@ -78,10 +78,10 @@
   div:hover {
     transform: translateY(-4px);
   }
+}
 
-  .actives {
-    border: 1px solid var(--btn);
-  }
+.modess.selected {
+  border: 1px solid var(--btn);
 }
 
 /* links */
@@ -140,7 +140,7 @@
   padding-bottom: 30px;
 }
 
-.lang-card {
+.lang-container div {
   border: 1px solid var(--border);
   background-color: var(--cardBg);
   padding: 25px;
@@ -157,15 +157,11 @@
   align-items: center;
 }
 
-.lang-card:hover {
+.lang-container div:hover {
   transform: translateY(-5px);
 }
 
-.lang-card.active {
-  border: 1px solid var(--btn);
-}
-
-.lang-card span {
+.lang-container div span {
   font-size: 15px;
   width: 40px;
   height: 40px;
@@ -177,14 +173,14 @@
   border-radius: 999px;
 }
 
-.lang-card h2 {
+.lang-container div h2 {
   font-weight: 800;
   color: var(--text);
   font-size: 20px;
   margin-top: 10px;
 }
 
-.lang-card p {
+.lang-container div p {
   font-size: 13px;
   margin-top: 4px;
   color: var(--gray);

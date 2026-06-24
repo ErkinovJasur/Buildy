@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let nikRegistered = localStorage.getItem("nik");
 
   const signUp = document
-    .getElementById("signUp")
+    .querySelector(".edit-btn")
     .addEventListener("click", function () {
       modal1.style.display = "flex";
     });
@@ -59,11 +59,19 @@ document.addEventListener("DOMContentLoaded", () => {
   const bio = document.getElementById("bio");
   const btn = document.getElementById("btn");
 
-  namee.value = localStorage.getItem("name");
-  nik.value = localStorage.getItem("nik");
-  email.value = localStorage.getItem("email");
-  bio.value = localStorage.getItem("bio");
-  parol.value = localStorage.getItem("parol");
+  if (!isRegistered) {
+    namee.value = "";
+    nik.value = "";
+    email.value = "";
+    bio.value = "";
+    parol.value = "";
+  } else {
+    namee.value = localStorage.getItem("name");
+    nik.value = localStorage.getItem("nik");
+    email.value = localStorage.getItem("email");
+    bio.value = localStorage.getItem("bio");
+    parol.value = localStorage.getItem("parol");
+  }
 
   // modal yopilishi
 
@@ -109,6 +117,12 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
       } else if (!emaill.includes("@")) {
         alert("Email xato!");
+        return;
+      } else if (nikk.length <= 2) {
+        alert("Nik maximum 3 harfdan iborat bo'lishi shart");
+        return;
+      } else if (pass.length <= 5) {
+        alert("Parol uzunligi 6 honali bo'lishi shart");
         return;
       }
 

@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Buildly — Dasturchilar platformasi</title>
+    <title>Buildly — Show me what you're building.</title>
+    <link rel="stylesheet" href="css/all.css">
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
         rel="stylesheet" />
@@ -54,10 +55,10 @@
             border-bottom: 1px solid var(--border);
         }
 
-        .nav {
+        nav {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 24px;
+            padding: 0 24px !important;
             height: 64px;
             display: flex;
             align-items: center;
@@ -1245,7 +1246,7 @@
             </ul>
             <div style="display: flex; align-items: center; gap: 10px;">
                 <div class="nav-actions">
-                    <button class="btn-primary" onclick="login()">Kirish</button>
+                    <button class="btn-primary">Kirish</button>
                 </div>
                 <button class="burger" id="burger" aria-label="Menu">
                     <i data-lucide="menu" style="width:22px;height:22px;"></i>
@@ -1671,6 +1672,8 @@
         </div>
     </section>
 
+    <div class="modal"></div>
+
     <!-- FOOTER -->
     <footer>
         <div class="footer-inner">
@@ -1720,6 +1723,117 @@
     </footer>
 
     <script>
+        // registar
+
+        const modal1 = document.querySelector(".modal");
+        const btn = document.querySelector(".btn-primary");
+
+        function modal() {
+            if (!modal1) return;
+            modal1.innerHTML = `
+                <div class="modal-registar">
+                    <h1 id="h1">Ro'yxatdan o'tish</h1>
+                    <p>
+                        Show me what you're building.
+                    </p>
+                    <div>
+                        <div>
+                            <label>Ism</label>
+                            <input id="name" type="text" placeholder="Ismingizni kiriting.">
+                        </div>
+                        <div>
+                            <label>Nik</label>
+                            <input id="nik" type="text" placeholder="Nikingizni kiriting.">
+                        </div>
+                        <div>
+                            <label>Email</label>
+                            <input id="email" type="email" placeholder="Emailingizni kiriting.">
+                        </div>
+                        <div>
+                            <label>Parol</label>
+                            <input id="parol" type="password" placeholder="Parolingizni kiriting.">
+                        </div>
+                        <div>
+                            <label>Tavsif</label>
+                            <input id="bio" type="text" placeholder="Tavsif kiriting.">
+                        </div>
+                        <button id="btn">Ro'yxatdan o'tish</button>
+                    </div>
+                </div>
+            `;
+        }
+
+        modal();
+
+        btn.addEventListener("click", function () {
+
+            if (!localStorage.getItem("name")) {
+                modal1.style.display = 'flex';
+            } else {
+                modal1.style.display = 'none';
+                window.location.href = 'home.html'
+            }
+
+        })
+
+        if (localStorage.getItem("name")) {
+            window.location.href = 'home.html'
+        }
+
+        const namee = document.getElementById("name");
+        const nik = document.getElementById("nik");
+        const email = document.getElementById("email");
+        const parol = document.getElementById("parol");
+        const bio = document.getElementById("bio");
+        const btnn = document.getElementById("btn");
+
+        // modal yopilishi
+
+        if (modal1) {
+
+            window.addEventListener("click", function (e) {
+                if (e.target === modal1) modal1.style.display = "none";
+            });
+
+        }
+
+        // modal registar
+
+        if (btnn) {
+            btnn.addEventListener("click", () => {
+                let name = namee.value;
+                let nikk = nik.value;
+                let emaill = email.value;
+                let pass = parol.value;
+                let bioo = bio.value;
+
+                if (name === "" || nikk === "" || emaill === "" || pass === "") {
+                    alert("Iltimos barcha maydoni to'ldiring!");
+                    return;
+                } else if (!emaill.includes("@")) {
+                    alert("Email xato!");
+                    return;
+                } else if (nikk.length <= 2) {
+                    alert("Nik maximum 3 harfdan iborat bo'lishi shart");
+                    return;
+                } else if (pass.length <= 5) {
+                    alert("Parol uzunligi 6 honali bo'lishi shart");
+                    return
+                }
+
+                localStorage.setItem("name", name);
+                localStorage.setItem("nik", nikk);
+                localStorage.setItem("email", emaill);
+                localStorage.setItem("parol", pass);
+                localStorage.setItem("bio", bioo);
+
+                if (modal1) modal1.style.display = "none";
+                window.location.href = "profile.html";
+            });
+        }
+    </script>
+
+    <script>
         // Init icons
         lucide.createIcons();
 
@@ -1761,17 +1875,6 @@
             observer.observe(el);
         });
 
-        // home sahifasiga tashash
-
-        function login() {
-            localStorage.setItem("isRegistered", "true");
-
-            window.location.href = "home.html";
-        }
-
-        if (localStorage.getItem("isRegistered") === "true") {
-            window.location.href = "home.html";
-        }
     </script>
 
 </body>

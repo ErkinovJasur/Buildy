@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const userNik = document.getElementById("userNik");
   const userBio = document.getElementById("userBio");
 
-  const user = userName.textContent = localStorage.getItem("name");
+  const user = (userName.textContent = localStorage.getItem("name"));
   userNik.textContent = "@" + localStorage.getItem("nik");
   userBio.textContent = localStorage.getItem("bio");
 
@@ -104,18 +104,17 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("h1").textContent = "Profilni tahrirlash";
     document.getElementById("btn").textContent = "Saqlash";
   });
-});
 
-// loyihalarni profilga chqarish
+  // loyihalarni profilga chqarish
 
-let projectUser = JSON.parse(localStorage.getItem("projectsList")) || [];
+  let projectUser = JSON.parse(localStorage.getItem("projectsList")) || [];
 
-if (projectUser.length === 0) {
-  document.querySelector(".projects").style.display = "flex";
-} else {
-  document.querySelector(".projects").style.display = "none";
-  projectUser.forEach((element) => {
-    let techSpans = "";
+  if (projectUser.length === 0) {
+    document.querySelector(".projects").style.display = "flex";
+  } else {
+    document.querySelector(".projects").style.display = "none";
+    projectUser.forEach((element) => {
+      let techSpans = "";
 
       if (element.tech) {
         techSpans = element.tech
@@ -124,13 +123,13 @@ if (projectUser.length === 0) {
           .join("");
       }
 
-    document.getElementById("s").innerHTML += `
+      document.getElementById("s").innerHTML += `
      <div class="project-post">
           <div class="post-header">
               <img class="user-avatar" src="${localStorage.getItem("avatar")}" alt="user-avatar">
               <div class="user-info">
                   <h3>${localStorage.getItem("name") || "username"}</h3>
-                  <span class="user-nik">@${ localStorage.getItem("nik") || "user"} · <p id="clock">${element.clock || ""}</p></span>
+                  <span class="user-nik">@${localStorage.getItem("nik") || "user"} · <p id="clock">${element.clock || ""}</p></span>
               </div>
           </div>
           <div class="post-cover">
@@ -175,9 +174,11 @@ if (projectUser.length === 0) {
             </div>
         </div>
   `;
-  });
-}
+    });
+  }
 
-// qo'ygan projectlarini soni
+  // qo'ygan projectlarini soni
 
-document.getElementById("projectsLength").textContent = projectUser.length;
+  document.getElementById("projectsLength").textContent = projectUser.length;
+
+});

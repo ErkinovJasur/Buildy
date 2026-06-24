@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
             </button>
             <button class="bell" id="bellBtn">
                 <i class="icon-lucide" data-lucide="bell"></i>
-                <span id="badge">1</span>
+                <span id="badge"></span>
             </button>
             <button class="menu" id="menu">
                 <i class="icon-lucide" data-lucide="menu"></i>
@@ -38,14 +38,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const bellBtn = document.getElementById("bellBtn");
   const badge = document.getElementById("badge");
+  badge.textContent = 1;
 
   if (localStorage.getItem("readNotif")) {
     badge.style.display = "none";
   }
-
+  
   bellBtn.onclick = () => {
     badge.style.display = "none";
-
+    
     localStorage.setItem("readNotif", "true");
     window.location.href = "notification.html";
   };
@@ -65,7 +66,7 @@ document.addEventListener("DOMContentLoaded", () => {
       e.preventDefault();
       modal_search.style.display = "none";
     } else if (e.key === "/") {
-      modal_search.style.display = "block";
+      modal_search.style.display = "flex";
     }
   });
 
@@ -102,11 +103,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
       if (filter.length === 0) {
         resultsUsers.innerHTML = `
-          <h2 style="text-align: center; font-size: 12px; margin-top: 100px; color: red; font-weight: 500;">Foydalanuvchi topilmadi</h2>
+          <h2 style="text-align: center; font-size: 12px; margin-top: 150px; color: red; font-weight: 400;">User not found.</h2>
         `;
       } else {
         resultsUsers.innerHTML = `
-          <h2 style="text-align: center; font-size: 13px; margin-top: 100px;">Foydalanuvchi qidirilmoqda...</h2>
+          <h2 style="text-align: center; font-size: 11px; margin-top: 150px; color: #666; font-weight: 400;">Searching...</h2>
         `;
 
         setTimeout(() => {

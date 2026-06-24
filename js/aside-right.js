@@ -69,12 +69,16 @@ lucide.createIcons();
 const tips = [
   "💡 Portfolio'da sifat sonidan muhimroq.",
   "🚀 GitHub profilingizni to'ldirib boring.",
+  "Kichik loyihalardan boshlang: Katta tizimlar qurishga shoshilmang. Avval (To-do list), (Ob-havo ilovasi) yoki oddiy (Profil kartalari) kabi kichik loyihalarni mukammal darajada yakunlang.",
+  "O'zgaruvchilaringizga (variable) mantiqli nom bering. Masalan, a, b deb emas, userName, userRole deb nomlang. Bu kelajakda o'z kodingizni o'qib tushunishingizni osonlashtiradi.",
   "🎯 Har loyiha uchun screenshot qo'shing.",
   "⚡ Ish beruvchilar avval loyihaga qaraydi.",
+  "20% vaqtni nazariyaga (video darslar, kitoblar), 80% vaqtni esa amaliyotga (kod yozish) ajrating. Faqat videolarni ko'rish bilan dasturchi bo'lib bo'lmaydi.",
   "🔥 README yozilgan loyiha ko'proq e'tibor oladi.",
   "💡 Portfolio'da 5 ta sifatli loyiha 50 ta oddiy loyihadan kuchliroqdir.",
   "📱 Responsive dizaynni unutmang.",
   "🧠 Kod yozishdan oldin reja tuzing.",
+  "Taslim bo'lmang: Dasturlash qiyin. Ba'zan bir kunlik xatoni to'g'rilash uchun soatlab vaqt ketadi. Bu normal holat. Asosiysi — 'Men buni eplolmayman' demasdan, (Buni qanday o'rgansam bo'ladi?) deb o'ylash.",
 ];
 
 const randomTip = tips[Math.floor(Math.random() * tips.length)];

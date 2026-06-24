@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Buildly — Show what you build.</title>
+    <title>Buildly — Show me what you're building.</title>
     <link rel="stylesheet" href="css/settings.css">
     <link rel="stylesheet" href="css/all.css">
     <script src="https://unpkg.com/lucide@latest"></script>
@@ -48,17 +48,17 @@
                     <p class="p">Hisob sozlamalari va mintaqaviy sozlamalarni boshqaring.</p>
                     <h1>Ekran Rejimi</h1>
                     <div class="modes">
-                        <div class="actives">
+                        <div class="modess" onclick="mode('light')">
                             <i style="width: 20px;" data-lucide="sun"></i>
                             <h2>Light Mode</h2>
                             <p>Kungi rejim.</p>
                         </div>
-                        <div>
+                        <div class="modess" onclick="mode('dark')">
                             <i style="width: 20px;" data-lucide="moon"></i>
                             <h2>Dark Mode</h2>
                             <p>Tungi rejim.</p>
                         </div>
-                        <div>
+                        <div class="modess">
                             <i style="width: 20px;" data-lucide="monitor"></i>
                             <h2>System</h2>
                             <p>Avtomatik rejim.</p>
@@ -87,17 +87,17 @@
                     </div>
                     <h1>Interfeys tilini tanlang</h1>
                     <div class="lang-container">
-                        <div class="lang-card active">
+                        <div class="modess">
                             <span>uz</span>
                             <h2>O'zbekcha</h2>
                             <p>Mahalliy interfeys</p>
                         </div>
-                        <div class="lang-card">
+                        <div class="modess">
                             <span>en</span>
                             <h2>English</h2>
                             <p>Global standard</p>
                         </div>
-                        <div class="lang-card">
+                        <div class="modess">
                             <span>ru</span>
                             <h2>Русский</h2>
                             <p>Локальная версия</p>
@@ -186,6 +186,7 @@
                 localStorage.removeItem("tg");
                 localStorage.removeItem("website");
                 localStorage.removeItem("linkedin");
+                window.location.href = 'index.html'
                 location.reload();
             } else {
                 console.log("Tizimdan chiqish bekor qilindi!");
@@ -200,10 +201,23 @@
             if (true_or_false === true) {
                 localStorage.clear()
                 location.reload();
+                window.location.href = 'index.html'
             } else {
                 console.log("Akkauntni o'chirish bekor qilindi!");
             }
         })
+
+        // button bosilishi
+
+        const modes = document.querySelectorAll('.modess');
+
+        modes.forEach(button => {
+            button.addEventListener('click', function () {
+                modes.forEach(btn => btn.classList.remove('selected'));
+
+                this.classList.add('selected');
+            });
+        });
     </script>
 
 </body>

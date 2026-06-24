@@ -36,11 +36,6 @@ function asideleft() {
                     <i class="icon-lucide" data-lucide="settings"></i>
                     Sozlamalar
                 </button>
-                <div class="profile-card" id="profile-card">
-                    <p>Ishlab chiquvchi profilingizni yarating, loyihalaringizni namoyish qiling va quruvchilar bilan
-                        bog'laning.</p>
-                    <button id="signUp">Ro'yxatdan o'tish</button>
-                </div>
                 <div class="aside-profile" onclick="window.location.href = 'profile.html'">
                     <div style="display: flex; align-items: center; gap: 8px;">
                         <img id="user-avatar"

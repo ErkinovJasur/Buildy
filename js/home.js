@@ -1,21 +1,21 @@
 document.addEventListener("DOMContentLoaded", () => {
-
   const savedAvatars = localStorage.getItem("avatars");
   const avatar = document.getElementById("user-avatar");
 
   if (savedAvatars) {
     avatar.src = savedAvatar;
-    localStorage.setItem("avatars")
+    localStorage.setItem("avatars");
   }
-  
 
   // like
 
   const likeButtons = document.querySelectorAll(".icon-lucide.like");
+  const count = document.querySelector(".count");
 
   likeButtons.forEach((button) => {
     button.addEventListener("click", () => {
       button.classList.toggle("active");
+      count.textContent = 1;
     });
   });
 

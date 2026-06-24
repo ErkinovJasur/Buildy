@@ -47,6 +47,7 @@
   display: block;
   transition: opacity 0.2s;
   background-color: white;
+  border: 3.5px solid var(--white);
 }
 
 /* camera */
@@ -132,7 +133,7 @@
   font-size: 1.4rem;
   font-weight: 800;
   letter-spacing: -0.3px;
-  margin-bottom: 4px;
+  margin-bottom: 6px;
 }
 
 #userNik {
@@ -143,8 +144,8 @@
 }
 
 #userBio {
-  font-size: 0.89rem;
-  color: var(--gray);
+  font-size: 0.92rem;
+  color: var(--text);
   line-height: 1.45;
   font-weight: 300;
 }
