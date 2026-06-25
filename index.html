@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Buildly — Show me what you're building.</title>
+    <title>Buildly — Show what you're building.</title>
     <link rel="stylesheet" href="css/all.css">
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
@@ -56,10 +56,7 @@
         }
 
         nav {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 24px !important;
-            height: 64px;
+            padding: 8px 24px !important;
             display: flex;
             align-items: center;
             gap: 40px;
@@ -1116,6 +1113,50 @@
             margin: 8px 0;
         }
 
+        /* modal registar */
+
+        .modal {
+            background-color: var(--white);
+            padding: 0px !important;
+            animation: slideIn 0.3s ease;
+
+            .modal-registar {
+                box-shadow: none;
+                padding: 0px 20px !important;
+                padding-bottom: 20px !important;
+                position: absolute;
+                top: 20px;
+            }
+
+            .back {
+                width: auto;
+                background-color: var(--cardBg);
+                padding: 8px;
+                width: 40px;
+                height: 40px;
+                color: var(--text);
+                margin-bottom: 6px;
+            }
+
+            .back:hover {
+                background-color: var(--bodyBg);
+            }
+
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(100%);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+
         /* ── RESPONSIVE ── */
         @media (max-width: 1024px) {
             .devs-grid {
@@ -1244,12 +1285,12 @@
                 <li><a href="#projects">Loyihalar</a></li>
                 <li><a href="#features">Kashf qilish</a></li>
             </ul>
-            <div style="display: flex; align-items: center; gap: 10px;">
+            <div style="display: flex; align-items: center; gap: 14px;">
                 <div class="nav-actions">
-                    <button class="btn-primary">Kirish</button>
+                    <button class="btn-primary">Sign In</button>
                 </div>
                 <button class="burger" id="burger" aria-label="Menu">
-                    <i data-lucide="menu" style="width:22px;height:22px;"></i>
+                    <i data-lucide="menu" style="width: 22px; height: 22px;"></i>
                 </button>
             </div>
         </nav>
@@ -1732,9 +1773,12 @@
             if (!modal1) return;
             modal1.innerHTML = `
                 <div class="modal-registar">
+                    <button class="back">
+                        <i data-lucide="chevron-left"></i>
+                    </button>
                     <h1 id="h1">Ro'yxatdan o'tish</h1>
                     <p>
-                        Show me what you're building.
+                        Show what you're building.
                     </p>
                     <div>
                         <div>
@@ -1789,13 +1833,9 @@
 
         // modal yopilishi
 
-        if (modal1) {
-
-            window.addEventListener("click", function (e) {
-                if (e.target === modal1) modal1.style.display = "none";
-            });
-
-        }
+        document.querySelector(".back").addEventListener("click", function () {
+            modal1.style.display = "none"
+        })
 
         // modal registar
 

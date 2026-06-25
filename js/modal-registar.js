@@ -7,11 +7,13 @@ document.addEventListener("DOMContentLoaded", () => {
   let isRegistered = localStorage.getItem("name");
   let nikRegistered = localStorage.getItem("nik");
 
-  const signUp = document
-    .querySelector(".edit-btn")
-    .addEventListener("click", function () {
-      modal1.style.display = "flex";
-    });
+  user.addEventListener("click", function () {
+    window.location.href = "profile.html";
+  });
+
+  document.querySelector(".edit-btn").addEventListener("click", function () {
+    modal1.style.display = "flex";
+  });
 
   // modalRegistar
 
@@ -20,7 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
     modal1.innerHTML = `
     <div class="modal-registar">
         <h1 id="h1">Ro'yxatdan o'tish</h1>
-        <p>Show what you build.</p>
+        <p>Show what you're building.</p>
         <div>
             <div>
                 <label>Ism</label>
@@ -78,18 +80,6 @@ document.addEventListener("DOMContentLoaded", () => {
   if (modal1) {
     window.addEventListener("click", function (e) {
       if (e.target === modal1) modal1.style.display = "none";
-    });
-  }
-
-  // Ro'yxatdan o'tmagan bo'lsa modal chiqishi
-
-  if (!isRegistered) {
-    user.addEventListener("click", function () {
-      if (modal1) modal1.style.display = "flex";
-    });
-  } else {
-    user.addEventListener("click", function () {
-      window.location.href = "profile.html";
     });
   }
 

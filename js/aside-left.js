@@ -1,8 +1,13 @@
 const asideLeft = document.querySelector(".aside-left");
 
 function asideleft() {
-  asideLeft.innerHTML = `
-        <h1>Buildly</h1>
+        asideLeft.innerHTML = `
+            <a href="home.html" class="logo">
+                <div class="logo-icon">
+                    <i data-lucide="layers" style="width:16px;height:16px;"></i>
+                </div>
+                Buildly
+            </a>
             <div class="aside-location">
                 <button onclick="window.location.href = 'home.html'" class="nav-item" data-page="home.html">
                     <i class="icon-lucide" data-lucide="home"></i>
@@ -46,12 +51,9 @@ function asideleft() {
                             <p id="userNikk"></p>
                         </div>
                     </div>
-                    <div class="log">
-                        <i class="icon-lucide" data-lucide="LogOut"></i>
-                    </div>
                 </div>
             </div>
-    `;
+        `;
 
   setActiveLink();
   lucide.createIcons();
@@ -65,6 +67,7 @@ function setActiveLink() {
 
   navLinks.forEach((link) => {
     const page = link.getAttribute("data-page");
+    
     if (page && path.includes(page)) {
       link.classList.add("active");
     }

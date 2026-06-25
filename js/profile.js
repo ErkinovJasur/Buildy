@@ -11,6 +11,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (user === "Buildly") {
     document.getElementById("pp").textContent = "5";
+  } else {
+    document.getElementById("pp").textContent = "1";
   }
 
   // Avatar yuklash
@@ -177,8 +179,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // qo'ygan projectlarini soni
+  // qo'ygan projectlarini sonini chiqarish
 
   document.getElementById("projectsLength").textContent = projectUser.length;
-
 });

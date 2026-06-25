@@ -16,7 +16,51 @@ document.addEventListener("DOMContentLoaded", () => {
             <div class="modal-search">
                 <div class="modal-search-card">
                     <input id="searchInput" placeholder="Dasturchi va loyihalarni qidirish..." id="searchInp"></input>
-                    <div id="results"></div>
+                    <div id="results">
+                      <div class="sidebar">
+                        <h4 id="h4">Navigation</h4>
+                        <div class="item" onclick="window.location.href = 'home.html'">
+                          <i data-lucide="house"></i>
+                          <span>Asosiy</span>
+                        </div>
+                        <div class="item" onclick="window.location.href = 'programist.html'">
+                          <i data-lucide="code-2"></i>
+                          <span>Dasturchilar</span>
+                        </div>
+                        <div class="item">
+                          <i data-lucide="folder-git-2"></i>
+                          <span>Loyihalar</span>
+                        </div>
+                        <div class="item" onclick="window.location.href = 'teams.html'">
+                          <i data-lucide="users"></i>
+                          <span>Jamoalar</span>
+                        </div>
+                        <div class="item">
+                          <i data-lucide="compass"></i>
+                          <span>Kashf qiling</span>
+                        </div>
+                        <div class="item">
+                          <i data-lucide="bookmark"></i>
+                          <span>Saqlanganlar</span>
+                        </div>
+                        <div class="item">
+                          <i data-lucide="message-circle"></i>
+                          <span>Xabarlar</span>
+                        </div>
+                        <div class="item" onclick="window.location.href = 'notification.html'">
+                          <i data-lucide="bell"></i>
+                          <span>Bildirishnomalar</span>
+                        </div>
+                        <div class="item" onclick="window.location.href = 'home.html'">
+                          <i data-lucide="plus"></i>
+                          <span>Yangi loyiha</span>
+                        </div>
+                        <div class="item s" onclick="window.location.href = 'settings.html'">
+                          <i data-lucide="settings"></i>
+                          <span>Sozlamalar</span>
+                        </div>
+                      </div>
+                    </div>
                 </div>
             </div>
             <button class="plus" id="openProjectModalBtn">
@@ -43,10 +87,10 @@ document.addEventListener("DOMContentLoaded", () => {
   if (localStorage.getItem("readNotif")) {
     badge.style.display = "none";
   }
-  
+
   bellBtn.onclick = () => {
     badge.style.display = "none";
-    
+
     localStorage.setItem("readNotif", "true");
     window.location.href = "notification.html";
   };
@@ -85,7 +129,7 @@ document.addEventListener("DOMContentLoaded", () => {
       let data = await response.json();
       render(data);
     } catch (error) {
-      resultsUsers.innerHTML = `<h3 style="color: red; font-weight: 600; text-align: center; font-size: 12px; margin-top: 100px;">Ma'lumotlarni yuklashda xatolik yuz berdi.</h3>`;
+      resultsUsers.innerHTML = `<h3 style="color: red; font-weight: 600; text-align: center; font-size: 12px; margin-top: 150px;">Ma'lumotlarni yuklashda xatolik yuz berdi.</h3>`;
     }
   }
 
@@ -96,9 +140,9 @@ document.addEventListener("DOMContentLoaded", () => {
       let filter = data.users.filter((value) => {
         const term = searchInput.value.trim().toLowerCase();
 
-        return value.name.toLowerCase().includes(term);
+        return value.username.toLowerCase().includes(term);
       });
-      
+
       resultsUsers.innerHTML = "";
 
       if (filter.length === 0) {
@@ -124,7 +168,7 @@ document.addEventListener("DOMContentLoaded", () => {
               </div>
             `;
           });
-        }, 2500);
+        }, 1500);
       }
     });
   }
@@ -132,4 +176,9 @@ document.addEventListener("DOMContentLoaded", () => {
   // icons
 
   lucide.createIcons();
+
+  // title
+
+  document.querySelector("title").innerText =
+    "Buildly — Show what you're building.";
 });
