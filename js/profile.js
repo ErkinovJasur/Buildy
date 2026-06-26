@@ -4,15 +4,20 @@ document.addEventListener("DOMContentLoaded", () => {
   const userName = document.getElementById("userName");
   const userNik = document.getElementById("userNik");
   const userBio = document.getElementById("userBio");
+  const span = document.querySelector(".span");
 
   const user = (userName.textContent = localStorage.getItem("name"));
-  userNik.textContent = "@" + localStorage.getItem("nik");
+  const user1 = (userNik.textContent = "@" + localStorage.getItem("nik"));
   userBio.textContent = localStorage.getItem("bio");
 
   if (user === "Buildly") {
-    document.getElementById("pp").textContent = "5";
+    document.getElementById("pp").textContent = 5;
   } else {
-    document.getElementById("pp").textContent = "1";
+    document.getElementById("pp").textContent = 1;
+  }
+
+  if (user1 === "@buildly" || user1 === "@erkinov") {
+    span.style.display = "block";
   }
 
   // Avatar yuklash

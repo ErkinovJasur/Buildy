@@ -273,8 +273,8 @@ main {
   width: 100%;
   height: 100vh;
   z-index: 99999;
-  background: rgba(0, 0, 0, 0.2);
-  backdrop-filter: blur(16px);
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(10px);
   display: none;
   flex-direction: column;
   justify-content: center;
@@ -297,7 +297,7 @@ main {
 
     input {
       width: 100%;
-      padding: 18px 20px;
+      padding: 20px 20px;
       display: flex;
       align-items: center;
       gap: 12px;
@@ -309,6 +309,9 @@ main {
       margin: 0 auto;
       border-bottom: 1px solid var(--border) !important;
       border: none;
+      position: sticky;
+      top: -2px;
+      z-index: 9999;
     }
 
     #results {
@@ -344,7 +347,7 @@ main {
   justify-content: center;
   z-index: 99999;
   padding: 16px;
-  animation: slideIn 1s ease;
+  animation: slideIn 0.4s ease;
 }
 
 .modal-registar {
@@ -467,6 +470,7 @@ main {
   font-family: "Plus Jakarta Sans", sans-serif;
   overflow-y: auto;
   display: none;
+  animation: rightIn 0.3s ease;
 }
 
 .modal-card {
@@ -607,6 +611,18 @@ main {
 .modal-card button:not(.close):active {
   transform: scale(0.98);
   opacity: 0.9;
+}
+
+@keyframes rightIn {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 /* bottom nav */
@@ -1026,7 +1042,7 @@ header {
   display: flex;
   align-items: center;
   gap: 10px;
-  padding: 12px 20px;
+  padding: 10px 20px;
   background: #ffffff;
   transition: 0.3s;
   position: relative;
@@ -1037,9 +1053,9 @@ header {
 }
 
 .searchUsers img {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
+  width: 37px;
+  height: 37px;
+  border-radius: 999px;
   object-fit: cover;
 }
 
@@ -1051,16 +1067,16 @@ header {
 }
 
 .searchUsers h1 {
-  font-size: 14px;
-  font-weight: 700;
+  font-size: 13px;
+  font-weight: 760;
   margin: 0;
   color: #1d1d1f;
   letter-spacing: -0.2px;
 }
 
 .searchUsers h3 {
-  font-size: 10px;
-  color: #86868b;
+  font-size: 9.5px;
+  color: var(--btn);
   font-weight: 400;
   margin: 0;
 }

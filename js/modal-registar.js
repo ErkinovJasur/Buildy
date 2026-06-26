@@ -11,10 +11,6 @@ document.addEventListener("DOMContentLoaded", () => {
     window.location.href = "profile.html";
   });
 
-  document.querySelector(".edit-btn").addEventListener("click", function () {
-    modal1.style.display = "flex";
-  });
-
   // modalRegistar
 
   function modal() {
@@ -112,7 +108,7 @@ document.addEventListener("DOMContentLoaded", () => {
         alert("Nik maximum 3 harfdan iborat bo'lishi shart");
         return;
       } else if (pass.length <= 5) {
-        alert("Parol uzunligi 6 honali bo'lishi shart");
+        alert("Parol uzunligi 6 xonali bo'lishi shart");
         return;
       }
 

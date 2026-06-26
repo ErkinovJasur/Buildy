@@ -9,7 +9,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // like
 
-  const likeButtons = document.querySelectorAll(".icon-lucide.like");
+
+  const likeButtons = document.querySelectorAll("#like");
   const count = document.querySelector(".count");
 
   likeButtons.forEach((button) => {

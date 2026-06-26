@@ -206,23 +206,20 @@
     align-items: center;
     gap: 5px;
     user-select: none;
+    cursor: pointer;
 
     .icon-lucide {
       width: 19px !important;
       color: var(--gray);
     }
 
-    .icon-lucide.like {
+    #like {
       transition: all 0.2s ease;
     }
 
-    .icon-lucide.like:hover {
-      cursor: pointer;
-    }
-
-    .icon-lucide.like.active {
-      fill: rgb(255, 88, 88);
-      stroke: rgb(255, 88, 88);
+    #like.active {
+      background-color: rgb(255, 88, 88) !important;
+      stroke: rgb(255, 88, 88) !important;
     }
 
     span {

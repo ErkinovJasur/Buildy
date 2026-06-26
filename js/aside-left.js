@@ -89,6 +89,6 @@ function setActiveLink() {
   const userNamee = document.getElementById("userNamee");
   const userNikk = document.getElementById("userNikk");
 
-  userNamee.textContent = localStorage.getItem("name");
-  userNikk.textContent = "@" + localStorage.getItem("nik");
+  userNamee.textContent = localStorage.getItem("name") || "user";
+  userNikk.textContent = "@" + localStorage.getItem("nik") || "username";
 }
