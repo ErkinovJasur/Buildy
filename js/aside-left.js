@@ -43,8 +43,8 @@ function asideleft() {
                 </button>
                 <div class="aside-profile" onclick="window.location.href = 'profile.html'">
                     <div style="display: flex; align-items: center; gap: 8px;">
-                        <img id="user-avatar"
-                            src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Default_pfp.svg/500px-Default_pfp.svg.png"
+                        <img
+                            src="${localStorage.getItem("avatar")}"
                             alt="user-avatar">
                         <div>
                             <h2 id="userNamee"></h2>
@@ -72,17 +72,6 @@ function setActiveLink() {
       link.classList.add("active");
     }
   });
-
-  // avatar
-  
-  const navbarAvatar = document.getElementById("avatarr");
-  
-  const avatar = document.getElementById("user-avatar");
-  const savedAvatar = localStorage.getItem("avatar");
-
-  if (savedAvatar) {
-    avatar.src = savedAvatar;
-  }
 
   // ma'lumotlari
 

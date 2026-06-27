@@ -5,19 +5,24 @@ if (bottomNav) {
     bottomNav.innerHTML = `
         <div class="nav-btn" onclick="window.location.href = 'home.html'" data-page="home.html">
             <i data-lucide="house"></i>
+            Home
         </div>
         <div class="nav-btn">
             <i data-lucide="compass"></i>
+            Discovery
         </div>
         <div class="nav-btn" id="plus">
             <i data-lucide="plus"></i>
+            Create
         </div>
         <div class="nav-btn">
             <i data-lucide="MessageCircle"></i>
+            Messages
         </div>
         <div class="nav-btn" id="user" data-page="profile.html">
-            <i data-lucide="circle-user"></i>
-        </div>
+            <img src="${localStorage.getItem("avatar")}" src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Default_pfp.svg/500px-Default_pfp.svg.png"></img>
+              You
+            </div>
     `;
 
     setLinks();
@@ -39,3 +44,4 @@ function setLinks() {
     }
   });
 }
+
