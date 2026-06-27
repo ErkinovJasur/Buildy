@@ -51,7 +51,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       if (filter.length === 0) {
         resultsUsers.innerHTML = `
-          <h2 style="text-align: center; font-size: 12px; margin-top: 150px; color: red; font-weight: 400;">User not found.</h2>
+          <h2 style="text-align: center; font-size: 12px; margin-top: 150px; color: red; font-weight: 400;">"${searchInput.value}" nomli foydalanuvchi topilmadi.</h2>
         `;
       } else {
         resultsUsers.innerHTML = `

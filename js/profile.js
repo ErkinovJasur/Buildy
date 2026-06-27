@@ -7,10 +7,11 @@ document.addEventListener("DOMContentLoaded", () => {
   const span = document.querySelector(".span");
 
   const user = (userName.textContent = localStorage.getItem("name"));
-  const user1 = (userNik.textContent = "@" + localStorage.getItem("nik"));
+  const user1 = (userNik.textContent =
+    "@" + localStorage.getItem("nik").toLowerCase());
   userBio.textContent = localStorage.getItem("bio");
 
-  if (user === "Buildly") {
+  if (user1 === "@buildly") {
     document.getElementById("pp").textContent = 5;
   } else {
     document.getElementById("pp").textContent = 1;

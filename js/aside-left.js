@@ -1,7 +1,7 @@
 const asideLeft = document.querySelector(".aside-left");
 
 function asideleft() {
-        asideLeft.innerHTML = `
+    asideLeft.innerHTML = `
             <a href="home.html" class="logo">
                 <div class="logo-icon">
                     <i data-lucide="layers" style="width:16px;height:16px;"></i>
@@ -53,7 +53,7 @@ function asideleft() {
                     </div>
                 </div>
             </div>
-        `;
+    `;
 
   setActiveLink();
   lucide.createIcons();
