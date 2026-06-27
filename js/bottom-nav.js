@@ -20,7 +20,7 @@ if (bottomNav) {
             Messages
         </div>
         <div class="nav-btn" id="user" data-page="profile.html">
-            <img src="${localStorage.getItem("avatar")}" src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Default_pfp.svg/500px-Default_pfp.svg.png"></img>
+            <img id="avatar-bottomNav"></img>
               You
             </div>
     `;
@@ -45,3 +45,11 @@ function setLinks() {
   });
 }
 
+const bottomAvatar = document.getElementById("avatar-bottomNav");
+
+if (!localStorage.getItem("avatar")) {
+  bottomAvatar.src =
+    "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Default_pfp.svg/500px-Default_pfp.svg.png";
+} else {
+  bottomAvatar.src = localStorage.getItem("avatar");
+}

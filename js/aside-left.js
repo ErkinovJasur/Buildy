@@ -1,7 +1,7 @@
 const asideLeft = document.querySelector(".aside-left");
 
 function asideleft() {
-    asideLeft.innerHTML = `
+  asideLeft.innerHTML = `
             <a href="home.html" class="logo">
                 <div class="logo-icon">
                     <i data-lucide="layers" style="width:16px;height:16px;"></i>
@@ -43,9 +43,7 @@ function asideleft() {
                 </button>
                 <div class="aside-profile" onclick="window.location.href = 'profile.html'">
                     <div style="display: flex; align-items: center; gap: 8px;">
-                        <img
-                            src="${localStorage.getItem("avatar")}"
-                            alt="user-avatar">
+                        <img id="avatar-aside" alt="user-avatar">
                         <div>
                             <h2 id="userNamee"></h2>
                             <p id="userNikk"></p>
@@ -67,7 +65,7 @@ function setActiveLink() {
 
   navLinks.forEach((link) => {
     const page = link.getAttribute("data-page");
-    
+
     if (page && path.includes(page)) {
       link.classList.add("active");
     }
@@ -80,4 +78,13 @@ function setActiveLink() {
 
   userNamee.textContent = localStorage.getItem("name") || "user";
   userNikk.textContent = "@" + localStorage.getItem("nik") || "username";
+}
+
+const avatar = document.getElementById("avatar-aside");
+
+if (!localStorage.getItem("avatar")) {
+  avatar.src =
+    "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Default_pfp.svg/500px-Default_pfp.svg.png";
+} else {
+  avatar.src = localStorage.getItem("avatar");
 }

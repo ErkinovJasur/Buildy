@@ -1,14 +1,3 @@
-:root {
-  --bodyBg: #fff7ed;
-  --cardBg: #ffffff;
-  --text: #111827;
-  --shadow: 0 10px 30px rgba(255, 127, 67, 0.281);
-  --white: #ffffff;
-  --btn: #db4f03;
-  --border: #fed7aa;
-  --gray: #9f9f9f;
-}
-
 .profile-html {
   max-width: 660px;
   margin: 0 auto 24px;
@@ -143,13 +132,13 @@
 
 #userName {
   font-size: 1.4rem;
-  font-weight: 760;
+  font-weight: 770;
   letter-spacing: -0.3px;
-  margin-bottom: 7px;
+  margin-bottom: 5px;
 }
 
 #userNik {
-  font-size: 0.8rem;
+  font-size: 0.80rem;
   color: var(--btn);
   font-weight: 500;
   margin-bottom: 13px;
@@ -375,10 +364,11 @@ a {
   font-size: 13px;
   font-weight: 400;
   transition: all 0.25s ease;
+  color: var(--gray);
 }
 
 .profile-links a:hover {
-  text-decoration: underline;
+  color: var(--text);
 }
 
 .profile-links a svg,
@@ -417,7 +407,7 @@ a {
   .profile-html,
   .projects,
   .project {
-    margin: 15px auto !important;
+    margin: 10px auto !important;
   }
 
   .stat-item {
@@ -435,6 +425,11 @@ a {
   header {
     margin-bottom: 60px;
   }
+
+  .edit-btn {
+    top: 155px;
+    right: 35px;
+  }
 }
 
 @media (max-width: 1000px) {
@@ -448,21 +443,9 @@ a {
     margin-left: 20px;
     margin-right: 20px;
   }
-
-  .profile-html,
-  .projects,
-  .project {
-    margin: 15px auto;
-  }
 }
 
 @media (max-width: 605px) {
-  .profile-html,
-  .projects,
-  .project {
-    margin: 15px !important;
-  }
-
   .stat-item {
     flex-direction: column;
   }

@@ -24,7 +24,6 @@ document.addEventListener("DOMContentLoaded", () => {
   // Avatar yuklash
 
   const profileAvatar = document.getElementById("avatar");
-  const profileAvatarss = document.getElementById("avatarss");
   const avatarInput = document.getElementById("avatarInput");
 
   const savedAvatar = localStorage.getItem("avatar");

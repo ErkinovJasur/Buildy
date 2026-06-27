@@ -121,8 +121,8 @@ document.addEventListener("DOMContentLoaded", () => {
             </div>
             <div class="likes">
               <div class="divs">
-                  <div class="div" id="like">
-                      <i class="icon-lucide" data-lucide="heart"></i>
+                  <div class="div">
+                      <i class="icon-lucide like" data-lucide="heart"></i>
                       <span class="count">0</span>
                   </div>
                   <div class="div">
