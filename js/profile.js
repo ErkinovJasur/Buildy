@@ -1,3 +1,6 @@
+import axios from "https://cdn.jsdelivr.net/npm/axios@1.11.0/+esm";
+const api = "https://6a41bddb7602860e6520687e.mockapi.io/postlar";
+
 document.addEventListener("DOMContentLoaded", () => {
   // Kiritgan ma'lumotlarini profile sahifasiga chqarish
 
@@ -119,79 +122,83 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("btn").textContent = "Saqlash";
   });
 
-  //   // loyihalarni profilga chqarish
+  // loyihalarni profilga chqarish
 
-  //   let projectUser = JSON.parse(localStorage.getItem("projectsList")) || [];
+  const renderProject = async () => {
+    const res = await axios.get(api);
 
-  //   if (projectUser.length === 0) {
-  //     document.querySelector(".projects").style.display = "flex";
-  //   } else {
-  //     document.querySelector(".projects").style.display = "none";
-  //     projectUser.forEach((element) => {
-  //       let techSpans = "";
+    const posts = res.data.filter((post) => {
+      post.name === localStorage.getItem("name");
 
-  //       if (element.tech) {
-  //         techSpans = element.tech
-  //           .split(",")
-  //           .map((tech) => `<span>${tech.trim()}</span>`)
-  //           .join("");
-  //       }
+      let techSpans = post.tech
+        .split(",")
+        .map((tech) => `<span>${tech.trim()}</span>`)
+        .join("");
+      document.getElementById("postCard").innerHTML += `
+       <div class="project-post">
+            <div class="post-header">
+                <img class="user-avatar" src="${post.avatar}" alt="user-avatar">
+                <div class="user-info">
+                    <h3>${post.name || "username"}</h3>
+                    <span class="user-nik">@${post.username || "user"} · <p id="clock">${localStorage.getItem("soat") || ""}</p></span>
+                </div>
+            </div>
+            <div class="post-body">
+                <h2 class="project-title">${post.postName}</h2>
+                <p class="project-desc">${post.postBio}</p>
+            </div>
+            <div class="tech-stack" style="margin-bottom: 20px;">
+              ${techSpans}
+            </div>
+            <div class="post-cover">
+                <img src="${post.image || ""}" alt="project-cover">
+            </div>
+             <div class="post-actions">
+                    <a href="${post.postGitUrl}" target="_blank" class="action-btn github-btn">
+                        <i class="icon-lucide" data-lucide="CodeXml"></i>
+                        GitHub
+                    </a>
+                    <a href="${post.postDemoUrl}" target="_blank" class="action-btn demo-btn">
+                        <i class="icon-lucide" data-lucide="external-link"></i>
+                        Live Demo
+                    </a>
+              </div>
+              <div class="likes">
+                <div class="divs">
+                    <div class="div">
+                        <i class="icon-lucide like" data-lucide="heart"></i>
+                        <span>0</span>
+                    </div>
+                    <div class="div">
+                        <i class="icon-lucide" data-lucide="message-square"></i>
+                        <span>0</span>
+                    </div>
+                </div>
+                <div class="divs">
+                    <div class="div">
+                        <i class="icon-lucide" data-lucide="forward"></i>
+                    </div>
+                    <div class="div">
+                        <i class="icon-lucide" data-lucide="bookmark"></i>
+                    </div>
+                </div>
+              </div>
+          </div>
+    `;
+    });
 
-  //       document.getElementById("s").innerHTML += `
-  //      <div class="project-post">
-  //           <div class="post-header">
-  //               <img class="user-avatar" src="${localStorage.getItem("avatar")}" alt="user-avatar">
-  //               <div class="user-info">
-  //                   <h3>${localStorage.getItem("name") || "username"}</h3>
-  //                   <span class="user-nik">@${localStorage.getItem("nik") || "user"} · <p id="clock">${element.clock || ""}</p></span>
-  //               </div>
-  //           </div>
-  //           <div class="post-cover">
-  //               <img src="${element.image || ""}" alt="project-cover">
-  //           </div>
-  //           <div class="post-body">
-  //               <h2 class="project-title">${element.name}</h2>
-  //               <p class="project-desc">${element.bio}</p>
-  //           </div>
-  //           <div class="tech-stack" style="margin-bottom: 20px;">
-  //             ${techSpans}
-  //           </div>
-  //            <div class="post-actions">
-  //                   <a href="${element.gitUrl}" target="_blank" class="action-btn github-btn">
-  //                       <i class="icon-lucide" data-lucide="CodeXml"></i>
-  //                       GitHub
-  //                   </a>
-  //                   <a href="${element.demoUrl}" target="_blank" class="action-btn demo-btn">
-  //                       <i class="icon-lucide" data-lucide="external-link"></i>
-  //                       Live Demo
-  //                   </a>
-  //             </div>
-  //             <div class="likes">
-  //               <div class="divs">
-  //                   <div class="div">
-  //                       <i class="icon-lucide like" data-lucide="heart"></i>
-  //                       <span>0</span>
-  //                   </div>
-  //                   <div class="div">
-  //                       <i class="icon-lucide" data-lucide="message-square"></i>
-  //                       <span>0</span>
-  //                   </div>
-  //               </div>
-  //               <div class="divs">
-  //                   <div class="div">
-  //                       <i class="icon-lucide" data-lucide="forward"></i>
-  //                   </div>
-  //                   <div class="div">
-  //                       <i class="icon-lucide" data-lucide="bookmark"></i>
-  //                   </div>
-  //               </div>
-  //             </div>
-  //         </div>
-  //   `;
-  //     });
-  //   }
+    // qo'ygan projectlarini sonini chiqarish
 
-  //   // qo'ygan projectlarini sonini chiqarish
+    document.getElementById("projectsLength").textContent = res.data.length;
 
-  //   document.getElementById("projectsLength").textContent = projectUser.length;
+    if (res.data.length === 1) {
+      document.querySelector(".projects").style.display = "none";
+    } else {
+      document.querySelector(".projects").style.display = "flex";
+    }
+
+    lucide.createIcons();
+  };
+
+  renderProject();
 });

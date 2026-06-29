@@ -10,6 +10,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
         rel="stylesheet" />
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.13.2/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/axios@1.13.2/dist/axios.min.js"></script>
     <style>
         :root {
             --bodyBg: #fef7ef;
@@ -1763,7 +1765,10 @@
         </div>
     </footer>
 
-    <script>
+    <script type="module">
+        import axios from "https://cdn.jsdelivr.net/npm/axios@1.11.0/+esm";
+        const api = "https://6a42b7747602860e6521d39f.mockapi.io/users";
+
         // registar
 
         const modal1 = document.querySelector(".modal");
@@ -1870,6 +1875,23 @@
                 if (modal1) modal1.style.display = "none";
                 window.location.href = "profile.html";
             });
+
+            async function registar() {
+                try {
+                    await axios.post(api, {
+                        name: namee.value,
+                        username: '@' + nik.value,
+                        email: email.value,
+                        password: parol.value,
+                        bio: bio.value,
+                        avatar: localStorage.getItem("avatar")
+                    });
+                } catch (err) {
+                    console.log(err);
+                }
+            }
+
+            registar()
         }
     </script>
 

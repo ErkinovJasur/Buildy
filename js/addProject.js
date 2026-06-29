@@ -65,7 +65,7 @@ document.addEventListener("DOMContentLoaded", () => {
     try {
       let response = await axios.get(api);
 
-      response.data.forEach((post) => {
+      response.data.map((post) => {
         let techSpans = post.tech
           .split(",")
           .map((tech) => `<span>${tech.trim()}</span>`)
