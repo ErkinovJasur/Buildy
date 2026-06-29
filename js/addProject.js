@@ -57,7 +57,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const projectGitUrl = document.getElementById("projectGitUrl");
   const projectDemoUrl = document.getElementById("projectDemoUrl");
   const projectTechStack = document.getElementById("projectTechStack");
-  const projectImage = document.getElementById("projectImage");
   const joylash = document.getElementById("joylash");
 
   // apidan ma'lumot olish
@@ -89,7 +88,7 @@ document.addEventListener("DOMContentLoaded", () => {
               ${techSpans}
             </div> 
              <div class="post-cover"> 
-              <img id="image" src="${localStorage.getItem("image")}"></img>
+              <img id="image" src="${post.image || ""}"></img>
             </div> 
             <div class="post-actions">
               <a href="${post.postGitUrl}" target="_blank" class="action-btn github-btn">
@@ -136,35 +135,31 @@ document.addEventListener("DOMContentLoaded", () => {
   // post qilsh
 
   joylash.addEventListener("click", async () => {
-    // cover rasm
+    const projectImage = document.getElementById("projectImage");
 
-    const img = document.getElementById("image");
+    projectImage.addEventListener("change", (e) => {
+      console.log("CHANGE ISHLADI");
 
-    projectImage.addEventListener("change", () => {
-      const file = projectImage.files[0];
+      const file = e.target.files[0];
+
+      console.log("FILE:", file);
 
       if (!file) return;
 
       const reader = new FileReader();
 
       reader.onload = () => {
-        const image = reader.result;
-
-        console.log("IMAGE:", image.slice(0, 50));
-
-        img.src = image;
-
-        localStorage.setItem("image", image);
-
-        console.log(localStorage.getItem("image"));
-
-        console.log("LOCAL:", localStorage.getItem("image")?.slice(0, 50));
+        console.log("IMAGE:", reader.result.slice(0, 50));
       };
 
       reader.readAsDataURL(file);
     });
 
-    if (projectName.value === "" || projectBio.value === "") {
+    if (
+      projectName.value === "" ||
+      projectBio.value === "" ||
+      projectImage.value === ""
+    ) {
       alert("To'ldiring");
       return;
     }
@@ -174,7 +169,7 @@ document.addEventListener("DOMContentLoaded", () => {
         name: localStorage.getItem("name"),
         username: localStorage.getItem("nik"),
         avatar: localStorage.getItem("avatar"),
-        image: localStorage.getItem("image"),
+        image: "",
         postName: projectName.value,
         postBio: projectBio.value,
         postGitUrl: projectGitUrl.value || "GitHub",
@@ -191,7 +186,6 @@ document.addEventListener("DOMContentLoaded", () => {
       projectGitUrl.value = "";
       projectDemoUrl.value = "";
       projectTechStack.value = "";
-
       modalProject.style.display = "none";
     } catch (error) {
       console.log(error);

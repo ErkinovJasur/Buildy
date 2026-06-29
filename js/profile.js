@@ -46,7 +46,6 @@ document.addEventListener("DOMContentLoaded", () => {
       profileAvatar.src = avatar;
 
       localStorage.setItem("avatar", avatar);
-
     };
 
     reader.readAsDataURL(file);
