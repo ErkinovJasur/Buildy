@@ -17,9 +17,40 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("pp").textContent = 1;
   }
 
+  // galochka qo'shish
+
   if (user1 === "@buildly" || user1 === "@erkinov") {
     span.style.display = "block";
   }
+
+  // upload avatar
+
+  const avatarInput = document.getElementById("avatarInput");
+  const profileAvatar = document.getElementById("avatar");
+
+  const savedAvatar = localStorage.getItem("avatar");
+
+  if (savedAvatar) {
+    profileAvatar.src = savedAvatar;
+  }
+
+  avatarInput.addEventListener("change", function () {
+    const file = this.files[0];
+
+    if (!file) return;
+
+    const reader = new FileReader();
+
+    reader.onload = function (e) {
+      const avatar = e.target.result;
+      profileAvatar.src = avatar;
+
+      localStorage.setItem("avatar", avatar);
+
+    };
+
+    reader.readAsDataURL(file);
+  });
 
   // title
 

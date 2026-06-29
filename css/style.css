@@ -37,11 +37,10 @@
 }
 
 .user-avatar {
-  width: 45px !important;
-  height: 45px !important;
-  border-radius: 999px;
+  width: 55px !important;
+  height: 50px !important;
   object-fit: cover;
-  transition: 0.4s;
+  border-radius: 990px;
 }
 
 .user-info {

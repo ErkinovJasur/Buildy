@@ -2,17 +2,10 @@ import axios from "https://cdn.jsdelivr.net/npm/axios@1.11.0/+esm";
 const api = "https://6a41bddb7602860e6520687e.mockapi.io/postlar";
 
 document.addEventListener("DOMContentLoaded", () => {
-  // avatar
-
-  let currentAvatarUrl = null;
-  document.addEventListener("DOMContentLoaded", async () => {
-    currentAvatarUrl = await loadAvatar("avatar", "/api/avatar");
-  });
-
   const modalProject = document.getElementById("modal-project");
   const userProjectCard = document.getElementById("userProjectCard");
-  const plus = document.getElementById("plus");
   const openProjectModalBtn = document.getElementById("openProjectModalBtn");
+  const plus = document.getElementById("plus");
 
   const isRegistered = localStorage.getItem("name");
   const nikRegistered = localStorage.getItem("nik");
@@ -27,17 +20,17 @@ document.addEventListener("DOMContentLoaded", () => {
     modalProject.style.display = "flex";
   });
 
-  // MODAL
+  // modal
 
   function modalProjects() {
     modalProject.innerHTML = `
       <div class="modal-card">
-        <button class="close" id="closeProjectModalBtn">
+        <button class="close" id="closeModalProject">
           <i data-lucide="x"></i>
         </button>
         <h2>Loyiha qo'shish</h2>
         <label>Loyiha nomi</label>
-        <input id="projectName" >
+        <input id="projectName">
         <label>Qisqacha tavsif</label>
         <textarea id="projectBio"></textarea>
         <label>GitHub URL</label>
@@ -45,7 +38,7 @@ document.addEventListener("DOMContentLoaded", () => {
         <label>Live Demo URL</label>
         <input id="projectDemoUrl" placeholder="https://yourapp.com">
         <label>Tech Stack</label>
-        <input id="projectTechStack" "React, Supabase, Tailwind">
+        <input id="projectTechStack" placeholder="React, Supabase, Tailwind">
         <label>Cover rasm</label>
         <input type="file" id="projectImage">
         <button id="joylash">Joylash</button>
@@ -74,24 +67,29 @@ document.addEventListener("DOMContentLoaded", () => {
       let response = await axios.get(api);
 
       response.data.forEach((post) => {
+        let techSpans = post.tech
+          .split(",")
+          .map((tech) => `<span>${tech.trim()}</span>`)
+          .join("");
+
         userProjectCard.innerHTML += `
           <div class="project-post"> 
             <div class="post-header"> 
               <img class="user-avatar" src="${post.avatar}" alt="user-avatar"> 
               <div class="user-info"> 
                 <h3>${post.name || "username"}</h3>
-                <span class="user-nik">@${post.username || "user"} · <p id="clock">${post.clock || ""}</p></span> 
+                <span class="user-nik">@${post.username || "user"} · <p id="clock">${localStorage.getItem("soat") || new Date().toLocaleDateString()}</p></span> 
               </div> 
-            </div> 
-            <div class="post-cover"> 
-              <img src=""></img>
             </div> 
             <div class="post-body"> 
               <h2 class="project-title">${post.postName}</h2> 
               <p class="project-desc">${post.postBio}</p> 
             </div> 
             <div class="tech-stack" style="margin-bottom: 20px;">
-              <span>${post.tech}</span>
+              ${techSpans}
+            </div> 
+             <div class="post-cover"> 
+              <img id="image" src="${localStorage.getItem("image")}"></img>
             </div> 
             <div class="post-actions">
               <a href="${post.postGitUrl}" target="_blank" class="action-btn github-btn">
@@ -138,6 +136,34 @@ document.addEventListener("DOMContentLoaded", () => {
   // post qilsh
 
   joylash.addEventListener("click", async () => {
+    // cover rasm
+
+    const img = document.getElementById("image");
+
+    projectImage.addEventListener("change", () => {
+      const file = projectImage.files[0];
+
+      if (!file) return;
+
+      const reader = new FileReader();
+
+      reader.onload = () => {
+        const image = reader.result;
+
+        console.log("IMAGE:", image.slice(0, 50));
+
+        img.src = image;
+
+        localStorage.setItem("image", image);
+
+        console.log(localStorage.getItem("image"));
+
+        console.log("LOCAL:", localStorage.getItem("image")?.slice(0, 50));
+      };
+
+      reader.readAsDataURL(file);
+    });
+
     if (projectName.value === "" || projectBio.value === "") {
       alert("To'ldiring");
       return;
@@ -147,8 +173,8 @@ document.addEventListener("DOMContentLoaded", () => {
       await axios.post(api, {
         name: localStorage.getItem("name"),
         username: localStorage.getItem("nik"),
-        avatar: currentAvatarUrl,
-        // image: '',
+        avatar: localStorage.getItem("avatar"),
+        image: localStorage.getItem("image"),
         postName: projectName.value,
         postBio: projectBio.value,
         postGitUrl: projectGitUrl.value || "GitHub",
