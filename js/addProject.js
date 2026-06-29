@@ -2,9 +2,17 @@ import axios from "https://cdn.jsdelivr.net/npm/axios@1.11.0/+esm";
 const api = "https://6a41bddb7602860e6520687e.mockapi.io/postlar";
 
 document.addEventListener("DOMContentLoaded", () => {
+  // avatar
+
+  let currentAvatarUrl = null;
+  document.addEventListener("DOMContentLoaded", async () => {
+    currentAvatarUrl = await loadAvatar("avatar", "/api/avatar");
+  });
+
   const modalProject = document.getElementById("modal-project");
   const userProjectCard = document.getElementById("userProjectCard");
   const plus = document.getElementById("plus");
+  const openProjectModalBtn = document.getElementById("openProjectModalBtn");
 
   const isRegistered = localStorage.getItem("name");
   const nikRegistered = localStorage.getItem("nik");
@@ -15,53 +23,34 @@ document.addEventListener("DOMContentLoaded", () => {
     modalProject.style.display = "flex";
   });
 
+  openProjectModalBtn.addEventListener("click", () => {
+    modalProject.style.display = "flex";
+  });
+
   // MODAL
 
   function modalProjects() {
     modalProject.innerHTML = `
-
-<div class="modal-card">
-
-<button class="close" id="closeProjectModalBtn">
-<i data-lucide="x"></i>
-</button>
-
-
-<h2>Loyiha qo'shish</h2>
-
-
-<label>Loyiha nomi</label>
-<input id="projectName">
-
-
-<label>Qisqacha tavsif</label>
-<textarea id="projectBio"></textarea>
-
-
-<label>GitHub URL</label>
-<input id="projectGitUrl">
-
-
-<label>Live Demo URL</label>
-<input id="projectDemoUrl">
-
-
-<label>Tech Stack</label>
-<input id="projectTechStack">
-
-
-<label>Cover rasm</label>
-<input type="file" id="projectImage">
-
-
-<button id="joylash">
-Joylash
-</button>
-
-
-</div>
-
-`;
+      <div class="modal-card">
+        <button class="close" id="closeProjectModalBtn">
+          <i data-lucide="x"></i>
+        </button>
+        <h2>Loyiha qo'shish</h2>
+        <label>Loyiha nomi</label>
+        <input id="projectName" >
+        <label>Qisqacha tavsif</label>
+        <textarea id="projectBio"></textarea>
+        <label>GitHub URL</label>
+        <input id="projectGitUrl" placeholder="https://github.com/you/repo">
+        <label>Live Demo URL</label>
+        <input id="projectDemoUrl" placeholder="https://yourapp.com">
+        <label>Tech Stack</label>
+        <input id="projectTechStack" "React, Supabase, Tailwind">
+        <label>Cover rasm</label>
+        <input type="file" id="projectImage">
+        <button id="joylash">Joylash</button>
+      </div>
+    `;
   }
 
   modalProjects();
@@ -83,25 +72,27 @@ Joylash
   async function getData() {
     try {
       let response = await axios.get(api);
-      userProjectCard.innerHTML = "";
 
       response.data.forEach((post) => {
         userProjectCard.innerHTML += `
           <div class="project-post"> 
             <div class="post-header"> 
-              <img class="user-avatar" src="${localStorage.getItem("avatar")}" alt="user-avatar"> 
+              <img class="user-avatar" src="${post.avatar}" alt="user-avatar"> 
               <div class="user-info"> 
-                <h3>${isRegistered || "username"}</h3>
-                <span class="user-nik">@${nikRegistered || "user"} · <p id="clock">${post.clock || ""}</p></span> 
+                <h3>${post.name || "username"}</h3>
+                <span class="user-nik">@${post.username || "user"} · <p id="clock">${post.clock || ""}</p></span> 
               </div> 
             </div> 
             <div class="post-cover"> 
+              <img src=""></img>
             </div> 
             <div class="post-body"> 
               <h2 class="project-title">${post.postName}</h2> 
               <p class="project-desc">${post.postBio}</p> 
             </div> 
-            <div class="tech-stack" style="margin-bottom: 20px;"></div> 
+            <div class="tech-stack" style="margin-bottom: 20px;">
+              <span>${post.tech}</span>
+            </div> 
             <div class="post-actions">
               <a href="${post.postGitUrl}" target="_blank" class="action-btn github-btn">
                 <i class="icon-lucide" data-lucide="CodeXml"></i>
@@ -155,7 +146,9 @@ Joylash
     try {
       await axios.post(api, {
         name: localStorage.getItem("name"),
-        username: "@" + localStorage.getItem("nik"),
+        username: localStorage.getItem("nik"),
+        avatar: currentAvatarUrl,
+        // image: '',
         postName: projectName.value,
         postBio: projectBio.value,
         postGitUrl: projectGitUrl.value || "GitHub",
@@ -179,4 +172,3 @@ Joylash
     }
   });
 });
-

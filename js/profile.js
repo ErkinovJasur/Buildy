@@ -21,29 +21,6 @@ document.addEventListener("DOMContentLoaded", () => {
     span.style.display = "block";
   }
 
-  // Avatar yuklash
-
-  const profileAvatar = document.getElementById("avatar");
-  const avatarInput = document.getElementById("avatarInput");
-
-  const savedAvatar = localStorage.getItem("avatar");
-
-  if (savedAvatar) {
-    profileAvatar.src = savedAvatar;
-  }
-
-  avatarInput.addEventListener("change", (e) => {
-    const file = e.target.files[0];
-    if (!file) return;
-    const reader = new FileReader();
-    reader.onload = () => {
-      profileAvatar.src = reader.result;
-
-      localStorage.setItem("avatar", reader.result);
-    };
-    reader.readAsDataURL(file);
-  });
-
   // title
 
   const title = document.querySelector("title");
@@ -112,79 +89,79 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("btn").textContent = "Saqlash";
   });
 
-  // loyihalarni profilga chqarish
+  //   // loyihalarni profilga chqarish
 
-  let projectUser = JSON.parse(localStorage.getItem("projectsList")) || [];
+  //   let projectUser = JSON.parse(localStorage.getItem("projectsList")) || [];
 
-  if (projectUser.length === 0) {
-    document.querySelector(".projects").style.display = "flex";
-  } else {
-    document.querySelector(".projects").style.display = "none";
-    projectUser.forEach((element) => {
-      let techSpans = "";
+  //   if (projectUser.length === 0) {
+  //     document.querySelector(".projects").style.display = "flex";
+  //   } else {
+  //     document.querySelector(".projects").style.display = "none";
+  //     projectUser.forEach((element) => {
+  //       let techSpans = "";
 
-      if (element.tech) {
-        techSpans = element.tech
-          .split(",")
-          .map((tech) => `<span>${tech.trim()}</span>`)
-          .join("");
-      }
+  //       if (element.tech) {
+  //         techSpans = element.tech
+  //           .split(",")
+  //           .map((tech) => `<span>${tech.trim()}</span>`)
+  //           .join("");
+  //       }
 
-      document.getElementById("s").innerHTML += `
-     <div class="project-post">
-          <div class="post-header">
-              <img class="user-avatar" src="${localStorage.getItem("avatar")}" alt="user-avatar">
-              <div class="user-info">
-                  <h3>${localStorage.getItem("name") || "username"}</h3>
-                  <span class="user-nik">@${localStorage.getItem("nik") || "user"} · <p id="clock">${element.clock || ""}</p></span>
-              </div>
-          </div>
-          <div class="post-cover">
-              <img src="${element.image || ""}" alt="project-cover">
-          </div> 
-          <div class="post-body">
-              <h2 class="project-title">${element.name}</h2>
-              <p class="project-desc">${element.bio}</p>
-          </div>
-          <div class="tech-stack" style="margin-bottom: 20px;">
-            ${techSpans}
-          </div>
-           <div class="post-actions">
-                  <a href="${element.gitUrl}" target="_blank" class="action-btn github-btn">
-                      <i class="icon-lucide" data-lucide="CodeXml"></i>
-                      GitHub
-                  </a>
-                  <a href="${element.demoUrl}" target="_blank" class="action-btn demo-btn">
-                      <i class="icon-lucide" data-lucide="external-link"></i>
-                      Live Demo
-                  </a>
-            </div>
-            <div class="likes">
-              <div class="divs">
-                  <div class="div">
-                      <i class="icon-lucide like" data-lucide="heart"></i>
-                      <span>0</span>
-                  </div>
-                  <div class="div">
-                      <i class="icon-lucide" data-lucide="message-square"></i>
-                      <span>0</span>
-                  </div>
-              </div>
-              <div class="divs">
-                  <div class="div">
-                      <i class="icon-lucide" data-lucide="forward"></i>
-                  </div>
-                  <div class="div">
-                      <i class="icon-lucide" data-lucide="bookmark"></i>
-                  </div>
-              </div>
-            </div>
-        </div>
-  `;
-    });
-  }
+  //       document.getElementById("s").innerHTML += `
+  //      <div class="project-post">
+  //           <div class="post-header">
+  //               <img class="user-avatar" src="${localStorage.getItem("avatar")}" alt="user-avatar">
+  //               <div class="user-info">
+  //                   <h3>${localStorage.getItem("name") || "username"}</h3>
+  //                   <span class="user-nik">@${localStorage.getItem("nik") || "user"} · <p id="clock">${element.clock || ""}</p></span>
+  //               </div>
+  //           </div>
+  //           <div class="post-cover">
+  //               <img src="${element.image || ""}" alt="project-cover">
+  //           </div>
+  //           <div class="post-body">
+  //               <h2 class="project-title">${element.name}</h2>
+  //               <p class="project-desc">${element.bio}</p>
+  //           </div>
+  //           <div class="tech-stack" style="margin-bottom: 20px;">
+  //             ${techSpans}
+  //           </div>
+  //            <div class="post-actions">
+  //                   <a href="${element.gitUrl}" target="_blank" class="action-btn github-btn">
+  //                       <i class="icon-lucide" data-lucide="CodeXml"></i>
+  //                       GitHub
+  //                   </a>
+  //                   <a href="${element.demoUrl}" target="_blank" class="action-btn demo-btn">
+  //                       <i class="icon-lucide" data-lucide="external-link"></i>
+  //                       Live Demo
+  //                   </a>
+  //             </div>
+  //             <div class="likes">
+  //               <div class="divs">
+  //                   <div class="div">
+  //                       <i class="icon-lucide like" data-lucide="heart"></i>
+  //                       <span>0</span>
+  //                   </div>
+  //                   <div class="div">
+  //                       <i class="icon-lucide" data-lucide="message-square"></i>
+  //                       <span>0</span>
+  //                   </div>
+  //               </div>
+  //               <div class="divs">
+  //                   <div class="div">
+  //                       <i class="icon-lucide" data-lucide="forward"></i>
+  //                   </div>
+  //                   <div class="div">
+  //                       <i class="icon-lucide" data-lucide="bookmark"></i>
+  //                   </div>
+  //               </div>
+  //             </div>
+  //         </div>
+  //   `;
+  //     });
+  //   }
 
-  // qo'ygan projectlarini sonini chiqarish
+  //   // qo'ygan projectlarini sonini chiqarish
 
-  document.getElementById("projectsLength").textContent = projectUser.length;
+  //   document.getElementById("projectsLength").textContent = projectUser.length;
 });
