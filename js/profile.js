@@ -193,8 +193,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (res.data.length === 1) {
       document.querySelector(".projects").style.display = "none";
+      document.getElementById("postCard").style.display = "block"
     } else {
       document.querySelector(".projects").style.display = "flex";
+      document.getElementById("postCard").style.display = "none"
     }
 
     lucide.createIcons();

@@ -1875,25 +1875,31 @@
                 if (modal1) modal1.style.display = "none";
                 window.location.href = "profile.html";
 
-                async function registar() {
-                    try {
-                        await axios.post(api, {
-                            name: name.value,
-                            username: '@' + nik.value,
-                            email: email.value,
-                            password: parol.value,
-                            bio: bio.value,
-                            avatar: localStorage.getItem("avatar")
-                        });
-                    } catch (err) {
-                        console.log(err);
-                    }
-                }
-
                 registar()
             });
-
         }
+
+        async function registar() {
+            try {
+                let res = await axios.get(api)
+                console.log(res.data);
+                
+                await axios.post(api, {
+                    name: namee.value,
+                    username: '@' + nik.value,
+                    email: email.value,
+                    password: parol.value,
+                    bio: bio.value,
+                    avatar: localStorage.getItem("avatar") || ""
+                });
+            } catch (err) {
+                console.log(err);
+            }
+        }
+
+        axios.put("https://6a42b7747602860e6521d39f.mockapi.io/users/1", {
+            avatar: localStorage.getItem("avatar")
+        })
     </script>
 
     <script>
