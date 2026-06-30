@@ -74,9 +74,10 @@ document.addEventListener("DOMContentLoaded", () => {
         canvas.width = maxWidth;
         canvas.height = img.height * scale;
         ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-        imageData = canvas.toDataURL("image/jpeg", 0.7);
+        if (preview) {
+          imageData = canvas.toDataURL("image/jpeg", 0.7);
+        }
         console.log("hajmi:", imageData.length);
-        preview.src = imageData;
       };
     };
 
