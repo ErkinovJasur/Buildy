@@ -49,11 +49,13 @@ document.addEventListener("DOMContentLoaded", () => {
   modalProjects();
 
   let imageData = "";
+
   const projectImage = document.getElementById("projectImage");
   const image = document.getElementById("image");
 
   projectImage.addEventListener("change", (e) => {
     const file = e.target.files[0];
+
     if (!file) return;
 
     const reader = new FileReader();
@@ -65,18 +67,21 @@ document.addEventListener("DOMContentLoaded", () => {
         const canvas = document.createElement("canvas");
         const ctx = canvas.getContext("2d");
 
-        canvas.width = 500;
-        canvas.height = img.height * (500 / img.width);
+        const maxWidth = 900;
+
+        const scale = maxWidth / img.width;
+
+        canvas.width = maxWidth;
+
+        canvas.height = img.height * scale;
+
         ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
 
         imageData = canvas.toDataURL("image/jpeg", 0.75);
 
-        const image = document.getElementById("image");
-        if (image) {
-          image.src = imageData;
-        } else {
-          console.warn("image elementi topilmadi, lekin imageData saqlandi");
-        }
+        console.log("Hajm:", imageData.length);
+
+        image.src = imageData;
       };
 
       img.src = reader.result;
@@ -121,7 +126,7 @@ document.addEventListener("DOMContentLoaded", () => {
             </div> 
             <div class="post-body"> 
               <h2 class="project-title">${post.postName}</h2> 
-              <p class="project-desc">${post.postBio.slice(0, 400)}...</p> 
+              <p class="project-desc">${post.postBio.slice(0, 360)}...</p> 
             </div> 
             <div class="tech-stack" style="margin-bottom: 20px;">
               ${techSpans}
