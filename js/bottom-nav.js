@@ -4,25 +4,25 @@ if (bottomNav) {
   function nav() {
     bottomNav.innerHTML = `
         <div class="nav-btn" onclick="window.location.href = 'home.html'" data-page="home.html">
-            <i data-lucide="house"></i>
-            Home
+          <i data-lucide="house"></i>
+          Home
         </div>
-        <div class="nav-btn">
-            <i data-lucide="compass"></i>
-            Discovery
+        <div class="nav-btn" onclick="window.location.href = 'discovery.html'" data-page="discovery.html">
+          <i data-lucide="compass"></i>
+          Discovery
         </div>
         <div class="nav-btn" id="plus">
-            <i data-lucide="plus"></i>
-            Create
+          <i data-lucide="plus"></i>
+          Create
         </div>
         <div class="nav-btn">
-            <i data-lucide="MessageCircle"></i>
-            Messages
+          <i data-lucide="MessageCircle"></i>
+          Messages
         </div>
         <div class="nav-btn" id="user" data-page="profile.html">
-            <img id="avatar-bottomNav"></img>
-              You
-            </div>
+          <img id="avatar-bottomNav"></img>
+          You
+        </div>
     `;
 
     setLinks();

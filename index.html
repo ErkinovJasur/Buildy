@@ -1866,40 +1866,44 @@
                     return
                 }
 
-                localStorage.setItem("name", name);
-                localStorage.setItem("nik", nikk);
-                localStorage.setItem("email", emaill);
-                localStorage.setItem("parol", pass);
-                localStorage.setItem("bio", bioo);
+                btnn.addEventListener("click", async () => {
 
-                if (modal1) modal1.style.display = "none";
-                window.location.href = "profile.html";
+                    let name = namee.value;
+                    let nikk = nik.value;
+                    let emaill = email.value;
+                    let pass = parol.value;
+                    let bioo = bio.value;
 
-                registar()
+                    if (name === "" || nikk === "" || emaill === "" || pass === "") {
+                        alert("Iltimos barcha maydoni to'ldiring!");
+                        return;
+                    }
+
+                    try {
+                        await axios.post(api, {
+                            name: name,
+                            username: "@" + nikk,
+                            email: emaill,
+                            password: pass,
+                            bio: bioo,
+                            avatar: localStorage.getItem("avatar") || ""
+                        });
+
+                        localStorage.setItem("name", name);
+                        localStorage.setItem("nik", nikk);
+                        localStorage.setItem("email", emaill);
+                        localStorage.setItem("parol", pass);
+                        localStorage.setItem("bio", bioo);
+
+                        if (modal1) modal1.style.display = "none";
+                        window.location.href = "profile.html";
+                    } catch (err) {
+                        console.log("API xato:", err);
+                    }
+
+                });
             });
         }
-
-        async function registar() {
-            try {
-                let res = await axios.get(api)
-                console.log(res.data);
-                
-                await axios.post(api, {
-                    name: namee.value,
-                    username: '@' + nik.value,
-                    email: email.value,
-                    password: parol.value,
-                    bio: bio.value,
-                    avatar: localStorage.getItem("avatar") || ""
-                });
-            } catch (err) {
-                console.log(err);
-            }
-        }
-
-        axios.put("https://6a42b7747602860e6521d39f.mockapi.io/users/1", {
-            avatar: localStorage.getItem("avatar")
-        })
     </script>
 
     <script>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buildly</title>
+    <link rel="stylesheet" href="css/discovery.css">
+    <link rel="stylesheet" href="css/all.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Akt:wght@100..900&family=Caprasimo&family=Cookie&family=Great+Vibes&family=Imperial+Script&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=League+Spartan:wght@100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=TikTok+Sans:opsz,wdth@12..36,138&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.13.2/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/axios@1.13.2/dist/axios.min.js"></script>
+</head>
+
+<body>
+
+    <div class="aside"></div>
+    <div class="mobile-bottom-nav"></div>
+
+    <div class="buildy">
+        <aside class="aside-left"></aside>
+        <div class="container">
+            <main>
+                <header></header>
+                <div class="discovery">
+                    <div class="discovery-title">
+                        <h4>KASHF QILISH</h4>
+                        <h1>Loyihalar va <span>Dasturchilarni toping</span></h1>
+                    </div>
+                    <div class="discovery-search">
+                        <input type="search" placeholder="Loyiha yoki dasturchi qidirish">
+                    </div>
+                    <div class="project-cards">
+                        <div class="headers">
+                            <h2>Loyihalar</h2>
+                            <a href="index.html">Barchasini ko'rish <i data-lucide="chevron-right"></i></a>
+                        </div>
+                        <div class="project"></div>
+                    </div>
+                </div>
+            </main>
+        </div>
+        <aside class="aside-right"></aside>
+    </div>
+
+    <div class="modal"></div>
+    <div class="modal-project" id="modal-project"></div>
+
+    <script type="module" src="js/addProject.js"></script>
+    <script src="js/navbar.js"></script>
+    <script src="js/mobile-menu.js"></script>
+    <script src="js/aside-left.js"></script>
+    <script src="js/aside-right.js"></script>
+    <script src="js/modal-registar.js"></script>
+    <script src="js/searchModal.js"></script>
+    <script src="js/bottom-nav.js"></script>
+
+    <script type="module">
+        import axios from "https://cdn.jsdelivr.net/npm/axios@1.11.0/+esm";
+        const api = "https://6a41bddb7602860e6520687e.mockapi.io/postlar";
+
+        const data = async () => {
+            try {
+                let responses = await axios.get(api);
+                render(responses.data);
+            } catch (error) {
+                console.log(error);
+            }
+        }
+
+        data()
+        const card = document.querySelector(".project");
+
+        function render(data) {
+            data.slice(0, 6).map((item) => {
+                card.innerHTML += `
+                    <div class="project-card">
+                        <img src="${item.image}"
+                            alt="" class="project-card-bg"/>
+                        <h2>${item.postName}</h2>
+                        <div>
+                            <img src="${item.avatar}" alt="avatar">
+                            @${item.username}
+                        </div>
+                    </div>
+                `;
+            });
+        }
+
+    </script>
+
+</body>
+
+</html>

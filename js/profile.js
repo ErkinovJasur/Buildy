@@ -45,10 +45,23 @@ document.addEventListener("DOMContentLoaded", () => {
     const reader = new FileReader();
 
     reader.onload = function (e) {
-      const avatar = e.target.result;
-      profileAvatar.src = avatar;
+      const img = new Image();
 
-      localStorage.setItem("avatar", avatar);
+      img.onload = function () {
+        const canvas = document.createElement("canvas");
+        const ctx = canvas.getContext("2d");
+
+        canvas.width = 100;
+        canvas.height = img.height * (100 / img.width);
+        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+
+        const compressed = canvas.toDataURL("image/jpeg", 0.25);
+
+        profileAvatar.src = compressed;
+        localStorage.setItem("avatar", compressed);
+      };
+
+      img.src = e.target.result;
     };
 
     reader.readAsDataURL(file);
@@ -128,76 +141,74 @@ document.addEventListener("DOMContentLoaded", () => {
     const res = await axios.get(api);
 
     const posts = res.data.filter((post) => {
-      post.name === localStorage.getItem("name");
+      if (post.name === localStorage.getItem("name")) {
+        document.getElementById("projectsLength").textContent = res.data.length;
+        let techSpans = post.tech
+          .split(",")
+          .map((tech) => `<span>${tech.trim()}</span>`)
+          .join("");
+        document.getElementById("postCard").innerHTML += `
+         <div class="project-post">
+              <div class="post-header">
+                  <img class="user-avatar" src="${post.avatar}" alt="user-avatar">
+                  <div class="user-info">
+                      <h3>${post.name || "username"}</h3>
+                      <span class="user-nik">@${post.username || "user"} · <p id="clock">${localStorage.getItem("soat") || ""}</p></span>
+                  </div>
+              </div>
+              <div class="post-body">
+                  <h2 class="project-title">${post.postName}</h2>
+                  <p class="project-desc">${post.postBio}</p>
+              </div>
+              <div class="tech-stack" style="margin-bottom: 20px;">
+                ${techSpans}
+              </div>
+              <div class="post-cover">
+                  <img src="${post.image || ""}" alt="project-cover">
+              </div>
+               <div class="post-actions">
+                      <a href="${post.postGitUrl}" target="_blank" class="action-btn github-btn">
+                          <i class="icon-lucide" data-lucide="CodeXml"></i>
+                          GitHub
+                      </a>
+                      <a href="${post.postDemoUrl}" target="_blank" class="action-btn demo-btn">
+                          <i class="icon-lucide" data-lucide="external-link"></i>
+                          Live Demo
+                      </a>
+                </div>
+                <div class="likes">
+                  <div class="divs">
+                      <div class="div">
+                          <i class="icon-lucide like" data-lucide="heart"></i>
+                          <span>0</span>
+                      </div>
+                      <div class="div">
+                          <i class="icon-lucide" data-lucide="message-square"></i>
+                          <span>0</span>
+                      </div>
+                  </div>
+                  <div class="divs">
+                      <div class="div">
+                          <i class="icon-lucide" data-lucide="forward"></i>
+                      </div>
+                      <div class="div">
+                          <i class="icon-lucide" data-lucide="bookmark"></i>
+                      </div>
+                  </div>
+                </div>
+            </div>
+        `;
+        // qo'ygan projectlarini profilga chiqarish
 
-      let techSpans = post.tech
-        .split(",")
-        .map((tech) => `<span>${tech.trim()}</span>`)
-        .join("");
-      document.getElementById("postCard").innerHTML += `
-       <div class="project-post">
-            <div class="post-header">
-                <img class="user-avatar" src="${post.avatar}" alt="user-avatar">
-                <div class="user-info">
-                    <h3>${post.name || "username"}</h3>
-                    <span class="user-nik">@${post.username || "user"} · <p id="clock">${localStorage.getItem("soat") || ""}</p></span>
-                </div>
-            </div>
-            <div class="post-body">
-                <h2 class="project-title">${post.postName}</h2>
-                <p class="project-desc">${post.postBio}</p>
-            </div>
-            <div class="tech-stack" style="margin-bottom: 20px;">
-              ${techSpans}
-            </div>
-            <div class="post-cover">
-                <img src="${post.image || ""}" alt="project-cover">
-            </div>
-             <div class="post-actions">
-                    <a href="${post.postGitUrl}" target="_blank" class="action-btn github-btn">
-                        <i class="icon-lucide" data-lucide="CodeXml"></i>
-                        GitHub
-                    </a>
-                    <a href="${post.postDemoUrl}" target="_blank" class="action-btn demo-btn">
-                        <i class="icon-lucide" data-lucide="external-link"></i>
-                        Live Demo
-                    </a>
-              </div>
-              <div class="likes">
-                <div class="divs">
-                    <div class="div">
-                        <i class="icon-lucide like" data-lucide="heart"></i>
-                        <span>0</span>
-                    </div>
-                    <div class="div">
-                        <i class="icon-lucide" data-lucide="message-square"></i>
-                        <span>0</span>
-                    </div>
-                </div>
-                <div class="divs">
-                    <div class="div">
-                        <i class="icon-lucide" data-lucide="forward"></i>
-                    </div>
-                    <div class="div">
-                        <i class="icon-lucide" data-lucide="bookmark"></i>
-                    </div>
-                </div>
-              </div>
-          </div>
-    `;
+        if (res.data.length >= 1) {
+          document.querySelector(".projects").style.display = "none";
+          document.getElementById("postCard").style.display = "block";
+        } else if (res.data.length === 0) {
+          document.querySelector(".projects").style.display = "flex";
+          document.getElementById("postCard").style.display = "none";
+        }
+      }
     });
-
-    // qo'ygan projectlarini sonini chiqarish
-
-    document.getElementById("projectsLength").textContent = res.data.length;
-
-    if (res.data.length === 1) {
-      document.querySelector(".projects").style.display = "none";
-      document.getElementById("postCard").style.display = "block"
-    } else {
-      document.querySelector(".projects").style.display = "flex";
-      document.getElementById("postCard").style.display = "none"
-    }
 
     lucide.createIcons();
   };

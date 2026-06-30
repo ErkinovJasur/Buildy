@@ -31,7 +31,7 @@
 .avatar-wrapper img {
   width: 115px;
   height: 115px;
-  border-radius: 50%;
+  border-radius: 999px;
   object-fit: cover;
   display: block;
   transition: opacity 0.2s;
@@ -131,8 +131,8 @@
 }
 
 #userName {
-  font-size: 1.40rem;
-  font-weight: 790;
+  font-size: 1.48rem;
+  font-weight: 720;
   letter-spacing: -0.3px;
   margin-bottom: 5px;
 }

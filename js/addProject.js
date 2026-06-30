@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
   function modalProjects() {
     modalProject.innerHTML = `
       <div class="modal-card">
-        <button class="close" id="closeModalProject">
+        <button class="close" onclick="close()">
           <i data-lucide="x"></i>
         </button>
         <h2>Loyiha qo'shish</h2>
@@ -47,6 +47,44 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   modalProjects();
+
+  let imageData = "";
+  const projectImage = document.getElementById("projectImage");
+  const image = document.getElementById("image");
+
+  projectImage.addEventListener("change", (e) => {
+    const file = e.target.files[0];
+
+    if (!file) return;
+
+    const reader = new FileReader();
+
+    reader.onload = () => {
+      const img = new Image();
+
+      img.onload = () => {
+        const canvas = document.createElement("canvas");
+        const ctx = canvas.getContext("2d");
+
+        canvas.width = img.width; 
+        canvas.height = img.height;
+
+        ctx.imageSmoothingEnabled = true;
+        ctx.imageSmoothingQuality = "high";
+        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+
+        imageData = canvas.toDataURL("image/jpeg", 0.75);
+
+        image.src = imageData;
+
+        console.log("hajm:", imageData.length, "belgida");
+      };
+
+      img.src = reader.result;
+    };
+
+    reader.readAsDataURL(file);
+  });
 
   lucide.createIcons();
 
@@ -88,7 +126,7 @@ document.addEventListener("DOMContentLoaded", () => {
               ${techSpans}
             </div> 
              <div class="post-cover"> 
-              <img id="image" src="${post.image || ""}"></img>
+              <img id="image" src="${post.image}"></img>
             </div> 
             <div class="post-actions">
               <a href="${post.postGitUrl}" target="_blank" class="action-btn github-btn">
@@ -135,26 +173,6 @@ document.addEventListener("DOMContentLoaded", () => {
   // post qilsh
 
   joylash.addEventListener("click", async () => {
-    const projectImage = document.getElementById("projectImage");
-
-    projectImage.addEventListener("change", (e) => {
-      console.log("CHANGE ISHLADI");
-
-      const file = e.target.files[0];
-
-      console.log("FILE:", file);
-
-      if (!file) return;
-
-      const reader = new FileReader();
-
-      reader.onload = () => {
-        console.log("IMAGE:", reader.result.slice(0, 50));
-      };
-
-      reader.readAsDataURL(file);
-    });
-
     if (
       projectName.value === "" ||
       projectBio.value === "" ||
@@ -169,15 +187,13 @@ document.addEventListener("DOMContentLoaded", () => {
         name: localStorage.getItem("name"),
         username: localStorage.getItem("nik"),
         avatar: localStorage.getItem("avatar"),
-        image: "",
+        image: imageData,
         postName: projectName.value,
         postBio: projectBio.value,
         postGitUrl: projectGitUrl.value || "GitHub",
         postDemoUrl: projectDemoUrl.value || "Demo",
         tech: projectTechStack.value,
       });
-
-      getData();
 
       // input tozalash
 
