@@ -51,7 +51,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let imageData = "";
 
   const projectImage = document.getElementById("projectImage");
-  const image = document.getElementById("image");
+  const preview = document.getElementById("image");
 
   projectImage.addEventListener("change", (e) => {
     const file = e.target.files[0];
@@ -63,28 +63,21 @@ document.addEventListener("DOMContentLoaded", () => {
     reader.onload = () => {
       const img = new Image();
 
+      img.src = reader.result;
+
       img.onload = () => {
         const canvas = document.createElement("canvas");
         const ctx = canvas.getContext("2d");
-
         const maxWidth = 900;
-
         const scale = maxWidth / img.width;
 
         canvas.width = maxWidth;
-
         canvas.height = img.height * scale;
-
         ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-
-        imageData = canvas.toDataURL("image/jpeg", 0.75);
-
-        console.log("Hajm:", imageData.length);
-
-        image.src = imageData;
+        imageData = canvas.toDataURL("image/jpeg", 0.7);
+        console.log("hajmi:", imageData.length);
+        preview.src = imageData;
       };
-
-      img.src = reader.result;
     };
 
     reader.readAsDataURL(file);

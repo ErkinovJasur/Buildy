@@ -39,9 +39,7 @@
                         <h2>Loyihalar</h2>
                         <a href="home.html">Barchasini ko'rish <i data-lucide="chevron-right"></i></a>
                     </div>
-                    <div class="project-cards">
-                        <div class="project"></div>
-                    </div>
+                    <div class="projects-dad"></div>
                 </div>
             </main>
         </div>
@@ -74,7 +72,7 @@
         }
 
         data()
-        const card = document.querySelector(".project");
+        const card = document.querySelector(".projects-dad");
 
         function render(data) {
             data.slice(0, 6).map((item) => {

@@ -660,7 +660,7 @@ main {
   transition: 0.3s;
   cursor: pointer;
   font-size: 9.5px;
-  color: var(--gray);
+  color: #475569;
 
   svg {
     width: 20px;
