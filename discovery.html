@@ -35,11 +35,11 @@
                     <div class="discovery-search">
                         <input type="search" placeholder="Loyiha yoki dasturchi qidirish">
                     </div>
+                    <div class="headers">
+                        <h2>Loyihalar</h2>
+                        <a href="home.html">Barchasini ko'rish <i data-lucide="chevron-right"></i></a>
+                    </div>
                     <div class="project-cards">
-                        <div class="headers">
-                            <h2>Loyihalar</h2>
-                            <a href="index.html">Barchasini ko'rish <i data-lucide="chevron-right"></i></a>
-                        </div>
                         <div class="project"></div>
                     </div>
                 </div>
@@ -80,13 +80,13 @@
             data.slice(0, 6).map((item) => {
                 card.innerHTML += `
                     <div class="project-card">
-                        <img src="${item.image}"
-                            alt="" class="project-card-bg"/>
-                        <h2>${item.postName}</h2>
                         <div>
                             <img src="${item.avatar}" alt="avatar">
                             @${item.username}
                         </div>
+                        <img src="${item.image}"
+                            alt="" class="project-card-bg"/>
+                        <h2>${item.postName}</h2>
                     </div>
                 `;
             });

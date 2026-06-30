@@ -54,7 +54,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   projectImage.addEventListener("change", (e) => {
     const file = e.target.files[0];
-
     if (!file) return;
 
     const reader = new FileReader();
@@ -66,18 +65,18 @@ document.addEventListener("DOMContentLoaded", () => {
         const canvas = document.createElement("canvas");
         const ctx = canvas.getContext("2d");
 
-        canvas.width = img.width; 
-        canvas.height = img.height;
-
-        ctx.imageSmoothingEnabled = true;
-        ctx.imageSmoothingQuality = "high";
+        canvas.width = 500;
+        canvas.height = img.height * (500 / img.width);
         ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
 
         imageData = canvas.toDataURL("image/jpeg", 0.75);
 
-        image.src = imageData;
-
-        console.log("hajm:", imageData.length, "belgida");
+        const image = document.getElementById("image");
+        if (image) {
+          image.src = imageData;
+        } else {
+          console.warn("image elementi topilmadi, lekin imageData saqlandi");
+        }
       };
 
       img.src = reader.result;
@@ -112,7 +111,9 @@ document.addEventListener("DOMContentLoaded", () => {
         userProjectCard.innerHTML += `
           <div class="project-post"> 
             <div class="post-header"> 
-              <img class="user-avatar" src="${post.avatar}" alt="user-avatar"> 
+              <div class="imge">
+                <img class="user-avatar" src="${post.avatar}" alt="user-avatar"> 
+              </div>
               <div class="user-info"> 
                 <h3>${post.name || "username"}</h3>
                 <span class="user-nik">@${post.username || "user"} · <p id="clock">${localStorage.getItem("soat") || new Date().toLocaleDateString()}</p></span> 
@@ -120,7 +121,7 @@ document.addEventListener("DOMContentLoaded", () => {
             </div> 
             <div class="post-body"> 
               <h2 class="project-title">${post.postName}</h2> 
-              <p class="project-desc">${post.postBio}</p> 
+              <p class="project-desc">${post.postBio.slice(0, 400)}...</p> 
             </div> 
             <div class="tech-stack" style="margin-bottom: 20px;">
               ${techSpans}

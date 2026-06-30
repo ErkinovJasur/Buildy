@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
             </button>
             <div class="modal-search">
                 <div class="modal-search-card">
-                    <input id="searchInput" placeholder="Dasturchi va loyihalarni qidirish..." id="searchInp"></input>
+                    <input id="searchInput" placeholder="Dasturchi qidirish..." id="searchInp"></input>
                     <div id="results">
                       <div class="sidebar">
                         <h4 id="h4">Navigation</h4>

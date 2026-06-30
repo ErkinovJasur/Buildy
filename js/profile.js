@@ -51,11 +51,11 @@ document.addEventListener("DOMContentLoaded", () => {
         const canvas = document.createElement("canvas");
         const ctx = canvas.getContext("2d");
 
-        canvas.width = 100;
-        canvas.height = img.height * (100 / img.width);
+        canvas.width = 200;
+        canvas.height = img.height * (200 / img.width);
         ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
 
-        const compressed = canvas.toDataURL("image/jpeg", 0.25);
+        const compressed = canvas.toDataURL("image/jpeg", 0.75);
 
         profileAvatar.src = compressed;
         localStorage.setItem("avatar", compressed);
@@ -150,7 +150,9 @@ document.addEventListener("DOMContentLoaded", () => {
         document.getElementById("postCard").innerHTML += `
          <div class="project-post">
               <div class="post-header">
+                <div class="imge">
                   <img class="user-avatar" src="${post.avatar}" alt="user-avatar">
+                </div>
                   <div class="user-info">
                       <h3>${post.name || "username"}</h3>
                       <span class="user-nik">@${post.username || "user"} · <p id="clock">${localStorage.getItem("soat") || ""}</p></span>

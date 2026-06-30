@@ -9,7 +9,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // like
 
-
   const likeButtons = document.querySelectorAll("#like");
   const count = document.querySelector(".count");
 
