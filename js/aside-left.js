@@ -27,7 +27,7 @@ function asideleft() {
                 </button>
                 <button class="nav-item" onclick="window.location.href = 'discovery.html'" data-page="discovery.html">
                     <i class="icon-lucide" data-lucide="compass"></i>
-                    Kashf qiling
+                    Kashf etish
                 </button>
                 <button class="nav-item">
                     <i class="icon-lucide" data-lucide="bookmark"></i>

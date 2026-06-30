@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
         <div class="header-nav">
             <button class="search-btn">
                 <i class="icon-lucide" data-lucide="search"></i>
-                Dasturchi va loyihalarni qidirish...
+                Qidirish...
                 <span class="slash-hint">/</span>
             </button>
             <div class="modal-search">
