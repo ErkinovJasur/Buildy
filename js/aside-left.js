@@ -11,7 +11,7 @@ function asideleft() {
             <div class="aside-location">
                 <button onclick="window.location.href = 'home.html'" class="nav-item" data-page="home.html">
                     <i class="icon-lucide" data-lucide="home"></i>
-                    Asosiy
+                    Lenta
                 </button>
                 <button onclick="window.location.href = 'programist.html'" class="nav-item" data-page="programist.html">
                     <i class="icon-lucide" data-lucide="CodeXml"></i>

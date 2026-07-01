@@ -127,6 +127,30 @@ main {
   font-size: 15px;
 }
 
+/* logo */
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--text);
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+.logo-icon {
+  width: 32px;
+  height: 32px;
+  background-color: var(--btn) !important;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
 /* aside */
 
 .aside-left,
@@ -141,28 +165,6 @@ main {
   position: relative;
   background-color: var(--bodyBg);
   flex-shrink: 0;
-
-  .logo {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 20px;
-    font-weight: 800;
-    color: var(--text);
-    text-decoration: none;
-    flex-shrink: 0;
-  }
-
-  .logo-icon {
-    width: 32px;
-    height: 32px;
-    background: var(--btn);
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-  }
 
   p {
     color: var(--gray);
@@ -645,11 +647,10 @@ main {
   left: 50%;
   transform: translateX(-50%);
   width: 95%;
-  max-width: 400px;
-  height: 64px;
-  background: rgba(255, 255, 255, 0.632);
-  backdrop-filter: blur(60px) saturate(180%);
-  -webkit-backdrop-filter: blur(30px) saturate(180%);
+  max-width: 450px;
+  height: 62px;
+  background: rgba(255, 255, 255, 0.29);
+  backdrop-filter: blur(5px) saturate(50%);
   border-top: 1.7px solid rgb(255, 255, 255);
   box-shadow: 0 8px 32px rgba(255, 128, 74, 0.177);
   border-radius: 990px;
@@ -662,7 +663,7 @@ main {
 
 .nav-btn {
   width: 120px !important;
-  height: 54px;
+  height: 52px;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -671,10 +672,10 @@ main {
   transition: 0.3s;
   cursor: pointer;
   font-size: 9.5px;
-  color: #888;
+  color: #3c3c3c;
 
   svg {
-    width: 21px;
+    width: 22px;
   }
 
   img {
@@ -952,35 +953,37 @@ header {
   z-index: 99999;
   width: 100%;
   height: 100vh;
-  background-color: rgba(0, 0, 0, 0.064);
+  background-color: rgba(128, 128, 128, 0.348) !important;
+  backdrop-filter: blur(16px) !important;
   display: none;
   justify-content: flex-start !important;
 }
 
 .aside-box {
-  background-color: #ffffffe5;
-  backdrop-filter: blur(20px);
+  background-color: rgba(255, 255, 255, 0.79);
+  backdrop-filter: blur(100px);
   width: 100%;
-  max-width: 340px;
+  max-width: 360px;
   height: auto;
   display: flex;
   flex-direction: column;
-  padding: 22px 20px;
-  box-shadow: 4px 0 25px rgba(0, 0, 0, 0.37);
+  padding: 22px 10px;
+  box-shadow: 4px 0 25px rgba(0, 0, 0, 0.19);
   animation: slideIn 0.4s ease;
   position: absolute;
   overflow-y: auto;
   border-radius: 20px;
   right: 18px;
-  top: 50px;
+  top: 40px;
 
   .s {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 14px;
+    margin-bottom: 18px;
     border-bottom: 1px solid #f1f5f9;
-    padding-bottom: 10px;
+    padding: 0px 10px !important;
+    padding-bottom: 14px !important;
 
     h2 {
       font-family:
@@ -988,30 +991,37 @@ header {
         -apple-system,
         sans-serif;
       font-size: 18px;
-      font-weight: 600;
+      font-weight: 800;
       color: #0f172a;
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
   }
 
   button {
     width: 100%;
-    padding: 8px 16px;
+    padding: 6px 16px;
     border-radius: 10px;
     text-align: start;
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 8px;
     border: 1px solid transparent;
-    font-weight: 500;
+    font-weight: 570;
     background-color: transparent;
     cursor: pointer;
     transition: all 0.25s ease;
-    font-size: 15px;
+    font-size: 13px;
     color: #475569;
     font-family:
       system-ui,
       -apple-system,
       sans-serif;
+
+      svg{
+        color: var(--text);
+      }
 
     span {
       font-size: 20px;
@@ -1022,13 +1032,14 @@ header {
     }
 
     &:hover {
-      background-color: var(--bodyBg);
+      background-color: #ffffff7a !important;
       color: var(--btn);
-      border-color: var(--border);
     }
 
     &:active {
       transform: scale(0.98);
+      background-color: #ffffffd5 !important;
+      backdrop-filter: blur(20px) !important;
     }
   }
 
@@ -1043,15 +1054,14 @@ header {
       system-ui,
       -apple-system,
       sans-serif;
-    border: 1px solid #fee2e2;
-    background-color: #fef2f2;
     width: 100%;
+    max-width: 46px;
     border-radius: 10px;
     color: #ef4444;
     font-weight: 600;
     cursor: pointer;
     transition: all 0.25s;
-    margin-top: 15px;
+    margin-top: 5px;
 
     &:hover {
       background-color: #ef4444;
@@ -1333,7 +1343,7 @@ header {
     padding: 8px;
   }
 
-  .likeandcomment button:nth-child(3):hover, 
+  .likeandcomment button:nth-child(3):hover,
   .likeandcomment button:nth-child(4):hover {
     color: var(--text);
     background: var(--cardBg);

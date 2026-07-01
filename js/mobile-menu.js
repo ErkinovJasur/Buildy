@@ -1,68 +1,66 @@
 document.addEventListener("DOMContentLoaded", () => {
   const aside = document.querySelector(".aside");
 
-  // mobile menu
+  mobileMenu();
 
+  // x close modal
+  document.getElementById("xs").addEventListener("click", function () {
+    aside.style.display = "none";
+    xs.style.display = "none";
+  });
+  // mobile menu
   function mobileMenu() {
     aside.innerHTML = `
     <div class="aside-box">
             <div class="s">
-                <h2>Menu</h2>
+                <h2>
+                  <div class="logo-icon">
+                      <i data-lucide="layers" style="width:16px;height:16px;"></i>
+                  </div>
+                  Buildly
+                </h2>
                 <i class="icon-lucide" data-lucide="x" id="xs"></i>
             </div>
-            <button onclick="window.location.href = 'index.html'">
+            <button onclick="window.location.href = 'home.html'">
                 <i class="icon-lucide" data-lucide="home"></i>
-                Asosiy
+                Lenta
             </button>
             <button onclick="window.location.href = 'programist.html'">
                 <i class="icon-lucide" data-lucide="CodeXml"></i>
-                Dasturchilar
+                Developers
             </button>
             <button>
                 <i class="icon-lucide" data-lucide="FolderGit2"></i>
-                Loyihalar
+                Projects
             </button>
             <button onclick="window.location.href = 'teams.html'">
                 <i class="icon-lucide" data-lucide="users"></i>
-                Jamoalar
+                Teams
             </button>
             <button onclick="window.location.href = 'discovery.html'">
                 <i class="icon-lucide" data-lucide="compass"></i>
-                Kashf etish
+                Explore
             </button>
             <button>
                 <i class="icon-lucide" data-lucide="bookmark"></i>
-                Saqlanganlar
+                Saved
             </button>
             <button>
                 <i class="icon-lucide" data-lucide="MessageCircle"></i>
-                Xabarlar
+                Messages
             </button>
             <button onclick="window.location.href = 'settings.html'">
                 <i class="icon-lucide" data-lucide="settings"></i>
-                Sozlamalar
+                Settings
             </button>
             <div class="log" id="log">
                 <i class="icon-lucide" data-lucide="log-out"></i>
-                Log Out
             </div>
         </div>
   `;
   }
 
-  mobileMenu();
-
-  // x icon bosilganda modal yopilishi
-
-  const xs = document.getElementById("xs");
-
-  xs.addEventListener("click", function () {
-    aside.style.display = "none";
-    xs.style.display = "none";
-  });
-
-  // menu bosilganda modal ochilishi
-
+  // open modal in menu
   window.addEventListener("DOMContentLoaded", () => {
     const menu = document.querySelector(".menu");
 
@@ -76,33 +74,21 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // modal chetlariga bosilganda yopilishi
-
+  // close modal in target
   window.addEventListener("click", (e) => {
     if (e.target === aside) {
       aside.style.display = "none";
     }
   });
 
-  // log out bosilganda akkaunt o'chirilishi
-
+  // log out
   const log = document.getElementById("log");
 
   log.addEventListener("click", function () {
-    localStorage.removeItem("name");
-    localStorage.removeItem("nik");
-    localStorage.removeItem("bio");
-    localStorage.removeItem("email");
-    localStorage.removeItem("parol");
-    localStorage.removeItem("userProfileCard");
-    localStorage.removeItem("github");
-    localStorage.removeItem("tg");
-    localStorage.removeItem("website");
-    localStorage.removeItem("linkedin");
+    localStorage.clear();
     location.reload();
   });
 
   // icons
-
   lucide.createIcons();
 });

@@ -141,7 +141,6 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // loyihalarni profilga chqarish
-
   const renderProject = async () => {
     const res = await axios.get(api);
 

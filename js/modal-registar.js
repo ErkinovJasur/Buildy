@@ -1,3 +1,5 @@
+import axios from "https://cdn.jsdelivr.net/npm/axios@1.11.0/+esm";
+
 document.addEventListener("DOMContentLoaded", () => {
   const modal1 = document.querySelector(".modal");
   const profileCard = document.getElementById("profile-card");
