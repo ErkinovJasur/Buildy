@@ -65,7 +65,7 @@ document.addEventListener("DOMContentLoaded", () => {
               </div>
             `;
             });
-          }, 1500);
+          }, 1000);
         }
       });
     } catch (error) {

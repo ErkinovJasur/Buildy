@@ -196,6 +196,7 @@ main {
       background-color: var(--btn);
       font-weight: 600;
       color: var(--white);
+      animation: fade 0.5s ease;
     }
 
     .nav-item:hover {
@@ -217,6 +218,17 @@ main {
       stroke-width: 2;
       transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
     }
+  }
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+    transform: translate3d(-100%);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0%);
   }
 }
 
@@ -677,12 +689,12 @@ main {
 .nav-btn.active {
   background: var(--btn);
   backdrop-filter: blur(2px);
-  color: var(--text);
+  color: var(--white);
   animation: bottomNav 0.6s ease;
   box-shadow: 0 8px 25px rgba(255, 100, 0, 0.25);
   border-top: 2px solid var(--border);
   border-bottom: 2px solid #e87c29;
-  font-weight: 700;
+  font-weight: 500;
 }
 
 @keyframes bottomNav {
@@ -1059,8 +1071,7 @@ header {
   }
 }
 
-/* input search */
-
+/* Input search */
 .searchUsers {
   display: flex;
   align-items: center;
@@ -1102,6 +1113,238 @@ header {
   color: var(--btn);
   font-weight: 400;
   margin: 0;
+}
+
+/* Qo'yilgan projectni modalda chqarish */
+.project-modal {
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 99999;
+  background-color: var(--bodyBg);
+  transform: translateY(30px) scale(0.96);
+  opacity: 0;
+  animation: popIn 0.35s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.project-modal-card {
+  width: 95%;
+  max-width: 750px;
+  height: 100vh;
+  margin: 0 auto;
+  position: relative;
+  padding-top: 30px;
+
+  .modal-cover {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+    border-radius: 24px;
+    margin-bottom: 45px;
+  }
+
+  .modal-close {
+    position: absolute;
+    right: 20px;
+    top: 50px;
+    width: 30px;
+    height: 30px;
+    padding-top: 3px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.253);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(30px) saturate(180%);
+    border: none;
+    color: white;
+    cursor: pointer;
+
+    svg {
+      width: 14px;
+    }
+  }
+
+  .modal-tech {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 30px;
+  }
+
+  .modal-tech span {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--btn);
+    padding: 5px 10px;
+    border-radius: 6px;
+    background-color: var(--bodyBg);
+  }
+
+  .modal-user {
+    width: 97%;
+    background-color: var(--cardBg) !important;
+    position: absolute;
+    top: 340px;
+    left: 1.5%;
+    border-radius: 22px;
+    padding: 12px 18px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    transition: 0.2s;
+
+    img {
+      width: 50px;
+      height: 50px;
+      border-radius: 999px;
+      object-fit: cover;
+    }
+
+    div {
+      display: flex;
+      flex-direction: column;
+      gap: 0px;
+
+      h4 {
+        font-size: 16px;
+        font-weight: 800;
+      }
+
+      span {
+        font-size: 12px;
+        color: var(--btn);
+      }
+    }
+  }
+
+  .modal-name {
+    font-weight: 800;
+    font-size: 23px;
+    margin-bottom: 7px;
+  }
+
+  .modal-bio {
+    font-size: 14.5px;
+    color: var(--gray);
+    margin-bottom: 15px;
+    font-weight: 300;
+    letter-spacing: 0.3px;
+  }
+
+  .modal-links {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+
+    a {
+      flex: 1;
+      padding: 11px;
+      font-size: 13px;
+      font-weight: 600;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      border-radius: 12px;
+      box-sizing: border-box;
+      transition: all 0.2s ease;
+      width: 100%;
+      max-width: 150px;
+      background-color: var(--cardBg);
+
+      svg {
+        width: 16px !important;
+        height: 16px !important;
+        stroke-width: 2.2;
+      }
+    }
+
+    .live {
+      background-color: var(--text);
+      color: var(--white);
+    }
+  }
+
+  .likeandcomment {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 6px 0;
+    margin-top: 8px;
+    border-top: 1px solid var(--border);
+    margin-bottom: 22px;
+  }
+
+  .likeandcomment button {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 12px;
+    border: none;
+    background: transparent;
+    border-radius: 10px;
+    font-size: 13.5px;
+    font-weight: 500;
+    color: var(--gray);
+    cursor: pointer;
+    transition:
+      background 0.25s ease,
+      color 0.25s ease,
+      transform 0.2s ease;
+  }
+
+  .likeandcomment button svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .likeandcomment button:hover {
+    background: var(--bodyBg);
+    color: var(--text);
+  }
+
+  .likeandcomment button:active {
+    transform: scale(0.94);
+  }
+
+  .likeandcomment button:first-child:hover {
+    color: #ef4444;
+    background: rgba(255, 89, 89, 0.08);
+  }
+  .likeandcomment button:first-child:hover i {
+    fill: #ef4444;
+  }
+
+  .likeandcomment button:nth-child(2):hover {
+    color: var(--btn);
+    background: rgba(255, 127, 67, 0.08);
+  }
+
+  .likeandcomment button:nth-child(3) {
+    margin-left: auto;
+  }
+
+  .likeandcomment button:nth-child(3),
+  .likeandcomment button:nth-child(4) {
+    padding: 8px;
+  }
+
+  .likeandcomment button:nth-child(3):hover, 
+  .likeandcomment button:nth-child(4):hover {
+    color: var(--text);
+    background: var(--cardBg);
+  }
+}
+
+@keyframes popIn {
+  to {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
 }
 
 @media (max-width: 1200px) {
@@ -1185,15 +1428,16 @@ header {
     padding-right: 2.5px !important;
   }
 
-  .profile-html {
-    padding: 15px !important;
+  .modal-name,
+  .modal-bio,
+  .modal-tech,
+  .modal-links {
+    margin: 0px 10px;
   }
 
-  .projects {
-    width: 95%;
-  }
-
-  .project {
-    padding-left: 20px;
+  .modal-links {
+    a {
+      max-width: auto;
+    }
   }
 }

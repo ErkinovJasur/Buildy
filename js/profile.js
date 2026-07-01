@@ -19,20 +19,17 @@ document.addEventListener("DOMContentLoaded", () => {
   if (user1 === "@buildly") {
     document.getElementById("pp").textContent = 5;
   } else {
-    document.getElementById("pp").textContent = 1;
+    document.getElementById("pp").textContent = "1";
   }
 
-  // galochka qo'shish
-
+  // Galochka qo'shish
   if (user1 === "@buildly" || user1 === "@erkinov") {
     span.style.display = "block";
   }
 
   // upload avatar
-
   const avatarInput = document.getElementById("avatarInput");
   const profileAvatar = document.getElementById("avatar");
-
   const savedAvatar = localStorage.getItem("avatar");
 
   if (savedAvatar) {
@@ -49,7 +46,7 @@ document.addEventListener("DOMContentLoaded", () => {
     reader.onload = function (e) {
       const img = new Image();
 
-      img.onload = async function () {
+      img.onload = function () {
         const canvas = document.createElement("canvas");
         const ctx = canvas.getContext("2d");
 
@@ -58,16 +55,11 @@ document.addEventListener("DOMContentLoaded", () => {
         ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
 
         const compressed = canvas.toDataURL("image/jpeg", 0.75);
-
         profileAvatar.src = compressed;
 
-        const users = await axios.get(api1);
+        const users = axios.get(api1);
 
-        const userss = users.data.find(
-          (item) => item.username === "@" + localStorage.getItem("nik"),
-        );
-
-        await axios.put(`${api1}/${userss.id}`, {
+        axios.put(`${api1}/${localStorage.getItem("userId")}`, {
           avatar: compressed,
         });
 
@@ -81,7 +73,6 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // title
-
   const title = document.querySelector("title");
 
   title.textContent =
@@ -92,7 +83,6 @@ document.addEventListener("DOMContentLoaded", () => {
     ") · Buildly";
 
   // Social links
-
   const profileLinks = document.querySelector(".profile-links");
   const telegram = document.getElementById("telegramLink");
   const github = document.getElementById("githubLink");
@@ -140,6 +130,7 @@ document.addEventListener("DOMContentLoaded", () => {
     profileLinks.style.display = "flex";
   }
 
+  // Edit btn
   const editBtn = document.querySelector(".edit-btn");
   const modal1 = document.querySelector(".modal");
 
@@ -167,7 +158,7 @@ document.addEventListener("DOMContentLoaded", () => {
          <div class="project-post">
               <div class="post-header">
                 <div class="imge">
-                  <img class="user-avatar" src="${post.avatar}" alt="user-avatar">
+                  <img class="user-avatar" src="${localStorage.getItem("avatar")}" alt="user-avatar">
                 </div>
                   <div class="user-info">
                       <h3>${post.name || "username"}</h3>
@@ -217,8 +208,7 @@ document.addEventListener("DOMContentLoaded", () => {
             </div>
         `;
 
-        // qo'ygan projectlarini profilga chiqarish
-
+        // Qo'ygan projectlarni sonini profilga chiqarish
         if (res.data.length >= 1) {
           document.querySelector(".projects").style.display = "none";
           document.getElementById("postCard").style.display = "block";
@@ -245,4 +235,10 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   datas();
+
+  // Skleteon loader
+  setTimeout(() => {
+    document.querySelector(".html").style.display = "block";
+    document.querySelector(".profile-skeleton").style.display = "none";
+  }, 2000);
 });

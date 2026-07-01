@@ -50,6 +50,12 @@
                         <a href="home.html">Barchasini ko'rish <i data-lucide="chevron-right"></i></a>
                     </div>
                     <div class="projects-dad"></div>
+                    <div id="pModal"></div>
+                </div>
+                <div class="spinner">
+                    <svg id="svg" viewBox="25 25 50 50">
+                        <circle class="circle" r="20" cy="50" cx="50"></circle>
+                    </svg>
                 </div>
             </main>
         </div>
@@ -71,17 +77,19 @@
     <script type="module">
         import axios from "https://cdn.jsdelivr.net/npm/axios@1.11.0/+esm";
 
+        // API
         const api = "https://6a41bddb7602860e6520687e.mockapi.io/postlar";
         const api1 = "https://6a42b7747602860e6521d39f.mockapi.io/users";
 
-        // projects div
+        // Projects and Users divs
         const card = document.querySelector(".projects-dad");
-
-        // users div
         const users = document.getElementById("users");
 
         // APIdan ma'lumot olish
         const data = async () => {
+            document.querySelector(".spinner").style.display = "block"
+            document.querySelector(".discovery").style.display = "none"
+
             try {
                 let responses = await axios.get(api);
                 let usersApi = await axios.get(api1)
@@ -89,6 +97,9 @@
                 user(usersApi.data);
             } catch (error) {
                 console.log(error);
+            } finally {
+                document.querySelector(".spinner").style.display = "none"
+                document.querySelector(".discovery").style.display = "flex"
             }
         }
 
@@ -128,6 +139,7 @@
                 `;
             });
         }
+
 
     </script>
 

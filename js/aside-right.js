@@ -66,13 +66,13 @@ rightRender();
 function render(data) {
   data.slice(0, 5).map((item) => {
     document.getElementById("right").innerHTML += `
-            <div>
-                <img src="${item.avatar}" alt="user-avatar">
-                <div>
-                    <h2>${item.name}</h2>
-                    <p>${item.username}</p>
-                </div>
-            </div>
+      <div>
+          <img src="${item.avatar}" alt="user-avatar">
+          <div>
+              <h2>${item.name}</h2>
+              <p>${item.username}</p>
+          </div>
+      </div>
         `;
   });
 }

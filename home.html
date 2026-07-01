@@ -29,6 +29,7 @@
                 <header></header>
                 <div class="posts">
                     <div id="userProjectCard"></div>
+                    <div id="pModal"></div>
                 </div>
                 <div class="loader">
                     <svg id="svg" viewBox="25 25 50 50">
@@ -49,9 +50,16 @@
     <script src="js/aside-left.js"></script>
     <script src="js/mobile-menu.js"></script>
     <script type="module" src="js/aside-right.js"></script>
-    <script src="js/home.js"></script>
     <script type="module" src="js/searchModal.js"></script>
     <script src="js/bottom-nav.js"></script>
+
+    <script>
+        // Loader
+        setTimeout(() => {
+            document.querySelector(".posts").style.display = "block";
+            document.querySelector(".loader").style.display = "none";
+        }, 2000);
+    </script>
 
 </body>
 

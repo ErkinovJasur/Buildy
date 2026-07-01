@@ -71,15 +71,25 @@ document.addEventListener("DOMContentLoaded", () => {
       img.onload = () => {
         const canvas = document.createElement("canvas");
         const ctx = canvas.getContext("2d");
-        const max = 600;
-        const scale = max / img.width;
 
-        canvas.width = max;
-        canvas.height = img.height * scale;
+        const max = 1200;
+        const scale = img.width > max ? max / img.width : 1;
+
+        canvas.width = Math.round(img.width * scale);
+        canvas.height = Math.round(img.height * scale);
+
+        ctx.imageSmoothingEnabled = true;
+        ctx.imageSmoothingQuality = "high";
+
         ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-        imageData = canvas.toDataURL("image/jpeg", 0.75);
+
+        imageData = canvas.toDataURL("image/jpeg", 0.99);
 
         console.log("hajmi:", imageData.length);
+      };
+
+      img.onerror = () => {
+        console.error("Rasmni yuklashda xatolik yuz berdi");
       };
 
       img.src = reader.result;
@@ -98,24 +108,24 @@ document.addEventListener("DOMContentLoaded", () => {
   const projectTechStack = document.getElementById("projectTechStack");
   const joylash = document.getElementById("joylash");
 
-  // apidan ma'lumot olish
-
-  async function getData() {
+  // APIdan ma'lumot olish
+  async function getDate() {
     try {
+      userProjectCard.innerHTML = "";
       let response = await axios.get(api);
 
       response.data.map((post) => {
-        let techSpans = post.tech
+        let techSpans = (post.tech || "")
           .split(",")
           .map((tech) => `<span>${tech.trim()}</span>`)
           .join("");
 
         if (userProjectCard) {
           userProjectCard.innerHTML += `
-          <div class="project-post"> 
+          <div class="project-post" onclick="openModalProject(${post.id})"> 
             <div class="post-header"> 
               <div class="imge">
-                <img class="user-avatar" src="${post.avatar}" alt="user-avatar"> 
+                <img class="user-avatar" src="${post.avatar || ""}" alt="user-avatar"> 
               </div>
               <div class="user-info"> 
                 <h3>${post.name || "username"}</h3>
@@ -130,7 +140,7 @@ document.addEventListener("DOMContentLoaded", () => {
               ${techSpans}
             </div> 
              <div class="post-cover"> 
-              <img id="image" src="${post.image}"></img>
+              <img id="image" src="${post.image || ""}"></img>
             </div> 
             <div class="post-actions">
               <a href="${post.postGitUrl}" target="_blank" class="action-btn github-btn">
@@ -163,7 +173,7 @@ document.addEventListener("DOMContentLoaded", () => {
               </div> 
             </div>
           </div>
-        `;
+          `;
         }
 
         lucide.createIcons();
@@ -173,10 +183,9 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  getData();
+  getDate();
 
-  // post qilsh
-
+  // POST qilsh
   joylash.addEventListener("click", async () => {
     if (
       projectName.value === "" ||
@@ -192,17 +201,16 @@ document.addEventListener("DOMContentLoaded", () => {
       await axios.post(api, {
         name: localStorage.getItem("name"),
         username: localStorage.getItem("nik"),
-        avatar: localStorage.getItem("avatar"),
-        image: imageData,
+        avatar: localStorage.getItem("avatar") || "",
+        image: imageData || "",
         postName: projectName.value,
         postBio: projectBio.value,
         postGitUrl: projectGitUrl.value || "GitHub",
         postDemoUrl: projectDemoUrl.value || "Demo",
-        tech: projectTechStack.value,
+        tech: projectTechStack.value || "",
       });
 
       // input tozalash
-
       projectName.value = "";
       projectBio.value = "";
       projectGitUrl.value = "";
@@ -212,5 +220,83 @@ document.addEventListener("DOMContentLoaded", () => {
     } catch (error) {
       console.log(error);
     }
+
+    location.reload();
   });
+
+  // project modal qo'yilgan postlarni chiqarish
+  const pModal = document.getElementById("pModal");
+  const pModal1 = document.querySelector(".project-modal");
+
+  // open ModalProject
+  window.openModalProject = async function (id) {
+    try {
+      let projectRes = await axios.get(`${api}/${id}`);
+      let item = projectRes.data;
+      pModal.style.display = "flex";
+
+      pModal.innerHTML = `
+        <div id="projectModal" class="project-modal">
+          <div class="project-modal-card">
+            <button class="modal-close">
+                <i data-lucide="x"></i>
+            </button>
+            <img class="modal-cover" src="${item.image}"></img>
+            <div class="modal-content">
+                <div class="modal-user">
+                    <img src="${item.avatar}"></img>
+                    <div>
+                        <h4>${item.name}</h4>
+                        <span>@${item.username}</span>
+                    </div>
+                </div>
+                <h2 class="modal-name">${item.postName}</h2>
+                <p class="modal-bio">${item.postBio}</p>
+              <div class="modal-tech">${item.tech
+                .split(",")
+                .map((tech) => `<span>${tech.trim()}</span>`)
+                .join("")}</div>
+                <div class="likeandcomment">
+                  <button>
+                    <i data-lucide="heart"></i>
+                    0
+                  </button>
+                  <button>
+                    <i data-lucide="message-square"></i>
+                    0
+                  </button>
+                  <button>
+                    <i data-lucide="forward"></i>
+                  </button>
+                  <button>
+                    <i data-lucide="ellipsis"></i>
+                  </button>
+                </div>
+              <div class="modal-links">
+                <a target="_blank" href="${item.postGitUrl}">
+                    <i class="icon-lucide" data-lucide="CodeXml"></i> 
+                    GitHub
+                </a>
+                <a class="live" target="_blank" href="${item.postDemoUrl}">
+                    <i class="icon-lucide" data-lucide="external-link"></i> 
+                    Live Demo
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      `;
+
+      document.querySelector("title").textContent = item.postName + " by " + item.name;
+      lucide.createIcons();
+    } catch (error) {
+      console.log("Error", error);
+    }
+
+    document
+      .querySelector(".modal-close")
+      .addEventListener("click", function () {
+        pModal.style.display = "none";
+      });
+  };
 });

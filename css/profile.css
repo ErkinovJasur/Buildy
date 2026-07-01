@@ -1,5 +1,9 @@
+.html {
+  display: none;
+}
+
 .profile-html {
-  max-width: 660px;
+  max-width: 640px;
   margin: 0 auto 24px;
   margin-top: 40px;
   border-bottom: 1px solid var(--border);
@@ -15,7 +19,7 @@
   align-items: flex-start;
   justify-content: space-between;
   padding: 24px 30px 0;
-  margin-top: -100px;
+  margin-top: -90px;
 }
 
 /* Avatar */
@@ -93,8 +97,8 @@
     transform 0.18s,
     box-shadow 0.18s;
   position: absolute;
-  right: 15px;
-  top: 142px;
+  right: 20px !important;
+  top: 142px !important;
 }
 
 .edit-btn svg {
@@ -221,11 +225,11 @@
 
 .project {
   max-width: 660px;
-  margin: 0 auto 12px;
+  margin: 0 auto 20px;
   font-size: 1rem;
   font-weight: 700;
   letter-spacing: -0.2px;
-  padding: 0 2px;
+  padding: 0 15px;
 }
 
 .projects {
@@ -381,6 +385,123 @@ a {
   transform: translateY(0);
 }
 
+/* skleteon loader */
+
+.profile-skeleton {
+  width: 92%;
+  max-width: 640px;
+  margin: auto;
+  margin-top: 40px;
+}
+
+.skeleton {
+  background: #e8e8e8;
+  border-radius: 12px;
+  position: relative;
+  overflow: hidden;
+}
+
+.skeleton::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.6),
+    transparent
+  );
+  animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+  100% {
+    left: 100%;
+  }
+}
+
+/* cover */
+
+.cover {
+  height: 160px;
+  border-radius: 30px;
+}
+
+/* content */
+
+.profile-content {
+  position: relative;
+  padding: 0 20px;
+}
+
+/* avatar */
+
+.avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  margin-top: -60px;
+  border: 5px solid white;
+}
+
+.edit-btns {
+  width: 120px;
+  height: 38px;
+  position: absolute;
+  right: 20px;
+  top: 40px;
+}
+
+/* name */
+
+.name {
+  width: 100%;
+  max-width: 180px;
+  height: 18px;
+  margin-top: 25px;
+}
+
+.username {
+  width: 100%;
+  max-width: 100px;
+  height: 18px;
+  margin-top: 12px;
+}
+
+.bio {
+  width: 100%;
+  max-width: 420px;
+  height: 18px;
+  margin-top: 25px;
+}
+
+.bio.small {
+  width: 250px;
+  margin-top: 8px;
+}
+
+/* stats */
+
+.stats {
+  display: flex;
+  gap: 50px;
+  margin-top: 35px;
+}
+
+.number {
+  width: 30px;
+  height: 30px;
+}
+
+.text {
+  width: 80px;
+  height: 15px;
+  margin-top: 8px;
+}
+
 @media (max-width: 768px) {
   .profile-links {
     gap: 2px;
@@ -425,6 +546,18 @@ a {
   header {
     margin-bottom: 60px;
   }
+
+  .profile-html {
+    padding: 15px !important;
+  }
+
+  .projects {
+    width: 95%;
+  }
+
+  .project {
+    padding-left: 20px;
+  }
 }
 
 @media (max-width: 1000px) {
@@ -441,8 +574,8 @@ a {
   }
 
   .edit-btn {
-    top: 155px;
-    right: 25px;
+    top: 155px !important;
+    right: 25px !important;
   }
 }
 
