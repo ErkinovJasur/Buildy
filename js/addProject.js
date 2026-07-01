@@ -1,4 +1,5 @@
 import axios from "https://cdn.jsdelivr.net/npm/axios@1.11.0/+esm";
+
 const api = "https://6a41bddb7602860e6520687e.mockapi.io/postlar";
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -7,11 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const openProjectModalBtn = document.getElementById("openProjectModalBtn");
   const plus = document.getElementById("plus");
 
-  const isRegistered = localStorage.getItem("name");
-  const nikRegistered = localStorage.getItem("nik");
-
   // open modal
-
   plus.addEventListener("click", () => {
     modalProject.style.display = "flex";
   });
@@ -20,34 +17,43 @@ document.addEventListener("DOMContentLoaded", () => {
     modalProject.style.display = "flex";
   });
 
-  // modal
+  //Output to the DOM
+  modalProjects();
+
+  // close modal
+  document.getElementById("closeModal").addEventListener("click", () => {
+    modalProject.style.display = "none";
+  });
+
+  // modal DOM ga chiqarish
 
   function modalProjects() {
     modalProject.innerHTML = `
-      <div class="modal-card">
-        <button class="close" onclick="close()">
-          <i data-lucide="x"></i>
-        </button>
-        <h2>Loyiha qo'shish</h2>
-        <label>Loyiha nomi</label>
-        <input id="projectName">
-        <label>Qisqacha tavsif</label>
-        <textarea id="projectBio"></textarea>
-        <label>GitHub URL</label>
-        <input id="projectGitUrl" placeholder="https://github.com/you/repo">
-        <label>Live Demo URL</label>
-        <input id="projectDemoUrl" placeholder="https://yourapp.com">
-        <label>Tech Stack</label>
-        <input id="projectTechStack" placeholder="React, Supabase, Tailwind">
-        <label>Cover rasm</label>
-        <input type="file" id="projectImage">
-        <button id="joylash">Joylash</button>
-      </div>
-    `;
+    <div class="modal-card">
+      <button class="close" id="closeModal">
+        <i data-lucide="x"></i>
+      </button>
+      <h2>Loyiha qo'shish</h2>
+      <label>Loyiha nomi</label>
+      <input id="projectName">
+      <label>Qisqacha tavsif</label>
+      <textarea id="projectBio"></textarea>
+      <label>GitHub URL</label>
+      <input id="projectGitUrl" placeholder="https://github.com/you/repo">
+      <label>Live Demo URL</label>
+      <input id="projectDemoUrl" placeholder="https://yourapp.com">
+      <label>Tech Stack</label>
+      <input id="projectTechStack" placeholder="React, Supabase, Tailwind">
+      <label>Cover rasm</label>
+      <input type="file" id="projectImage">
+      <button id="joylash">Joylash</button>
+    </div>
+  `;
+
+    lucide.createIcons();
   }
 
-  modalProjects();
-
+  // upload image
   let imageData = "";
 
   const projectImage = document.getElementById("projectImage");
@@ -71,7 +77,7 @@ document.addEventListener("DOMContentLoaded", () => {
         canvas.width = max;
         canvas.height = img.height * scale;
         ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-        imageData = canvas.toDataURL("image/jpeg", 0.5);
+        imageData = canvas.toDataURL("image/jpeg", 0.75);
 
         console.log("hajmi:", imageData.length);
       };
@@ -84,8 +90,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   lucide.createIcons();
 
-  // INPUTLAR
-
+  // inputs
   const projectName = document.getElementById("projectName");
   const projectBio = document.getElementById("projectBio");
   const projectGitUrl = document.getElementById("projectGitUrl");
@@ -105,7 +110,8 @@ document.addEventListener("DOMContentLoaded", () => {
           .map((tech) => `<span>${tech.trim()}</span>`)
           .join("");
 
-        userProjectCard.innerHTML += `
+        if (userProjectCard) {
+          userProjectCard.innerHTML += `
           <div class="project-post"> 
             <div class="post-header"> 
               <div class="imge">
@@ -158,9 +164,10 @@ document.addEventListener("DOMContentLoaded", () => {
             </div>
           </div>
         `;
-      });
+        }
 
-      lucide.createIcons();
+        lucide.createIcons();
+      });
     } catch (error) {
       console.log(error);
     }
@@ -181,6 +188,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     try {
+      // API ga jo'natish
       await axios.post(api, {
         name: localStorage.getItem("name"),
         username: localStorage.getItem("nik"),

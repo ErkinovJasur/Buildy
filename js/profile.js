@@ -1,5 +1,7 @@
 import axios from "https://cdn.jsdelivr.net/npm/axios@1.11.0/+esm";
+
 const api = "https://6a41bddb7602860e6520687e.mockapi.io/postlar";
+const api1 = "https://6a42b7747602860e6521d39f.mockapi.io/users";
 
 document.addEventListener("DOMContentLoaded", () => {
   // Kiritgan ma'lumotlarini profile sahifasiga chqarish
@@ -51,14 +53,23 @@ document.addEventListener("DOMContentLoaded", () => {
         const canvas = document.createElement("canvas");
         const ctx = canvas.getContext("2d");
 
-        canvas.width = 200;
-        canvas.height = img.height * (200 / img.width);
+        canvas.width = 450;
+        canvas.height = img.height * (450 / img.width);
         ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
 
         const compressed = canvas.toDataURL("image/jpeg", 0.75);
 
-        profileAvatar.src = compressed;
+        // avval localStorage
         localStorage.setItem("avatar", compressed);
+
+        profileAvatar.src = compressed;
+
+        // keyin PUT
+        const userId = localStorage.getItem("userId");
+
+        axios.put(`${api1}/${userId}`, {
+          avatar: compressed,
+        });
       };
 
       img.src = e.target.result;
@@ -141,12 +152,14 @@ document.addEventListener("DOMContentLoaded", () => {
     const res = await axios.get(api);
 
     const posts = res.data.filter((post) => {
-      if (post.name === localStorage.getItem("name")) {
+      if (post.username === localStorage.getItem("nik")) {
         document.getElementById("projectsLength").textContent = res.data.length;
+
         let techSpans = post.tech
           .split(",")
           .map((tech) => `<span>${tech.trim()}</span>`)
           .join("");
+
         document.getElementById("postCard").innerHTML += `
          <div class="project-post">
               <div class="post-header">
@@ -200,6 +213,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 </div>
             </div>
         `;
+
         // qo'ygan projectlarini profilga chiqarish
 
         if (res.data.length >= 1) {

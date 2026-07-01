@@ -1810,6 +1810,7 @@
                     </div>
                 </div>
             `;
+            lucide.createIcons()
         }
 
         modal();
@@ -1880,15 +1881,18 @@
                     }
 
                     try {
+                        let res = await axios.get(api);
+
                         await axios.post(api, {
                             name: name,
                             username: "@" + nikk,
                             email: emaill,
                             password: pass,
                             bio: bioo,
-                            avatar: localStorage.getItem("avatar") || ""
+                            avatar: ""
                         });
 
+                        localStorage.setItem("userId", user.id);
                         localStorage.setItem("name", name);
                         localStorage.setItem("nik", nikk);
                         localStorage.setItem("email", emaill);
@@ -1904,6 +1908,7 @@
                 });
             });
         }
+
     </script>
 
     <script>

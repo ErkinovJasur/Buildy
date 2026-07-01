@@ -19,7 +19,7 @@
   --text: #111827;
   --shadow: 0 10px 30px rgba(255, 127, 67, 0.177);
   --white: #ffffff;
-  --btn: hsl(26, 100%, 57%);
+  --btn: hsl(26, 100%, 59%);
   --border: #fed7aa;
   --gray: #9f9f9f;
 }
@@ -629,29 +629,28 @@ main {
 
 .mobile-bottom-nav {
   position: fixed;
-  bottom: 20px;
+  bottom: 14px;
   left: 50%;
   transform: translateX(-50%);
   width: 95%;
-  max-width: 470px;
-  height: 62px;
-  background: rgba(255, 255, 255, 0.12);
-  backdrop-filter: blur(30px) saturate(180%);
+  max-width: 400px;
+  height: 64px;
+  background: rgba(255, 255, 255, 0.632);
+  backdrop-filter: blur(60px) saturate(180%);
   -webkit-backdrop-filter: blur(30px) saturate(180%);
-  border-top: 1px solid rgba(255, 255, 255, 0.4);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+  border-top: 1.7px solid rgb(255, 255, 255);
+  box-shadow: 0 8px 32px rgba(255, 128, 74, 0.177);
   border-radius: 990px;
   display: none;
   justify-content: space-around;
   align-items: center;
   padding: 0px 4px;
   z-index: 9999;
-  border: none;
 }
 
 .nav-btn {
   width: 120px !important;
-  height: 52px;
+  height: 54px;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -660,10 +659,10 @@ main {
   transition: 0.3s;
   cursor: pointer;
   font-size: 9.5px;
-  color: #8e8e93  ;
+  color: #888;
 
   svg {
-    width: 20px;
+    width: 21px;
   }
 
   img {
@@ -678,11 +677,12 @@ main {
 .nav-btn.active {
   background: var(--btn);
   backdrop-filter: blur(2px);
-  color: var(--white);
+  color: var(--text);
   animation: bottomNav 0.6s ease;
   box-shadow: 0 8px 25px rgba(255, 100, 0, 0.25);
   border-top: 2px solid var(--border);
   border-bottom: 2px solid #e87c29;
+  font-weight: 700;
 }
 
 @keyframes bottomNav {
@@ -823,6 +823,11 @@ header {
     margin-bottom: 20px;
     border: 1px solid var(--border);
 
+    #right {
+      display: flex;
+      flex-direction: column;
+    }
+
     h1 {
       display: flex;
       align-items: center;
@@ -842,7 +847,7 @@ header {
       }
     }
 
-    div {
+    #right div {
       display: flex;
       align-items: center;
       gap: 10px;
@@ -883,14 +888,14 @@ header {
       }
     }
 
-    div:hover {
+    #right div:hover {
       background-color: var(--bodyBg);
     }
 
     button {
       width: 100%;
       padding: 10px;
-      padding-bottom: 10px !important;
+      padding-bottom: 12px !important;
       border: none;
       color: var(--btn);
       background-color: transparent;
@@ -910,6 +915,18 @@ header {
   .aside-right-div2 {
     h1 {
       margin-bottom: 0px !important;
+    }
+
+    div {
+      padding: 12px 20px;
+      transition: 0.4s;
+      border-bottom-left-radius: 15px;
+      border-bottom-right-radius: 15px;
+      padding-top: 10px;
+    }
+
+    div:hover {
+      background-color: var(--bodyBg);
     }
   }
 }

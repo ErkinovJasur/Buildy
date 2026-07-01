@@ -35,8 +35,18 @@
                     <div class="discovery-search">
                         <input type="search" placeholder="Loyiha yoki dasturchi qidirish">
                     </div>
-                    <div class="headers">
-                        <h2>Loyihalar</h2>
+                    <div class="user-divs">
+                        <div class="user-header">
+                            <h3>KUZATISHGA ARZIYDI</h3>
+                            <h1>Tanlangan ijodkorlar</h1>
+                        </div>
+                        <div id="users"></div>
+                    </div>
+                    <div class="projectHeader">
+                        <div>
+                            <h4>TANLAB OLINGAN LOYIHALAR</h4>
+                            <h2>Loyihalar</h2>
+                        </div>
                         <a href="home.html">Barchasini ko'rish <i data-lucide="chevron-right"></i></a>
                     </div>
                     <div class="projects-dad"></div>
@@ -53,27 +63,39 @@
     <script src="js/navbar.js"></script>
     <script src="js/mobile-menu.js"></script>
     <script src="js/aside-left.js"></script>
-    <script src="js/aside-right.js"></script>
+    <script type="module" src="js/aside-right.js"></script>
     <script src="js/modal-registar.js"></script>
-    <script src="js/searchModal.js"></script>
+    <script type="module" src="js/searchModal.js"></script>
     <script src="js/bottom-nav.js"></script>
 
     <script type="module">
         import axios from "https://cdn.jsdelivr.net/npm/axios@1.11.0/+esm";
-        const api = "https://6a41bddb7602860e6520687e.mockapi.io/postlar";
 
+        const api = "https://6a41bddb7602860e6520687e.mockapi.io/postlar";
+        const api1 = "https://6a42b7747602860e6521d39f.mockapi.io/users";
+
+        // projects div
+        const card = document.querySelector(".projects-dad");
+
+        // users div
+        const users = document.getElementById("users");
+
+        // APIdan ma'lumot olish
         const data = async () => {
             try {
                 let responses = await axios.get(api);
+                let usersApi = await axios.get(api1)
                 render(responses.data);
+                user(usersApi.data);
             } catch (error) {
                 console.log(error);
             }
         }
 
+        // DOM ga chqarish
         data()
-        const card = document.querySelector(".projects-dad");
 
+        // postlarni render qilish
         function render(data) {
             data.slice(0, 6).map((item) => {
                 card.innerHTML += `
@@ -83,8 +105,25 @@
                             @${item.username}
                         </div>
                         <img src="${item.image}"
-                            alt="" class="project-card-bg"/>
+                            alt="buildly" class="project-card-bg"/>
                         <h2>${item.postName}</h2>
+                    </div>
+                `;
+            });
+        }
+
+        // userlarni render qilish
+        function user(data) {
+            data.slice(0, 8).map((item) => {
+                users.innerHTML += `
+                    <div class="user-card">
+                        <div class="users-info">
+                            <img id="imgs" src="${item.avatar}" alt="buildly">
+                            <div>
+                                <h2>${item.name}</h2>
+                                <p>${item.username}</p>
+                            </div>
+                        </div>
                     </div>
                 `;
             });

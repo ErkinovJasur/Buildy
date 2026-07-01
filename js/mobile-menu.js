@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", () => {
             </button>
             <button onclick="window.location.href = 'discovery.html'">
                 <i class="icon-lucide" data-lucide="compass"></i>
-                Kashf qiling
+                Kashf etish
             </button>
             <button>
                 <i class="icon-lucide" data-lucide="bookmark"></i>

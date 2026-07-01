@@ -1,5 +1,7 @@
+import axios from "https://cdn.jsdelivr.net/npm/axios@1.11.0/+esm";
+
 document.addEventListener("DOMContentLoaded", () => {
-   // modal search
+  // modal search
 
   const searchBtn = document.querySelector(".search-btn");
   const modal_search = document.querySelector(".modal-search");
@@ -24,45 +26,36 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  const api = "./users.json";
+  const api = "https://6a42b7747602860e6521d39f.mockapi.io/users";
   const resultsUsers = document.getElementById("results");
 
   async function user() {
     try {
-      let response = await fetch(api);
-      let data = await response.json();
-      render(data);
-    } catch (error) {
-      resultsUsers.innerHTML = `<h3 style="color: red; font-weight: 600; text-align: center; font-size: 12px; margin-top: 150px;">Ma'lumotlarni yuklashda xatolik yuz berdi.</h3>`;
-    }
-  }
+      let response = await axios.get(api);
 
-  user();
+      searchInput.addEventListener("input", function () {
+        let filter = response.data.filter((value) => {
+          const term = searchInput.value.trim().toLowerCase();
 
-  function render(data) {
-    searchInput.addEventListener("input", function () {
-      let filter = data.users.filter((value) => {
-        const term = searchInput.value.trim().toLowerCase();
+          return value.username.toLowerCase().includes(term);
+        });
 
-        return value.username.toLowerCase().includes(term);
-      });
+        resultsUsers.innerHTML = "";
 
-      resultsUsers.innerHTML = "";
-
-      if (filter.length === 0) {
-        resultsUsers.innerHTML = `
-          <h2 style="text-align: center; font-size: 12px; margin-top: 150px; color: red; font-weight: 400;">"${searchInput.value}" nomli foydalanuvchi topilmadi.</h2>
+        if (filter.length === 0) {
+          resultsUsers.innerHTML = `
+          <h2 style="text-align: center; font-size: 12px; margin-top: 150px; color: red; font-weight: 400;"><span style="color: black;">@${searchInput.value}</span> topilmadi.</h2>
         `;
-      } else {
-        resultsUsers.innerHTML = `
+        } else {
+          resultsUsers.innerHTML = `
           <h2 style="text-align: center; font-size: 11px; margin-top: 150px; color: #666; font-weight: 400;">Searching...</h2>
         `;
 
-        setTimeout(() => {
-          resultsUsers.innerHTML = "";
+          setTimeout(() => {
+            resultsUsers.innerHTML = "";
 
-          filter.map((item) => {
-            resultsUsers.innerHTML += `
+            filter.map((item) => {
+              resultsUsers.innerHTML += `
               <div class="searchUsers">
                 <img src="${item.avatar}"></img>
                 <div>
@@ -71,11 +64,16 @@ document.addEventListener("DOMContentLoaded", () => {
                 </div>
               </div>
             `;
-          });
-        }, 1500);
-      }
-    });
+            });
+          }, 1500);
+        }
+      });
+    } catch (error) {
+      resultsUsers.innerHTML = `<h3 style="color: red; font-weight: 600; text-align: center; font-size: 12px; margin-top: 150px;">Ma'lumotlarni yuklashda xatolik yuz berdi.</h3>`;
+    }
   }
+
+  user();
 
   // icons
 
