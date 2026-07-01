@@ -53,19 +53,19 @@ const randomTip = tips[Math.floor(Math.random() * tips.length)];
 document.getElementById("tip").textContent = randomTip;
 
 const rightRender = async () => {
-    try {
-        let response = await axios.get(api);
-        render(response.data)
-    } catch (error) {
-        console.log(error);
-    }
-}
+  try {
+    let response = await axios.get(api);
+    render(response.data);
+  } catch (error) {
+    console.log(error);
+  }
+};
 
-rightRender()
+rightRender();
 
-function render(data){
-    data.map((item) => {
-        document.getElementById("right").innerHTML += `
+function render(data) {
+  data.slice(0, 5).map((item) => {
+    document.getElementById("right").innerHTML += `
             <div>
                 <img src="${item.avatar}" alt="user-avatar">
                 <div>
@@ -74,7 +74,5 @@ function render(data){
                 </div>
             </div>
         `;
-    });
+  });
 }
-
-axios.delete("https://6a42b7747602860e6521d39f.mockapi.io/users/6")

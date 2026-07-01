@@ -49,27 +49,29 @@ document.addEventListener("DOMContentLoaded", () => {
     reader.onload = function (e) {
       const img = new Image();
 
-      img.onload = function () {
+      img.onload = async function () {
         const canvas = document.createElement("canvas");
         const ctx = canvas.getContext("2d");
 
-        canvas.width = 450;
-        canvas.height = img.height * (450 / img.width);
+        canvas.width = 200;
+        canvas.height = img.height * (200 / img.width);
         ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
 
         const compressed = canvas.toDataURL("image/jpeg", 0.75);
 
-        // avval localStorage
-        localStorage.setItem("avatar", compressed);
-
         profileAvatar.src = compressed;
 
-        // keyin PUT
-        const userId = localStorage.getItem("userId");
+        const users = await axios.get(api1);
 
-        axios.put(`${api1}/${userId}`, {
+        const userss = users.data.find(
+          (item) => item.username === "@" + localStorage.getItem("nik"),
+        );
+
+        await axios.put(`${api1}/${userss.id}`, {
           avatar: compressed,
         });
+
+        localStorage.setItem("avatar", compressed);
       };
 
       img.src = e.target.result;
@@ -85,6 +87,7 @@ document.addEventListener("DOMContentLoaded", () => {
   title.textContent =
     localStorage.getItem("name") +
     " (" +
+    "@" +
     localStorage.getItem("nik") +
     ") · Buildly";
 
@@ -230,4 +233,16 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   renderProject();
+
+  async function datas() {
+    const users = await axios.get(api1);
+
+    const userss = users.data.find(
+      (item) => item.username === "@" + localStorage.getItem("nik"),
+    );
+
+    localStorage.setItem("userId", userss.id);
+  }
+
+  datas();
 });
